@@ -21,6 +21,12 @@ function sendMessage() {
   });
   newMessage.value = "";
 }
+
+const isServer = process.server;
+const isClient = process.client;
+
+console.log("SSR:", isServer);
+console.log("SPA:", isClient && !isServer);
 </script>
 
 <template>
