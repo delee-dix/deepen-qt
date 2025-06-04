@@ -50,7 +50,6 @@ const onInput = () => {
           </div>
           <div class="history-area">
             <div class="date">Yesterday</div>
-            <div class="line"></div>
             <div class="qt-content">
               <div class="qt-title">
                 <div>Raising children</div>
@@ -79,7 +78,6 @@ const onInput = () => {
             </div>
             <br />
             <div class="date">2 days ago</div>
-            <div class="line"></div>
             <div class="qt-content">
               <div class="qt-title">
                 <div>Raising children</div>
@@ -136,27 +134,14 @@ const onInput = () => {
           />
           <div class="calendar-area">
             <div class="calendar-title">Attendance status</div>
-            <div
-              class="calendar"
-              :style="{
-                width: '343px',
-                height: '303px',
-                background: '#323232',
-              }"
-            >
-              (Calendar component here)
-              <Calendar
-                mode="single"
-                selected="{date}"
-                onSelect="{setDate}"
-                className="rounded-md border"
-              />
-            </div>
+            <img src="/img/img_calendar.png" alt="calendar" class="calendar" />
           </div>
           <div class="prayer-area">
             <div class="prayer-title">
               <div>Journey of Prayers</div>
-              <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
+              <NuxtLink to="/home/prayer/list">
+                <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
+              </NuxtLink>
             </div>
             <br />
             <div class="prayer-content">
@@ -171,7 +156,7 @@ const onInput = () => {
             </div>
             <div class="prayer-content">
               <strong>April 26, 2025</strong>
-              <div>Moments of Quiet Faith</div>
+              <div>A day guided and grounded by prayer</div>
               <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
             </div>
             <div class="prayer-content">
@@ -182,11 +167,6 @@ const onInput = () => {
             <div class="prayer-content">
               <strong>April 24, 2025</strong>
               <div>Peaceful Morning Conversations</div>
-              <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-            </div>
-            <div class="prayer-content">
-              <strong>April 23, 2025</strong>
-              <div>Moments of Quiet Faith</div>
               <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
             </div>
           </div>
@@ -295,12 +275,8 @@ const onInput = () => {
       .date {
         font-size: 18px;
         font-weight: bold;
-      }
-
-      .line {
-        width: 100%;
-        height: 1px;
-        background-color: #c6c6c6;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #c6c6c6;
       }
 
       .qt-content {
@@ -386,13 +362,24 @@ const onInput = () => {
     .calendar-area {
       display: flex;
       flex-direction: column;
-      padding: 10px;
+
+      .calendar-title {
+        font-size: 18px;
+        margin-top: 20px;
+      }
+
+      .calendar {
+        width: 300px;
+        height: 270px;
+        border: 1px solid #c6c6c6;
+      }
     }
 
     .prayer-area {
       display: flex;
       flex-direction: column;
-      padding: 10px;
+      // padding: 10px;
+      margin-top: 40px;
 
       .prayer-title {
         display: flex;
@@ -403,9 +390,10 @@ const onInput = () => {
       .prayer-content {
         display: flex;
         justify-content: left;
-        padding-bottom: 10px;
+        padding: 10px 0;
         gap: 8px;
         font-size: 14px;
+        border-bottom: 1px solid #c6c6c6;
       }
     }
 
