@@ -25,100 +25,114 @@ const sortingModalOpen = () => {
           alt="sorting"
           @click="sortingModalOpen"
         />
+        <div v-if="isModalopen" class="sorting-modal">
+          <div class="latest">
+            <img src="/icon/ic_latest.svg" alt="latest" />
+            <div>Latest</div>
+          </div>
+          <div class="older">
+            <img src="/icon/ic_older.svg" alt="older" />
+            <div>Older</div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="body">
       <div class="prayer-content">
         <strong>April 28, 2025</strong>
-        <div>Silent Whispers of the Morning</div>
+        <div class="content-subject">Silent Whispers of the Morning</div>
         <NuxtLink to="/home/prayer/detail">
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
         </NuxtLink>
       </div>
       <div class="prayer-content">
-        <strong>April 28, 2025</strong>
-        <div>Silent Whispers of the Morning</div>
+        <strong>April 27, 2025</strong>
+        <div class="content-subject">Grace in the Stillness</div>
+        <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
+      </div>
+      <div class="prayer-content">
+        <strong>April 26, 2025</strong>
+        <div class="content-subject">Moments of Quiet Faith</div>
+        <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
+      </div>
+      <div class="prayer-content">
+        <strong>April 25, 2025</strong>
+        <div class="content-subject">Echoes of His Word</div>
+        <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
+      </div>
+      <div class="prayer-content">
+        <strong>April 24, 2025</strong>
+        <div class="content-subject">Peaceful Morning Conversations</div>
+        <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
+      </div>
+      <div class="prayer-content">
+        <strong>April 23, 2025</strong>
+        <div class="content-subject">A Day Anchored in Prayer</div>
         <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
       </div>
       <div class="prayer-content">
         <strong>April 28, 2025</strong>
-        <div>Silent Whispers of the Morning</div>
+        <div class="content-subject">Silent Whispers of the Morning</div>
+        <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
+      </div>
+      <div class="prayer-content">
+        <strong>April 27, 2025</strong>
+        <div class="content-subject">Grace in the Stillness</div>
+        <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
+      </div>
+      <div class="prayer-content">
+        <strong>April 26, 2025</strong>
+        <div class="content-subject">Moments of Quiet Faith</div>
+        <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
+      </div>
+      <div class="prayer-content">
+        <strong>April 25, 2025</strong>
+        <div class="content-subject">Echoes of His Word</div>
+        <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
+      </div>
+      <div class="prayer-content">
+        <strong>April 24, 2025</strong>
+        <div class="content-subject">Peaceful Morning Conversations</div>
+        <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
+      </div>
+      <div class="prayer-content">
+        <strong>April 23, 2025</strong>
+        <div class="content-subject">A Day Anchored in Prayer</div>
         <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
       </div>
       <div class="prayer-content">
         <strong>April 28, 2025</strong>
-        <div>Silent Whispers of the Morning</div>
+        <div class="content-subject">Silent Whispers of the Morning</div>
         <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
       </div>
       <div class="prayer-content">
-        <strong>April 28, 2025</strong>
-        <div>Silent Whispers of the Morning</div>
+        <strong>April 27, 2025</strong>
+        <div class="content-subject">Grace in the Stillness</div>
         <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
       </div>
       <div class="prayer-content">
-        <strong>April 28, 2025</strong>
-        <div>Silent Whispers of the Morning</div>
+        <strong>April 26, 2025</strong>
+        <div class="content-subject">Moments of Quiet Faith</div>
         <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
       </div>
       <div class="prayer-content">
-        <strong>April 28, 2025</strong>
-        <div>Silent Whispers of the Morning</div>
+        <strong>April 25, 2025</strong>
+        <div class="content-subject">Echoes of His Word</div>
         <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
       </div>
       <div class="prayer-content">
-        <strong>April 28, 2025</strong>
-        <div>Silent Whispers of the Morning</div>
+        <strong>April 24, 2025</strong>
+        <div class="content-subject">Peaceful Morning Conversations</div>
         <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
       </div>
       <div class="prayer-content">
-        <strong>April 28, 2025</strong>
-        <div>Silent Whispers of the Morning</div>
-        <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-      </div>
-      <div class="prayer-content">
-        <strong>April 28, 2025</strong>
-        <div>Silent Whispers of the Morning</div>
-        <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-      </div>
-      <div class="prayer-content">
-        <strong>April 28, 2025</strong>
-        <div>Silent Whispers of the Morning</div>
-        <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-      </div>
-      <div class="prayer-content">
-        <strong>April 28, 2025</strong>
-        <div>Silent Whispers of the Morning</div>
-        <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-      </div>
-      <div class="prayer-content">
-        <strong>April 28, 2025</strong>
-        <div>Silent Whispers of the Morning</div>
-        <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-      </div>
-      <div class="prayer-content">
-        <strong>April 28, 2025</strong>
-        <div>Silent Whispers of the Morning</div>
-        <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-      </div>
-      <div class="prayer-content">
-        <strong>April 28, 2025</strong>
-        <div>Silent Whispers of the Morning</div>
+        <strong>April 23, 2025</strong>
+        <div class="content-subject">A Day Anchored in Prayer</div>
         <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
       </div>
     </div>
   </div>
-
-  <Modal v-model="isModalopen" class="sorting-modal" v-show="isModalopen">
-    <div class="latest">
-      <img src="/icon/ic_latest.svg" alt="latest" />
-      <div>Latest</div>
-    </div>
-    <div class="older">
-      <img src="/icon/ic_older.svg" alt="older" />
-      <div>Older</div>
-    </div>
-  </Modal>
 </template>
 
 <style lang="scss" scoped>
@@ -138,40 +152,53 @@ const sortingModalOpen = () => {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 12px 12px 0 0;
 
     .left {
       display: flex;
       justify-content: left;
       gap: 8px;
     }
+
+    .right {
+      position: relative;
+      display: inline-block;
+
+      .sorting-modal {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        background-color: #363636;
+        right: 0;
+
+        .latest,
+        .older {
+          display: flex;
+          flex-direction: row;
+          gap: 4px;
+          padding: 8px 12px;
+        }
+      }
+    }
   }
 
   .body {
     display: flex;
     flex-direction: column;
-    margin-top: 40px;
+    margin-top: 20px;
 
     .prayer-content {
       display: flex;
-      justify-content: left;
+      justify-content: space-between;
       padding: 10px 0;
       gap: 8px;
       font-size: 14px;
       border-bottom: 1px solid #c6c6c6;
+
+      .content-subject {
+        width: 200px;
+      }
     }
-  }
-}
-
-.sorting-modal {
-  display: flex;
-  flex-direction: column;
-  background-color: #363636;
-  width: 100px;
-  height: 100px;
-
-  .latest,
-  .older {
-    gap: 4px;
   }
 }
 </style>
