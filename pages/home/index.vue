@@ -146,27 +146,32 @@ const onInput = () => {
             <br />
             <div class="prayer-content">
               <strong>April 28, 2025</strong>
-              <div>Silent Whispers of the Morning</div>
+              <div class="content-subject">Silent Whispers of the Morning</div>
               <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
             </div>
             <div class="prayer-content">
               <strong>April 27, 2025</strong>
-              <div>Peaceful Morning Conversations</div>
+              <div class="content-subject">Grace in the Stillness</div>
               <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
             </div>
             <div class="prayer-content">
               <strong>April 26, 2025</strong>
-              <div>A day guided and grounded by prayer</div>
+              <div class="content-subject">Moments of Quiet Faith</div>
               <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
             </div>
             <div class="prayer-content">
               <strong>April 25, 2025</strong>
-              <div>Silent Whispers of the Morning</div>
+              <div class="content-subject">Echoes of His Word</div>
               <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
             </div>
             <div class="prayer-content">
               <strong>April 24, 2025</strong>
-              <div>Peaceful Morning Conversations</div>
+              <div class="content-subject">Peaceful Morning Conversations</div>
+              <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
+            </div>
+            <div class="prayer-content">
+              <strong>April 23, 2025</strong>
+              <div class="content-subject">A Day Anchored in Prayer</div>
               <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
             </div>
           </div>
@@ -220,11 +225,12 @@ const onInput = () => {
       top: 0;
       background-color: #090607;
       border: 1px solid #323232;
-      width: 300px;
+      width: 350px;
       height: 100vh;
       box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
       padding: 20px;
       z-index: 1000;
+      overflow-y: auto;
 
       &.left {
         left: 0;
@@ -369,9 +375,10 @@ const onInput = () => {
       }
 
       .calendar {
-        width: 300px;
-        height: 270px;
+        width: 330px;
+        height: 300px;
         border: 1px solid #c6c6c6;
+        margin-top: 20px;
       }
     }
 
@@ -389,11 +396,15 @@ const onInput = () => {
 
       .prayer-content {
         display: flex;
-        justify-content: left;
+        justify-content: space-between;
         padding: 10px 0;
         gap: 8px;
         font-size: 14px;
         border-bottom: 1px solid #c6c6c6;
+
+        .content-subject {
+          width: 210px;
+        }
       }
     }
 
