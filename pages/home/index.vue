@@ -1,16 +1,25 @@
 <script setup lang="ts">
 import { ref } from "vue";
+// import { Calendar } from "@/components/ui/calendar"
 
 const content = ref("");
 const name = ref("");
 const isVisibleLeft = ref<boolean>(false);
 const isVisibleRight = ref<boolean>(false);
+const isQT = ref<boolean>(true);
 
 const toggleLeftWidget = () => {
   isVisibleLeft.value = !isVisibleLeft.value;
 };
 const toggleRightWidget = () => {
   isVisibleRight.value = !isVisibleRight.value;
+};
+
+const message = ref("");
+const editableDiv = ref<HTMLDivElement | null>(null);
+
+const onInput = () => {
+  message.value = editableDiv.value?.innerText.trim() || "";
 };
 </script>
 
@@ -21,18 +30,88 @@ const toggleRightWidget = () => {
       <transition name="slide-left">
         <div v-if="isVisibleLeft" class="widget left">
           <div class="search-area">
-            <input :v-model="name" placeholder="Search..." />
+            <!-- <img src="/icon/ic_search.svg" alt="search" />
+            <input :v-model="name" placeholder="Search" class="search" /> -->
+            <div class="search">
+              <img src="/icon/ic_search.svg" alt="search" class="icon" />
+              <div
+                ref="editableDiv"
+                class="search"
+                contenteditable="true"
+                @input="onInput"
+                placeholder="Search"
+              ></div>
+            </div>
             <img
-              src="/icon/ic_arrow_right.svg"
+              src="/icon/ic_arrow_left.svg"
               alt="arrow-right"
               @click="toggleLeftWidget"
             />
           </div>
-          <div class="history-area">(History)</div>
+          <div class="history-area">
+            <div class="date">Yesterday</div>
+            <div class="line"></div>
+            <div class="qt-content">
+              <div class="qt-title">
+                <div>Raising children</div>
+                <div class="qt" v-if="!isQT">QT</div>
+              </div>
+              <div class="summary">
+                <strong>Ephesians 6:4</strong> - Do not provoke others to anger.
+              </div>
+              <div class="tags">
+                <div class="tag">Delight</div>
+                <div class="tag">Judgement</div>
+              </div>
+            </div>
+            <div class="qt-content">
+              <div class="qt-title">
+                <div>Raising children</div>
+                <div class="qt" v-if="isQT">QT</div>
+              </div>
+              <div class="summary">
+                <strong>Ephesians 6:4</strong> - Do not provoke others to anger.
+              </div>
+              <div class="tags">
+                <div class="tag">Delight</div>
+                <div class="tag">Judgement</div>
+              </div>
+            </div>
+            <br />
+            <div class="date">2 days ago</div>
+            <div class="line"></div>
+            <div class="qt-content">
+              <div class="qt-title">
+                <div>Raising children</div>
+                <div class="qt" v-if="!isQT">QT</div>
+              </div>
+              <div class="summary">
+                <strong>Ephesians 6:4</strong> - Do not provoke others to anger.
+              </div>
+              <div class="tags">
+                <div class="tag">Delight</div>
+                <div class="tag">Judgement</div>
+              </div>
+            </div>
+            <div class="qt-content">
+              <div class="qt-title">
+                <div>Raising children</div>
+                <div class="qt" v-if="isQT">QT</div>
+              </div>
+              <div class="summary">
+                <strong>Ephesians 6:4</strong> - Do not provoke others to anger.
+              </div>
+              <div class="tags">
+                <div class="tag">Delight</div>
+                <div class="tag">Judgement</div>
+              </div>
+            </div>
+          </div>
           <div class="info-area">
             <div class="state">
               <img src="/icon/ic_sparkle.svg" alt="sparkle" />
-              <div>State of faith</div>
+              <!-- <div @click="">State of faith</div> -->
+              <NuxtLink :to="`/home/faith`">State of faith</NuxtLink>
             </div>
             <div class="info">
               <div class="my-info">
@@ -65,7 +144,13 @@ const toggleRightWidget = () => {
                 background: '#323232',
               }"
             >
-              (Calendar)
+              (Calendar component here)
+              <Calendar
+                mode="single"
+                selected="{date}"
+                onSelect="{setDate}"
+                className="rounded-md border"
+              />
             </div>
           </div>
           <div class="prayer-area">
@@ -109,7 +194,7 @@ const toggleRightWidget = () => {
       </transition>
     </div>
 
-    <img src="/img/img_symbol.svg" alt="Home" class="symbol" />
+    <img src="/icon/ic_symbol.svg" alt="Home" class="symbol" />
     <div class="title">Hi,&nbsp;<strong>Deepen King</strong></div>
     <div class="title">How are you feeling today?</div>
 
@@ -175,15 +260,91 @@ const toggleRightWidget = () => {
       justify-content: space-between;
       align-items: center;
       margin-bottom: 20px;
+
+      .search {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background-color: #363636;
+        border: 1px solid #323232;
+        color: #c6c6c6;
+        border-radius: 4px;
+        font-size: 14px;
+        padding: 4px;
+        width: 80%;
+
+        .icon {
+          margin: 6px 0 6px 8px;
+        }
+      }
+
+      .search:empty::before {
+        content: attr(placeholder);
+        color: #aaa;
+      }
     }
 
     .history-area {
       display: flex;
       flex-direction: column;
       padding: 16px;
-      height: 65%;
-      background-color: #323232; //
+      height: 70%;
       margin-bottom: 20px;
+      overflow-y: auto;
+
+      .date {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .line {
+        width: 100%;
+        height: 1px;
+        background-color: #c6c6c6;
+      }
+
+      .qt-content {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .qt-title {
+          display: flex;
+          justify-content: left;
+          align-items: start;
+          flex-direction: row;
+          gap: 8px;
+          margin-top: 20px;
+
+          .qt {
+            background-color: #6940c6;
+            border-radius: 1000px;
+            padding: 2px 8px;
+            font-size: 10px;
+          }
+        }
+
+        .summary {
+          color: #c6c6c6;
+          font-size: 12px;
+          margin-top: 2px;
+        }
+
+        .tags {
+          display: flex;
+          flex-direction: row;
+          color: #c6c6c6;
+          font-size: 11px;
+          margin-top: 8px;
+          gap: 4px;
+
+          .tag {
+            padding: 4px 12px 6px 12px;
+            border-radius: 100px;
+            border: 1px solid #c6c6c6;
+          }
+        }
+      }
     }
 
     .info-area {
