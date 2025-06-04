@@ -13,7 +13,7 @@ onMounted(() => {
 
 <template>
   <div class="welcome">
-    <img src="/img/img_symbol.svg" alt="splash" />
+    <img src="/icon/ic_symbol.svg" alt="splash" />
     <h1>Deepen QT</h1>
   </div>
 </template>
