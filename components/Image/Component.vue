@@ -8,9 +8,9 @@
     style?: Record<string, string>;
   }>();
 
-  const iconPath = computed(() => `/img/${props.path}.png`);
+  const imagePath = computed(() => `/img/${props.path}.png`);
 </script>
 
 <template>
-  <img :src="iconPath" :alt="path" :width="width" :height="height" :style="style" draggable="false" />
+  <img :src="imagePath" :alt="path" :width="width" :height="height" :style="style" draggable="false" />
 </template>
