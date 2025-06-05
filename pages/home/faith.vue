@@ -18,7 +18,11 @@ import { ref } from "vue";
       <div class="date">to <strong>May 30, 2025</strong></div>
     </div>
     <div class="chart">
-      <img src="/img/img_chart_sample.png" alt="chart" />
+      <img
+        src="/img/img_chart_sample.png"
+        alt="chart"
+        :style="{ width: '95%' }"
+      />
     </div>
     <div class="topic">
       <div class="subject">Key Exploration Topics</div>
@@ -44,15 +48,16 @@ import { ref } from "vue";
     <div class="verses">
       <div class="subject">Top 3 Helpful Verses</div>
       <div class="text">
-        <strong>Ephesians 6:4</strong> - “Do not provoke your children to
-        anger…”
+        1. <strong>Ephesians 6:4</strong><br />
+        “Do not provoke your children to anger…”
       </div>
       <div class="text">
-        <strong>Proverbs 15:1</strong> - “A soft answer turns away wrath…”
+        2. <strong>Proverbs 15:1</strong><br />
+        “A soft answer turns away wrath…”
       </div>
       <div class="text">
-        <strong>James 1:19</strong> - “Let every person be quick to hear, slow
-        to speak…”
+        3. <strong>James 1:19</strong><br />
+        “Let every person be quick to hear…”
       </div>
       <div class="text">• (View Details)</div>
     </div>
@@ -100,7 +105,7 @@ import { ref } from "vue";
       display: flex;
       flex-direction: row;
       font-size: 11px;
-      gap: 8px;
+      gap: 4px;
       margin-top: 8px;
 
       .tag {
@@ -123,6 +128,7 @@ import { ref } from "vue";
     padding: 12px 0;
     font-weight: 700;
   }
+
   .text {
     font-size: 14px;
   }
