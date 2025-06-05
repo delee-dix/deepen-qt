@@ -143,7 +143,6 @@ const onInput = () => {
                 <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
               </NuxtLink>
             </div>
-            <br />
             <div class="prayer-content">
               <strong>April 28, 2025</strong>
               <div class="content-subject">Silent Whispers of the Morning</div>
@@ -167,11 +166,6 @@ const onInput = () => {
             <div class="prayer-content">
               <strong>April 24, 2025</strong>
               <div class="content-subject">Peaceful Morning Conversations</div>
-              <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-            </div>
-            <div class="prayer-content">
-              <strong>April 23, 2025</strong>
-              <div class="content-subject">A Day Anchored in Prayer</div>
               <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
             </div>
           </div>
@@ -209,8 +203,8 @@ const onInput = () => {
   color: #c6c6c6;
   display: flex;
   flex-direction: column;
-  width: 375px;
-  height: 812px;
+  width: 360px;
+  height: 780px;
   margin: auto;
   box-sizing: border-box;
 
@@ -221,16 +215,12 @@ const onInput = () => {
     padding: 16px;
 
     .widget {
-      position: fixed;
       top: 0;
+      position: fixed;
       background-color: #090607;
-      border: 1px solid #323232;
-      width: 350px;
+      width: 330px;
       height: 100vh;
-      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
       padding: 20px;
-      z-index: 1000;
-      overflow-y: auto;
 
       &.left {
         left: 0;
@@ -385,13 +375,13 @@ const onInput = () => {
     .prayer-area {
       display: flex;
       flex-direction: column;
-      // padding: 10px;
-      margin-top: 40px;
+      margin-top: 20px;
 
       .prayer-title {
         display: flex;
         justify-content: space-between;
         font-size: 18px;
+        margin-bottom: 20px;
       }
 
       .prayer-content {
@@ -403,7 +393,7 @@ const onInput = () => {
         border-bottom: 1px solid #c6c6c6;
 
         .content-subject {
-          width: 210px;
+          width: 190px;
         }
       }
     }
