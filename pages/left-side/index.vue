@@ -4,10 +4,10 @@
   }>();
 
   const props = defineProps<{
-    isVisibleLeft: Boolean;
+    isVisible: Boolean;
   }>();
 
-  const isVisible = computed(() => props.isVisibleLeft);
+  const isShowSide = computed(() => props.isVisible);
 
   const toggleLeftSide = () => {
     emit("toggleLeftSide");
@@ -33,7 +33,7 @@
 
 <template>
   <transition name="slide-left">
-    <div v-if="isVisible" class="left-side-container">
+    <div v-if="isShowSide" class="left-side-container">
       <div class="search-bar-container">
         <SearchBar />
         <IconComponent path="ic_arrow_right" :width="24" :height="24" @click="toggleLeftSide" />

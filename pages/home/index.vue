@@ -3,7 +3,7 @@
 
   import Header from "~/components/Header.vue";
   import LeftSide from "~/pages/left-side/index.vue";
-  import RightSide from "~/components/RightSide.vue";
+  import RightSide from "~/pages/right-side/index.vue";
 
   const chatContent = ref("");
   const name = ref("");
@@ -22,10 +22,10 @@
   <div class="chat-list">
     <Header>
       <IconComponent path="ic_menu_search" :width="24" :height="24" @click="toggleLeftSide" />
-      <LeftSide :isVisibleLeft="isVisibleLeft" @toggleLeftSide="toggleLeftSide" />
       <IconComponent path="ic_library" :width="24" :height="24" @click="toggleRightSide" />
-      <RightSide :isVisibleRight="isVisibleRight" @toggleRightSide="toggleRightSide" />
     </Header>
+    <LeftSide :isVisible="isVisibleLeft" @toggleLeftSide="toggleLeftSide" />
+    <RightSide :isVisible="isVisibleRight" @toggleRightSide="toggleRightSide" />
     <div class="hello-container">
       <img src="/icon/ic_symbol.svg" alt="Home" class="symbol" />
       <div class="title">
@@ -96,30 +96,6 @@
           }
         }
       }
-
-      .slide-left-enter-active,
-      .slide-left-leave-active,
-      .slide-right-enter-active,
-      .slide-right-leave-active {
-        transition: transform 0.3s ease;
-      }
-
-      .slide-left-enter-from,
-      .slide-left-leave-to {
-        transform: translateX(-100%);
-      }
-
-      .slide-right-enter-from,
-      .slide-right-leave-to {
-        transform: translateX(100%);
-      }
-
-      .slide-left-enter-to,
-      .slide-right-enter-to,
-      .slide-left-leave-from,
-      .slide-right-leave-from {
-        transform: translateX(0);
-      }
     }
 
     .hello-container {
@@ -146,5 +122,29 @@
         width: 100%;
       }
     }
+  }
+
+  .slide-left-enter-active,
+  .slide-left-leave-active,
+  .slide-right-enter-active,
+  .slide-right-leave-active {
+    transition: transform 0.3s ease;
+  }
+
+  .slide-left-enter-from,
+  .slide-left-leave-to {
+    transform: translateX(-100%);
+  }
+
+  .slide-right-enter-from,
+  .slide-right-leave-to {
+    transform: translateX(100%);
+  }
+
+  .slide-left-enter-to,
+  .slide-right-enter-to,
+  .slide-left-leave-from,
+  .slide-right-leave-from {
+    transform: translateX(0);
   }
 </style>

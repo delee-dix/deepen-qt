@@ -1,17 +1,19 @@
 <script setup lang="ts">
-  import { toRefs } from "vue";
-  import type { PropType } from "vue";
-  const props = defineProps({
-    isVisibleRight: Boolean,
-    toggleRightWidget: Function as PropType<(payload: MouseEvent) => void>,
-  });
-  const { isVisibleRight, toggleRightWidget } = toRefs(props);
+  const emit = defineEmits<{
+    (event: "toggleRightSide"): void;
+  }>();
+
+  const props = defineProps<{
+    isVisible: boolean;
+  }>();
+
+  const isShowSide = computed(() => props.isVisible);
 </script>
 
 <template>
   <transition name="slide-right">
-    <div v-if="isVisibleRight" class="widget right">
-      <img src="/icon/ic_arrow_right.svg" alt="arrow-right" @click="toggleRightWidget" />
+    <div v-if="isShowSide" class="right-side-container">
+      <img src="/icon/ic_arrow_right.svg" alt="arrow-right" @click="emit('toggleRightSide')" />
       <div class="calendar-area">
         <div class="calendar-title">Attendance status</div>
         <img src="/img/img_calendar.png" alt="calendar" class="calendar" />
@@ -55,6 +57,54 @@
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
         </div>
       </div>
+      <div class="background-radial-gradient"></div>
     </div>
   </transition>
 </template>
+
+<style lang="scss" scoped>
+  .right-side-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: $background;
+    width: 100vw;
+    height: 100vh;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+
+    .search-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background-color: $background;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      padding-left: 12px;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .history-list-container {
+      margin-top: 80px;
+      height: 100%;
+      padding-bottom: 264px;
+      overflow-y: auto;
+    }
+
+    .background-radial-gradient {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 320px;
+      z-index: 99999;
+      pointer-events: none;
+      background: radial-gradient(circle at 48% 100%, rgba(255, 255, 255, 0.6) 0%, rgba(165, 75, 179, 0) 90%);
+      opacity: 0.2;
+    }
+  }
+</style>
