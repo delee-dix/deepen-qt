@@ -3,7 +3,6 @@ import { ref } from "vue";
 // import { Calendar } from "@/components/ui/calendar"
 
 const content = ref("");
-const name = ref("");
 const isVisibleLeft = ref<boolean>(false);
 const isVisibleRight = ref<boolean>(false);
 const isQT = ref<boolean>(true);
@@ -104,22 +103,54 @@ const onInput = () => {
                 <div class="tag">Judgement</div>
               </div>
             </div>
+            <br />
+            <div class="date">3 days ago</div>
+            <div class="qt-content">
+              <div class="qt-title">
+                <div>Raising children</div>
+                <div class="qt" v-if="!isQT">QT</div>
+              </div>
+              <div class="summary">
+                <strong>Ephesians 6:4</strong> - Do not provoke others to anger.
+              </div>
+              <div class="tags">
+                <div class="tag">Delight</div>
+                <div class="tag">Judgement</div>
+              </div>
+            </div>
+            <div class="qt-content">
+              <div class="qt-title">
+                <div>Raising children</div>
+                <div class="qt" v-if="isQT">QT</div>
+              </div>
+              <div class="summary">
+                <strong>Ephesians 6:4</strong> - Do not provoke others to anger.
+              </div>
+              <div class="tags">
+                <div class="tag">Delight</div>
+                <div class="tag">Judgement</div>
+              </div>
+            </div>
           </div>
           <div class="info-area">
             <div class="state">
               <img src="/icon/ic_sparkle.svg" alt="sparkle" />
               <!-- <div @click="">State of faith</div> -->
-              <NuxtLink :to="`/home/faith`">State of faith</NuxtLink>
+              <NuxtLink :to="`/home/faith`" class="no-style-link"
+                >State of faith</NuxtLink
+              >
             </div>
             <div class="info">
-              <div class="my-info">
-                <img src="/img/img_profile.png" alt="profile" />
-                <div class="name">Deepen King</div>
-              </div>
-              <div class="new-chat">
+              <NuxtLink :to="`/home/mypage/list`" class="no-style-link">
+                <div class="my-info">
+                  <img src="/img/img_profile.png" alt="profile" />
+                  <div class="name">Deepen King</div>
+                </div>
+              </NuxtLink>
+              <NuxtLink :to="`/home/new`" class="new-chat no-style-link">
                 <img src="/icon/ic_plus.svg" alt="plus" />
                 <div>New Chat</div>
-              </div>
+              </NuxtLink>
             </div>
           </div>
         </div>
@@ -139,11 +170,10 @@ const onInput = () => {
           <div class="prayer-area">
             <div class="prayer-title">
               <div>Journey of Prayers</div>
-              <NuxtLink to="/home/prayer/list">
+              <NuxtLink to="/home/prayer/list" class="no-style-link">
                 <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
               </NuxtLink>
             </div>
-            <br />
             <div class="prayer-content">
               <strong>April 28, 2025</strong>
               <div class="content-subject">Silent Whispers of the Morning</div>
@@ -209,8 +239,11 @@ const onInput = () => {
   color: #c6c6c6;
   display: flex;
   flex-direction: column;
-  width: 375px;
-  height: 812px;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
   margin: auto;
   box-sizing: border-box;
 
@@ -220,17 +253,18 @@ const onInput = () => {
     align-items: start;
     padding: 16px;
 
+    .no-style-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
     .widget {
-      position: fixed;
       top: 0;
+      position: fixed;
       background-color: #090607;
-      border: 1px solid #323232;
-      width: 350px;
+      width: 90%;
       height: 100vh;
-      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
       padding: 20px;
-      z-index: 1000;
-      overflow-y: auto;
 
       &.left {
         left: 0;
@@ -273,9 +307,8 @@ const onInput = () => {
     .history-area {
       display: flex;
       flex-direction: column;
-      padding: 16px;
+      padding: 16px 0;
       height: 70%;
-      margin-bottom: 20px;
       overflow-y: auto;
 
       .date {
@@ -332,6 +365,7 @@ const onInput = () => {
     .info-area {
       display: flex;
       flex-direction: column;
+      justify-content: center;
 
       .state {
         background: linear-gradient(to right, #4e5899, #ce70ca);
@@ -339,6 +373,7 @@ const onInput = () => {
         color: transparent;
         display: flex;
         justify-content: end;
+        align-items: center;
         margin: 10px;
         gap: 5px;
       }
@@ -356,7 +391,7 @@ const onInput = () => {
         .new-chat {
           display: flex;
           align-items: center;
-          // gap: 10px;
+          gap: 8px;
           border-radius: 1000px;
           border: 1px solid #323232;
           padding: 12px 16px;
@@ -385,18 +420,19 @@ const onInput = () => {
     .prayer-area {
       display: flex;
       flex-direction: column;
-      // padding: 10px;
-      margin-top: 40px;
+      margin-top: 20px;
 
       .prayer-title {
         display: flex;
         justify-content: space-between;
         font-size: 18px;
+        margin-bottom: 20px;
       }
 
       .prayer-content {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 10px 0;
         gap: 8px;
         font-size: 14px;
@@ -474,7 +510,7 @@ const onInput = () => {
 
   .input-area {
     display: flex;
-    width: 99%;
+    width: 100%;
     height: 120px;
 
     .content {
