@@ -12,7 +12,7 @@
           @click="$router.back()"
         />
         <div>Setting</div>
-        <div></div>
+        <div>Save</div>
       </div>
     </div>
   </div>
