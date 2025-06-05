@@ -15,7 +15,7 @@ const titleList = [
     <div class="content-area">
       <!-- <div class="bar"></div> -->
       <div class="header">
-        <img src="/icon/ic_chevron_left.svg" alt="prev" />
+        <div :style="{ width: '24px' }"></div>
         <div>My Page</div>
         <img
           src="/icon/ic_close.svg"
