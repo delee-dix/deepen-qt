@@ -13,5 +13,7 @@
     align-items: start;
     padding: 16px;
     width: 100%;
+    height: 80px;
+    align-items: center;
   }
 </style>

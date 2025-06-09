@@ -8,55 +8,43 @@
   }>();
 
   const isShowSide = computed(() => props.isVisible);
+
+  const prayerItems = [
+    { date: "April 28, 2025", subject: "Silent Whispers of the Morning" },
+    { date: "April 27, 2025", subject: "Grace in the Stillness" },
+    { date: "April 26, 2025", subject: "Moments of Quiet Faith" },
+    { date: "April 25, 2025", subject: "Echoes of His Word" },
+    { date: "April 24, 2025", subject: "Peaceful Morning Conversations" },
+    { date: "April 23, 2025", subject: "A Day Anchored in Prayer" },
+    { date: "April 22, 2025", subject: "A Day Anchored in Prayer" },
+    { date: "April 21, 2025", subject: "A Day Anchored in Prayer" },
+    { date: "April 20, 2025", subject: "A Day Anchored in Prayer" },
+    { date: "April 19, 2025", subject: "A Day Anchored in Prayer" },
+  ];
 </script>
 
 <template>
   <transition name="slide-right">
     <div v-if="isShowSide" class="right-side-container">
-      <img src="/icon/ic_arrow_right.svg" alt="arrow-right" @click="emit('toggleRightSide')" />
-      <div class="calendar-area">
-        <div class="calendar-title">Attendance status</div>
-        <img src="/img/img_calendar.png" alt="calendar" class="calendar" />
+      <div class="header-container">
+        <IconComponent path="ic_arrow_left" :width="24" :height="24" @click="emit('toggleRightSide')" />
       </div>
-      <div class="prayer-area">
-        <div class="prayer-title">
-          <div>Journey of Prayers</div>
-          <NuxtLink to="/home/prayer/list">
-            <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-          </NuxtLink>
+      <div class="body-container">
+        <div class="calendar-container">
+          <div class="calendar-title">Attendance status</div>
+          <img src="/img/img_calendar.png" alt="calendar" class="calendar" />
         </div>
-        <br />
-        <div class="prayer-content">
-          <strong>April 28, 2025</strong>
-          <div class="content-subject">Silent Whispers of the Morning</div>
-          <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-        </div>
-        <div class="prayer-content">
-          <strong>April 27, 2025</strong>
-          <div class="content-subject">Grace in the Stillness</div>
-          <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-        </div>
-        <div class="prayer-content">
-          <strong>April 26, 2025</strong>
-          <div class="content-subject">Moments of Quiet Faith</div>
-          <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-        </div>
-        <div class="prayer-content">
-          <strong>April 25, 2025</strong>
-          <div class="content-subject">Echoes of His Word</div>
-          <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-        </div>
-        <div class="prayer-content">
-          <strong>April 24, 2025</strong>
-          <div class="content-subject">Peaceful Morning Conversations</div>
-          <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-        </div>
-        <div class="prayer-content">
-          <strong>April 23, 2025</strong>
-          <div class="content-subject">A Day Anchored in Prayer</div>
-          <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
+        <div class="prayer-container">
+          <div class="prayer-title">
+            <NuxtLink to="/home/prayer/list" class="prayer-title-link">
+              Journey of Prayers
+              <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
+            </NuxtLink>
+          </div>
+          <RightSidePrayerList title="Recent Prayers" :prayerItems="prayerItems" />
         </div>
       </div>
+
       <div class="background-radial-gradient"></div>
     </div>
   </transition>
@@ -72,27 +60,66 @@
     height: 100vh;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
     z-index: 1000;
+    overflow-y: auto;
 
-    .search-bar-container {
+    .header-container {
       position: fixed;
       top: 0;
-      left: 0;
-      z-index: 1000;
+      right: 0;
       background-color: $background;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: start;
       padding: 16px;
-      padding-left: 12px;
-      gap: 8px;
       width: 100%;
+      height: 80px;
     }
 
-    .history-list-container {
+    .body-container {
       margin-top: 80px;
-      height: 100%;
-      padding-bottom: 264px;
-      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 32px;
+
+      .calendar-container {
+        width: 100%;
+        height: fit-content;
+        background-color: $background;
+        display: flex;
+        flex-direction: column;
+        padding: 0 16px;
+
+        gap: 16px;
+
+        .calendar-title {
+          font-size: 18px;
+          font-weight: 500;
+          color: $body;
+        }
+      }
+
+      .prayer-container {
+        display: flex;
+        flex-direction: column;
+
+        .prayer-title {
+          display: flex;
+          align-items: center;
+          padding: 8px 16px;
+          padding-right: 12px;
+
+          .prayer-title-link {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            font-size: 18px;
+            font-weight: 500;
+            color: $body;
+          }
+        }
+      }
     }
 
     .background-radial-gradient {
