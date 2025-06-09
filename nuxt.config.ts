@@ -3,6 +3,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
   css: ["~/asset/scss/global.scss"],
+  components: [{ path: "~/component" }],
+  dir: {
+    pages: "page",
+  },
   vite: {
     server: {
       allowedHosts: ["c1b9-175-193-34-14.ngrok-free.app"],

@@ -1,9 +1,8 @@
 <script setup lang="ts">
   import { ref } from "vue";
 
-  import Header from "~/components/Header.vue";
-  import LeftSide from "~/pages/left-side/index.vue";
-  import RightSide from "~/pages/right-side/index.vue";
+  import LeftSide from "~/page/left-side/index.vue";
+  import RightSide from "~/page/right-side/index.vue";
 
   const chatContent = ref("");
   const name = ref("");
@@ -44,59 +43,9 @@
     color: #c6c6c6;
     display: flex;
     flex-direction: column;
-    width: 375px;
-    height: 812px;
-    margin: auto;
+    width: 100%;
+    height: 100dvh;
     box-sizing: border-box;
-
-    .tab {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-      padding: 16px;
-
-      .calendar-area {
-        display: flex;
-        flex-direction: column;
-
-        .calendar-title {
-          font-size: 18px;
-          margin-top: 20px;
-        }
-
-        .calendar {
-          width: 330px;
-          height: 300px;
-          border: 1px solid #c6c6c6;
-          margin-top: 20px;
-        }
-      }
-
-      .prayer-area {
-        display: flex;
-        flex-direction: column;
-        margin-top: 40px;
-
-        .prayer-title {
-          display: flex;
-          justify-content: space-between;
-          font-size: 18px;
-        }
-
-        .prayer-content {
-          display: flex;
-          justify-content: space-between;
-          padding: 10px 0;
-          gap: 8px;
-          font-size: 14px;
-          border-bottom: 1px solid #c6c6c6;
-
-          .content-subject {
-            width: 210px;
-          }
-        }
-      }
-    }
 
     .hello-container {
       position: absolute;

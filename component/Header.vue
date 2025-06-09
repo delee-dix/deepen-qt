@@ -12,5 +12,6 @@
     justify-content: space-between;
     align-items: start;
     padding: 16px;
+    width: 100%;
   }
 </style>
