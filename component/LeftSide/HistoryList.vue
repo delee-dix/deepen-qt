@@ -46,6 +46,7 @@
       .history-title-date {
         font-size: 18px;
         font-weight: bold;
+        color: $white;
         padding-bottom: 12px;
         border-bottom: 1px solid $border;
       }

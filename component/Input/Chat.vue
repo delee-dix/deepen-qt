@@ -1,6 +1,17 @@
 <script setup lang="ts">
   import { ref, nextTick } from "vue";
 
+  const props = withDefaults(
+    defineProps<{
+      isChoice?: boolean;
+      choiceTitle?: string;
+    }>(),
+    {
+      isChoice: false,
+      choiceTitle: "",
+    }
+  );
+
   const content = defineModel<string>({ default: "" });
   const textareaRef = ref<HTMLTextAreaElement>();
   const containerRef = ref<HTMLDivElement>();
@@ -34,8 +45,8 @@
 
 <template>
   <div class="chat-total-input-container">
-    <div class="choice-container">
-      <div class="choice-title">I am today</div>
+    <div v-if="isChoice" class="choice-container">
+      <div v-if="choiceTitle" class="choice-title">{{ choiceTitle }}</div>
       <div class="choice-select-list">
         <ButtonChoice label="Delight" @clickButton="handleClickButton" />
         <ButtonChoice label="Sorrow" @clickButton="handleClickButton" />

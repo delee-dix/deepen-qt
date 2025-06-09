@@ -11,11 +11,13 @@
 <template>
   <div class="prayer-list-container">
     <div v-for="(item, idx) in prayerItems" :key="idx" class="prayer-item">
-      <div class="prayer-item-title">
-        <strong>{{ item.date }}</strong>
-        <div class="content-subject">{{ item.subject }}</div>
-      </div>
-      <IconComponent path="ic_chevron_right" :width="24" :height="24" />
+      <NuxtLink :to="`/home/prayer/detail`" class="prayer-item-link">
+        <div class="prayer-item-title">
+          <strong>{{ item.date }}</strong>
+          <div class="content-subject">{{ item.subject }}</div>
+        </div>
+        <IconComponent path="ic_chevron_right" :width="24" :height="24" />
+      </NuxtLink>
     </div>
   </div>
 </template>
@@ -28,12 +30,8 @@
 
     .prayer-item {
       position: relative;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
+
       padding: 16px;
-      gap: 12px;
 
       &::after {
         content: "";
@@ -45,19 +43,30 @@
         background-color: $border;
       }
 
-      .prayer-item-title {
+      .prayer-item-link {
         display: flex;
         flex-direction: row;
-        gap: 4px;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 150%;
-        color: $body-active;
-
-        .content-subject {
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        .prayer-item-title {
+          display: flex;
+          flex-direction: row;
+          gap: 8px;
           font-size: 14px;
-          font-weight: 400;
-          color: $body;
+          font-weight: 500;
+          line-height: 150%;
+          white-space: nowrap;
+          color: $body-active;
+
+          .content-subject {
+            font-size: 14px;
+            font-weight: 400;
+            color: $body;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
         }
       }
     }

@@ -14,8 +14,10 @@
         </NuxtLink>
       </div>
       <div class="button-new-chat">
-        <IconComponent path="ic_plus" :width="24" :height="24" />
-        <div>New Chat</div>
+        <NuxtLink :to="`/home/new`" class="button-new-chat-link">
+          <IconComponent path="ic_plus" :width="24" :height="24" />
+          New Chat
+        </NuxtLink>
       </div>
     </div>
   </div>
@@ -47,7 +49,7 @@
 
       .button-state {
         background: linear-gradient(90deg, #eea7ff 0%, #7da8fe 50%, #6b72ff 100%);
-        -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
         font-size: 14px;
         font-weight: 500;
@@ -72,6 +74,13 @@
         padding: 12px 16px;
         background: linear-gradient(to right, #4e5899, #ce70ca);
         gap: 8px;
+
+        .button-new-chat-link {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+        }
       }
     }
   }
