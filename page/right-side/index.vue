@@ -21,6 +21,12 @@
     { date: "April 20, 2025", subject: "A Day Anchored in Prayer" },
     { date: "April 19, 2025", subject: "A Day Anchored in Prayer" },
   ];
+
+  import { type DateValue, getLocalTimeZone, today } from "@internationalized/date";
+  import { type Ref, ref } from "vue";
+  import { Calendar } from "@/component/ui/calendar";
+
+  const value = ref(today(getLocalTimeZone())) as Ref<DateValue>;
 </script>
 
 <template>
@@ -32,7 +38,7 @@
       <div class="body-container">
         <div class="calendar-container">
           <div class="calendar-title">Attendance status</div>
-          <img src="/img/img_calendar.png" alt="calendar" class="calendar" />
+          <Calendar v-model="value" :weekday-format="'short'" class="rounded-md border" />
         </div>
         <div class="prayer-container">
           <div class="prayer-title">
@@ -73,6 +79,7 @@
       padding: 16px;
       width: 100%;
       height: 80px;
+      z-index: 99999;
     }
 
     .body-container {
@@ -83,12 +90,11 @@
 
       .calendar-container {
         width: 100%;
-        height: fit-content;
+        height: 384px;
         background-color: $background;
         display: flex;
         flex-direction: column;
         padding: 0 16px;
-
         gap: 16px;
 
         .calendar-title {

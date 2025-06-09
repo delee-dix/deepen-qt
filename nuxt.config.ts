@@ -1,8 +1,10 @@
+import tailwindcss from "@tailwindcss/vite";
+
 export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
   ssr: true,
-  css: ["~/asset/scss/global.scss"],
+  css: ["~/asset/scss/global.scss", "~/asset/tailwind.css"],
   components: [{ path: "~/component" }],
   dir: {
     pages: "page",
@@ -18,7 +20,19 @@ export default defineNuxtConfig({
         },
       },
     },
+    plugins: [tailwindcss()],
   },
 
-  modules: ["@nuxt/image"],
+  modules: ["@nuxt/image", "shadcn-nuxt"],
+  shadcn: {
+    /**
+     * Prefix for all the imported component
+     */
+    prefix: "",
+    /**
+     * Directory that the component lives in.
+     * @default "./component/ui"
+     */
+    componentDir: "./component/ui",
+  },
 });
