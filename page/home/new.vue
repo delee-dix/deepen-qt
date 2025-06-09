@@ -15,7 +15,7 @@
   <div class="qt-detail-container">
     <Header isQtDetail>
       <IconComponent path="ic_menu_search" :width="24" :height="24" @click="toggleLeftSide" />
-      Deepen QT
+      <NuxtLink to="/home"> Deepen QT </NuxtLink>
       <ImageComponent path="img_profile" :width="24" :height="24" />
     </Header>
 
