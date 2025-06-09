@@ -9,7 +9,9 @@
     <div class="info">
       <div class="my-info">
         <ImageComponent path="img_profile" :width="24" :height="24" />
-        <div class="name">Deepen King</div>
+        <NuxtLink :to="`/home/mypage/list`">
+          <div class="name">Deepen King</div>
+        </NuxtLink>
       </div>
       <div class="button-new-chat">
         <IconComponent path="ic_plus" :width="24" :height="24" />
