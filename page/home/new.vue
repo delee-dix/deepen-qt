@@ -1,16 +1,197 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { ref } from "vue";
+
+  import LeftSide from "~/page/left-side/index.vue";
+
+  const chatContent = ref<string>("");
+  const isVisibleLeft = ref<boolean>(false);
+
+  const toggleLeftSide = (e?: MouseEvent) => {
+    isVisibleLeft.value = !isVisibleLeft.value;
+  };
+</script>
 
 <template>
-  <img
-    src="/icon/ic_chevron_left.svg"
-    alt="chevron-left"
-    @click="$router.back()"
-  />
-  <h1>New Chat</h1>
+  <div class="qt-detail-container">
+    <Header isQtDetail>
+      <IconComponent path="ic_menu_search" :width="24" :height="24" @click="toggleLeftSide" />
+      Deepen QT
+      <ImageComponent path="img_profile" :width="24" :height="24" />
+    </Header>
+
+    <div class="chat-container">
+      <div class="chat-user-container">
+        <div class="chat-user-bubble">
+          <div class="chat-user-bubble-text">
+            I can't concentrate well these days while doing QT. I'm stressed out because of my children. They're my
+            beloved children...
+          </div>
+        </div>
+      </div>
+      <div class="chat-bot-container">
+        <IconComponent path="ic_symbol" :width="32" :height="32" />
+        <div class="chat-bot-bubble">
+          <div class="chat-bot-bubble-text">
+            I really understand that feeling. Having a teenager is a special challenge. I think that even the doubts
+            about your qualifications as a parent are actually an expression of your earnest desire to be a good parent.
+          </div>
+        </div>
+        <div class="chat-bot-bubble">
+          <div class="chat-bot-bubble-quote-bar"></div>
+          <div class="chat-bot-bubble-text">
+            "Children, obey your parents in the Lord, for this is right. Honor your father and mother," which is the
+            first commandment with promise, so that it may be well with you and you may live long on the earth. And,
+            fathers, do not provoke your children to anger, but bring them up in the training and instruction of the
+            Lord." (Ephesians 6:1-4)
+          </div>
+        </div>
+        <div class="chat-bot-bubble">
+          <div class="chat-bot-bubble-text">
+            Okay. Today's 매일성경 is covering a scene from 1 Samuel 17. Have you ever heard the story of David and
+            Goliath?
+          </div>
+        </div>
+        <div class="feed-back-container">
+          <IconComponent path="ic_copy" :width="24" :height="24" />
+          <IconComponent path="ic_thumbs_up" :width="24" :height="24" />
+          <IconComponent path="ic_thumbs_down" :width="24" :height="24" />
+        </div>
+      </div>
+      <div class="chat-user-container">
+        <div class="chat-user-bubble">
+          <div class="chat-user-bubble-text">
+            I can't concentrate well these days while doing QT. I'm stressed out because of my children. They're my
+            beloved children...
+          </div>
+        </div>
+      </div>
+    </div>
+    <InputChat v-model="chatContent" />
+    <LeftSide :isVisible="isVisibleLeft" @toggleLeftSide="toggleLeftSide" />
+    <ImageComponent path="img_bg_cross" class="bg-cross" />
+  </div>
 </template>
 
 <style lang="scss" scoped>
-h1 {
-  color: green;
-}
+  .qt-detail-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      margin-top: 80px;
+      padding: 0 16px;
+      padding-bottom: 120px;
+      overflow-y: auto;
+
+      .chat-user-container {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        width: 100%;
+        height: fit-content;
+        padding: 20px 0;
+        box-sizing: border-box;
+
+        .chat-user-bubble {
+          display: flex;
+          flex-direction: column;
+          width: fit-content;
+          height: fit-content;
+          padding: 24px 16px;
+          border-radius: 8px;
+          background: $gradient-bubble;
+
+          .chat-user-bubble-text {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 150%;
+            text-align: left;
+            letter-spacing: -0.02em;
+            color: $body-active;
+            width: fit-content;
+          }
+        }
+      }
+      .chat-bot-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: fit-content;
+        padding: 20px 0;
+        gap: 16px;
+        box-sizing: border-box;
+
+        .chat-bot-bubble {
+          display: flex;
+          flex-direction: row;
+          width: fit-content;
+          height: fit-content;
+          border-radius: 8px;
+          gap: 8px;
+
+          .chat-bot-bubble-text {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 150%;
+            text-align: left;
+            letter-spacing: -0.02em;
+            color: $body-active;
+            width: fit-content;
+          }
+
+          .chat-bot-bubble-quote-bar {
+            width: 4px;
+            height: 100%;
+            background: $white;
+          }
+        }
+
+        .feed-back-container {
+          display: flex;
+          flex-direction: row;
+          gap: 16px;
+        }
+      }
+    }
+
+    .bg-cross {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .slide-left-enter-active,
+  .slide-left-leave-active,
+  .slide-right-enter-active,
+  .slide-right-leave-active {
+    transition: transform 0.3s ease;
+  }
+
+  .slide-left-enter-from,
+  .slide-left-leave-to {
+    transform: translateX(-100%);
+  }
+
+  .slide-right-enter-from,
+  .slide-right-leave-to {
+    transform: translateX(100%);
+  }
+
+  .slide-left-enter-to,
+  .slide-right-enter-to,
+  .slide-left-leave-from,
+  .slide-right-leave-from {
+    transform: translateX(0);
+  }
 </style>

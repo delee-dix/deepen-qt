@@ -26,7 +26,7 @@
     <LeftSide :isVisible="isVisibleLeft" @toggleLeftSide="toggleLeftSide" />
     <RightSide :isVisible="isVisibleRight" @toggleRightSide="toggleRightSide" />
     <div class="hello-container">
-      <img src="/icon/ic_symbol.svg" alt="Home" class="symbol" />
+      <IconComponent path="ic_symbol" :width="84" :height="84" />
       <div class="title">
         Hi, <strong>Deepen King</strong>
         <br />
