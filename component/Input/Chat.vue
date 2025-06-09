@@ -26,6 +26,10 @@
   const handleInput = () => {
     adjustHeight();
   };
+
+  const handleClickButton = () => {
+    console.log("click");
+  };
 </script>
 
 <template>
@@ -33,10 +37,10 @@
     <div class="choice-container">
       <div class="choice-title">I am today</div>
       <div class="choice-select-list">
-        <div class="choice-select-item">Delight</div>
-        <div class="choice-select-item">Sorrow</div>
-        <div class="choice-select-item">Stress</div>
-        <div class="choice-select-item">Expect</div>
+        <ButtonChoice label="Delight" @clickButton="handleClickButton" />
+        <ButtonChoice label="Sorrow" @clickButton="handleClickButton" />
+        <ButtonChoice label="Stress" @clickButton="handleClickButton" />
+        <ButtonChoice label="Expect" @clickButton="handleClickButton" />
       </div>
     </div>
     <div ref="containerRef" class="chat-input-container">
