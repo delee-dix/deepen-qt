@@ -17,7 +17,7 @@ const onInput = () => {
 </script>
 
 <template>
-  <div class="mypage-container">
+  <div class="edit-container">
     <div class="empty-area"></div>
     <div class="content-area">
       <!-- <div class="bar"></div> -->
@@ -57,7 +57,7 @@ const onInput = () => {
 </template>
 
 <style lang="scss" scoped>
-.mypage-container {
+.edit-container {
   background-color: #090607;
   color: #c6c6c6;
   display: flex;
