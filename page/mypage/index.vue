@@ -24,7 +24,7 @@ const titleList = [
         />
       </div>
       <div class="profile-area">
-        <NuxtLink :to="`/home/mypage/edit`">
+        <NuxtLink :to="`/mypage/edit`">
           <div class="profile-image">
             <img
               src="/img/img_profile_change.png"
@@ -37,28 +37,28 @@ const titleList = [
         <div class="email">deepenking@deepen.com</div>
       </div>
       <div class="mypage-list">
-        <NuxtLink :to="`/home/mypage/notice`" class="notice">
+        <NuxtLink :to="`/mypage/notice`" class="notice">
           <div class="left">
             <img src="/icon/ic_notice.svg" alt="notice" />
             <div>Notice</div>
           </div>
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
         </NuxtLink>
-        <NuxtLink :to="`/home/mypage/setting`" class="setting">
+        <NuxtLink :to="`/mypage/setting`" class="setting">
           <div class="left">
             <img src="/icon/ic_sorting.svg" alt="setting" />
             <div>Setting</div>
           </div>
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
         </NuxtLink>
-        <NuxtLink :to="`/home/mypage/terms`" class="terms">
+        <NuxtLink :to="`/mypage/terms`" class="terms">
           <div class="left">
             <img src="/icon/ic_terms.svg" alt="terms" />
             <div>Terms</div>
           </div>
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
         </NuxtLink>
-        <NuxtLink :to="`/home/mypage/privacy`" class="privacy">
+        <NuxtLink :to="`/mypage/privacy`" class="privacy">
           <div class="left">
             <img src="/icon/ic_privacy.svg" alt="privacy" />
             <div>Privacy Policy</div>
