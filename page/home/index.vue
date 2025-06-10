@@ -3,8 +3,6 @@
 
   import { useModalStore } from "~/store/modal";
 
-  const modalStore = useModalStore();
-
   const chatContent = ref("");
   const isVisibleLeft = ref<boolean>(false);
   const isVisibleRight = ref<boolean>(false);
@@ -15,28 +13,10 @@
   const toggleRightSide = (e?: MouseEvent) => {
     isVisibleRight.value = !isVisibleRight.value;
   };
-
-  const showModal = () => {
-    modalStore.showModal("test");
-  };
-
-  onMounted(() => {
-    showModal();
-  });
 </script>
 
 <template>
   <div class="chat-list">
-    <ModalThreeButton
-      modalId="test"
-      title="Test Modal"
-      description="This is a test modal"
-      firstLabel="Confirm"
-      secondLabel="Cancel"
-      thirdLabel="Cancel"
-      firstIconPath="ic_camera"
-      secondIconPath="ic_photo"
-    />
     <Header>
       <IconComponent path="ic_menu_search" :width="24" :height="24" @click="toggleLeftSide" />
       <IconComponent path="ic_library" :width="24" :height="24" @click="toggleRightSide" />
