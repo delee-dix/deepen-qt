@@ -3,19 +3,19 @@
 <template>
   <div class="profile-container">
     <div class="state">
-      <IconComponent path="ic_sparkle" :width="24" :height="24" />
+      <CommonIcon path="ic_sparkle" :width="24" :height="24" />
       <NuxtLink :to="`/faith`" class="button-state">State of faith</NuxtLink>
     </div>
     <div class="info">
       <div class="my-info">
-        <ImageComponent path="img_profile" :width="24" :height="24" />
+        <CommonImage path="img_profile" :width="24" :height="24" />
         <NuxtLink :to="`/mypage`">
           <div class="name">Deepen King</div>
         </NuxtLink>
       </div>
       <div class="button-new-chat">
         <NuxtLink :to="`/chatId`" class="button-new-chat-link">
-          <IconComponent path="ic_plus" :width="24" :height="24" />
+          <CommonIcon path="ic_plus" :width="24" :height="24" />
           New Chat
         </NuxtLink>
       </div>

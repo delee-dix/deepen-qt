@@ -37,7 +37,7 @@ const value = ref(today(getLocalTimeZone())) as Ref<DateValue>;
   <transition name="slide-right">
     <div v-if="isShowSide" class="right-side-container">
       <div class="header-container">
-        <IconComponent
+        <CommonIcon
           path="ic_arrow_left"
           :width="24"
           :height="24"

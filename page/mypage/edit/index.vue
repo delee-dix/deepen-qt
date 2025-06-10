@@ -20,7 +20,6 @@ const onInput = () => {
   <div class="edit-container">
     <div class="empty-area"></div>
     <div class="content-area">
-      <!-- <div class="bar"></div> -->
       <div class="header">
         <img
           src="/icon/ic_chevron_left.svg"

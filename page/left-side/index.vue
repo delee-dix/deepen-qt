@@ -38,7 +38,7 @@ const historyItems = ref([
     <div v-if="isShowSide" class="left-side-container">
       <div class="search-bar-container">
         <SearchBar />
-        <IconComponent
+        <CommonIcon
           path="ic_arrow_right"
           :width="24"
           :height="24"

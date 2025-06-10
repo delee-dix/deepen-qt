@@ -16,7 +16,7 @@ const props = defineProps<{
           <strong>{{ item.date }}</strong>
           <div class="content-subject">{{ item.subject }}</div>
         </div>
-        <IconComponent path="ic_chevron_right" :width="24" :height="24" />
+        <CommonIcon path="ic_chevron_right" :width="24" :height="24" />
       </NuxtLink>
     </div>
   </div>

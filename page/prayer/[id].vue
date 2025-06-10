@@ -13,16 +13,16 @@ const toggleLeftSide = (e?: MouseEvent) => {
 
 <template>
   <div class="prayer-detail-container">
-    <Header isQtDetail>
-      <IconComponent
+    <CommonHeader isQtDetail>
+      <CommonIcon
         path="ic_arrow_left"
         :width="24"
         :height="24"
         @click="toggleLeftSide"
       />
       <NuxtLink to="/home"> Deepen QT </NuxtLink>
-      <ImageComponent path="img_profile" :width="24" :height="24" />
-    </Header>
+      <CommonImage path="img_profile" :width="24" :height="24" />
+    </CommonHeader>
     <div class="prayer-container">
       <div class="prayer-date">
         <div class="badge">Jun 9, 2025</div>
@@ -55,7 +55,7 @@ const toggleLeftSide = (e?: MouseEvent) => {
       </div>
     </div>
     <LeftSide :isVisible="isVisibleLeft" @toggleLeftSide="toggleLeftSide" />
-    <ImageComponent path="img_bg_cross" class="bg-cross" />
+    <CommonImage path="img_bg_cross" class="bg-cross" />
   </div>
 </template>
 
