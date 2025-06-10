@@ -10,10 +10,16 @@
       description: string;
       confirmLabel?: string;
       cancelLabel?: string;
+      width?: string;
+      isDim?: boolean;
+      isBody?: boolean;
     }>(),
     {
       confirmLabel: "Confirm",
       cancelLabel: "Cancel",
+      isDim: true,
+      isBody: false,
+      width: "",
     }
   );
 
@@ -26,13 +32,13 @@
 
 <template>
   <transition name="modal">
-    <div v-if="isVisibleModal" class="modal-container">
-      <div class="modal">
+    <div v-if="isVisibleModal" class="modal-container" :class="{ 'is-dim': props.isDim, 'is-body': props.isBody }">
+      <div class="modal" :style="{ width: props.width }">
         <div class="modal-title-container">
           <div class="modal-title">{{ props.title }}</div>
           <div class="modal-description">{{ props.description }}</div>
         </div>
-        <div class="modal-body-container">
+        <div v-if="isBody" class="modal-body-container">
           <slot name="body" />
         </div>
         <div class="modal-button-container">
@@ -45,16 +51,6 @@
 </template>
 
 <style lang="scss" scoped>
-  .modal-enter-active,
-  .modal-leave-active {
-    transition: opacity 0.3s ease;
-  }
-
-  .modal-enter-from,
-  .modal-leave-to {
-    opacity: 0;
-  }
-
   .modal-container {
     position: fixed;
     top: 0;
@@ -103,5 +99,19 @@
         gap: 8px;
       }
     }
+
+    &.is-dim {
+      background-color: transparent;
+    }
+  }
+
+  .modal-enter-active,
+  .modal-leave-active {
+    transition: opacity 0.3s ease;
+  }
+
+  .modal-enter-from,
+  .modal-leave-to {
+    opacity: 0;
   }
 </style>
