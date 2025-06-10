@@ -5,7 +5,7 @@ import LeftSide from "~/page/left-side/index.vue";
 import RightSide from "~/page/right-side/index.vue";
 
 const chatContent = ref("");
-const name = ref("");
+const isSplash = ref<boolean>(true);
 const isVisibleLeft = ref<boolean>(false);
 const isVisibleRight = ref<boolean>(false);
 
@@ -15,10 +15,22 @@ const toggleLeftSide = (e?: MouseEvent) => {
 const toggleRightSide = (e?: MouseEvent) => {
   isVisibleRight.value = !isVisibleRight.value;
 };
+
+const goHome = () => {
+  setTimeout(() => {
+    isSplash.value = false;
+  }, 3000);
+};
+
+onMounted(() => {
+  goHome();
+});
 </script>
 
 <template>
-  <div class="chat-list">
+  <Splash v-if="isSplash" />
+
+  <div class="chat-list" v-else>
     <CommonHeader>
       <CommonIcon
         path="ic_menu_search"
