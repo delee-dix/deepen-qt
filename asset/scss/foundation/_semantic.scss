@@ -7,13 +7,19 @@ $background-glass: rgba(60, 60, 60, 0.32);
 $border: $gray200;
 $background-chat: rgba(50, 50, 50, 0.9);
 
+$linear: linear-gradient(90deg, #161616 0%, #2d2d2d 100%);
+
 // Text Color
 $body: $gray100;
 $body-active: $gray50;
 
 // Gradient
 $gradient-primary: linear-gradient(90deg, #685ca3 0%, #e487f6 100%);
-$gradient-bubble: linear-gradient(90deg, rgba(78, 88, 153, 0.8) 0%, rgba(206, 112, 202, 0.8) 100%);
+$gradient-bubble: linear-gradient(
+  90deg,
+  rgba(78, 88, 153, 0.8) 0%,
+  rgba(206, 112, 202, 0.8) 100%
+);
 
 $gradient-header: linear-gradient(
   90deg,
