@@ -9,11 +9,11 @@
 </script>
 
 <template>
-  <div class="line-button" @click="emit('clickButton')">{{ label }}</div>
+  <div class="text-button" @click="emit('clickButton')">{{ label }}</div>
 </template>
 
 <style lang="scss" scoped>
-  .line-button {
+  .text-button {
     display: flex;
     justify-content: center;
     align-items: center;

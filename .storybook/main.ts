@@ -1,7 +1,7 @@
 import type { StorybookConfig } from "@storybook-vue/nuxt";
 
 const config: StorybookConfig = {
-  stories: ["../component/**/*.mdx", "../component/**/*.stories.@(js|jsx|ts|tsx|mdx)"],
+  stories: ["../story/**/*.mdx", "../story/**/*.stories.@(js|jsx|ts|tsx|mdx)"],
   addons: ["@chromatic-com/storybook", "@storybook/addon-docs", "@storybook/addon-a11y", "@storybook/addon-vitest"],
   framework: {
     name: "@storybook-vue/nuxt",

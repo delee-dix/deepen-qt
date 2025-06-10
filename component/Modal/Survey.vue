@@ -32,13 +32,17 @@
 
 <template>
   <transition name="modal">
-    <div v-if="isVisibleModal" class="modal-container" :class="{ 'is-dim': props.isDim, 'is-body': props.isBody }">
+    <div
+      v-if="isVisibleModal"
+      class="modal-survey-container"
+      :class="{ 'is-dim': props.isDim, 'is-body': props.isBody }"
+    >
       <div class="modal" :style="{ width: props.width }">
         <div class="modal-title-container">
-          <div class="modal-title">{{ props.title }}</div>
           <div class="modal-description">{{ props.description }}</div>
+          <div class="modal-title">{{ props.title }}</div>
         </div>
-        <div v-if="isBody" class="modal-body-container">
+        <div class="modal-body-container">
           <slot name="body" />
         </div>
         <div class="modal-button-container">
@@ -51,7 +55,7 @@
 </template>
 
 <style lang="scss" scoped>
-  .modal-container {
+  .modal-survey-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -66,7 +70,7 @@
     .modal {
       display: flex;
       flex-direction: column;
-      width: 280px;
+      width: 327px;
       height: fit-content;
       border-radius: 4px;
       padding: 24px;
@@ -81,15 +85,15 @@
         flex-direction: column;
         gap: 4px;
 
-        .modal-title {
-          font-size: 18px;
-          font-weight: 700;
-          color: $body-active;
+        .modal-description {
+          font-size: 16px;
+          color: $body;
         }
 
-        .modal-description {
-          font-size: 14px;
-          color: $body;
+        .modal-title {
+          font-size: 20px;
+          font-weight: 500;
+          color: $body-active;
         }
       }
 

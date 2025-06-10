@@ -3,31 +3,39 @@
 
   const modalStore = useModalStore();
 
+  const emit = defineEmits<{
+    (event: "clickFirstButton"): void;
+    (event: "clickSecondButton"): void;
+    (event: "clickThirdButton"): void;
+  }>();
+
   const props = withDefaults(
     defineProps<{
       modalId: string;
       title: string;
       description: string;
-      confirmLabel?: string;
-      cancelLabel?: string;
+      firstLabel?: string;
+      secondLabel?: string;
+      thirdLabel?: string;
+      firstIconPath?: string;
+      secondIconPath?: string;
       width?: string;
       isDim?: boolean;
       isBody?: boolean;
     }>(),
     {
-      confirmLabel: "Confirm",
-      cancelLabel: "Cancel",
+      firstLabel: "Confirm",
+      secondLabel: "Cancel",
+      thirdLabel: "Cancel",
+      firstIconPath: "",
+      secondIconPath: "",
+      width: "",
       isDim: true,
       isBody: false,
-      width: "",
     }
   );
 
   const isVisibleModal = computed(() => modalStore.modals[props.modalId]);
-
-  const closeModal = () => {
-    modalStore.hideModal(props.modalId);
-  };
 </script>
 
 <template>
@@ -38,12 +46,18 @@
           <div class="modal-title">{{ props.title }}</div>
           <div class="modal-description">{{ props.description }}</div>
         </div>
-        <div v-if="isBody" class="modal-body-container">
-          <slot name="body" />
-        </div>
         <div class="modal-button-container">
-          <ButtonPrimary :label="props.confirmLabel" />
-          <ButtonText :label="props.cancelLabel" @click="closeModal" />
+          <ButtonLinePrimary
+            :label="props.firstLabel"
+            :iconPath="props.firstIconPath"
+            @click="emit('clickFirstButton')"
+          />
+          <ButtonLineSecondary
+            :label="props.secondLabel"
+            :iconPath="props.secondIconPath"
+            @click="emit('clickSecondButton')"
+          />
+          <ButtonText :label="props.thirdLabel" @click="emit('clickThirdButton')" />
         </div>
       </div>
     </div>
@@ -96,7 +110,7 @@
       .modal-button-container {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 12px;
       }
     }
 

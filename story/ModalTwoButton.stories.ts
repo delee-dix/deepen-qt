@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook-vue/nuxt";
+
 import { useModalStore } from "~/store/modal";
-import ModalTwoButton from "./Modal/TwoButton.vue";
+
+import ModalTwoButton from "~/component/Modal/TwoButton.vue";
 
 const meta = {
   title: "Modal/ModalTwoButton",
@@ -16,16 +18,25 @@ const meta = {
       onMounted(() => {
         modalStore.showModal(args.modalId);
       });
-      return { args };
+
+      const selected = ref("option1");
+
+      return {
+        args,
+      };
     },
-    template: '<div style="width: 100%; height: 100vh;"><ModalTwoButton v-bind="args" /></div>',
+    template: `
+      <div style="width: 100%; height: 100vh;">
+        <ModalTwoButton v-bind="args" />
+      </div>
+    `,
   }),
 } satisfies Meta<typeof ModalTwoButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const ModalTwoButtonStory: Story = {
+export const Default: Story = {
   args: {
     modalId: "test",
     title: "Test Modal",
