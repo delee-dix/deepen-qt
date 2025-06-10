@@ -1,26 +1,19 @@
 <script setup lang="ts">
-import { ref } from "vue";
+  import { ref } from "vue";
 
-import LeftSide from "~/page/left-side/index.vue";
+  const chatContent = ref<string>("");
+  const isVisibleLeft = ref<boolean>(false);
 
-const chatContent = ref<string>("");
-const isVisibleLeft = ref<boolean>(false);
-
-const toggleLeftSide = (e?: MouseEvent) => {
-  isVisibleLeft.value = !isVisibleLeft.value;
-};
+  const toggleLeftSide = (e?: MouseEvent) => {
+    isVisibleLeft.value = !isVisibleLeft.value;
+  };
 </script>
 
 <template>
   <div class="qt-detail-container">
     <CommonHeader isQtDetail>
-      <CommonIcon
-        path="ic_menu_search"
-        :width="24"
-        :height="24"
-        @click="toggleLeftSide"
-      />
-      <NuxtLink to="/home"> Deepen QT </NuxtLink>
+      <CommonIcon path="ic_menu_search" :width="24" :height="24" @click="toggleLeftSide" />
+      <NuxtLink to="/"> Deepen QT </NuxtLink>
       <CommonImage path="img_profile" :width="24" :height="24" />
     </CommonHeader>
 
@@ -61,81 +54,81 @@ const toggleLeftSide = (e?: MouseEvent) => {
 </template>
 
 <style lang="scss" scoped>
-.qt-detail-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-
-  .chat-container {
+  .qt-detail-container {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
-    margin-top: 80px;
-    padding: 0 16px;
-    padding-bottom: 120px;
-    overflow-y: auto;
 
-    .chat-user-container {
-      display: flex;
-      flex-direction: column;
-      align-items: end;
-      width: 100%;
-      height: fit-content;
-      padding: 20px 0;
-      box-sizing: border-box;
-    }
-
-    .chat-bot-container {
+    .chat-container {
       display: flex;
       flex-direction: column;
       width: 100%;
-      height: fit-content;
-      padding: 20px 0;
-      gap: 16px;
-      box-sizing: border-box;
+      height: 100%;
+      margin-top: 80px;
+      padding: 0 16px;
+      padding-bottom: 120px;
+      overflow-y: auto;
 
-      .feed-back-container {
+      .chat-user-container {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        align-items: end;
+        width: 100%;
+        height: fit-content;
+        padding: 20px 0;
+        box-sizing: border-box;
+      }
+
+      .chat-bot-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: fit-content;
+        padding: 20px 0;
         gap: 16px;
+        box-sizing: border-box;
+
+        .feed-back-container {
+          display: flex;
+          flex-direction: row;
+          gap: 16px;
+        }
       }
     }
+
+    .bg-cross {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
-  .bg-cross {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .slide-left-enter-active,
+  .slide-left-leave-active,
+  .slide-right-enter-active,
+  .slide-right-leave-active {
+    transition: transform 0.3s ease;
   }
-}
 
-.slide-left-enter-active,
-.slide-left-leave-active,
-.slide-right-enter-active,
-.slide-right-leave-active {
-  transition: transform 0.3s ease;
-}
+  .slide-left-enter-from,
+  .slide-left-leave-to {
+    transform: translateX(-100%);
+  }
 
-.slide-left-enter-from,
-.slide-left-leave-to {
-  transform: translateX(-100%);
-}
+  .slide-right-enter-from,
+  .slide-right-leave-to {
+    transform: translateX(100%);
+  }
 
-.slide-right-enter-from,
-.slide-right-leave-to {
-  transform: translateX(100%);
-}
-
-.slide-left-enter-to,
-.slide-right-enter-to,
-.slide-left-leave-from,
-.slide-right-leave-from {
-  transform: translateX(0);
-}
+  .slide-left-enter-to,
+  .slide-right-enter-to,
+  .slide-left-leave-from,
+  .slide-right-leave-from {
+    transform: translateX(0);
+  }
 </style>
