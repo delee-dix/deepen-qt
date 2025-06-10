@@ -20,7 +20,9 @@
             <div class="title-text">
               [Latest News] New Devotional Series: Journey with the Psalms
             </div>
-            <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
+            <NuxtLink to="/mypage/notice/id">
+              <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
+            </NuxtLink>
           </div>
           <div class="date">April 30, 2025</div>
         </div>
