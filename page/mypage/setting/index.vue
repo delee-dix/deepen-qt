@@ -1,15 +1,31 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { VueScrollPicker } from "vue-scroll-picker";
+import "@/asset/vue-scroll-picker.css";
 
-const value = ref(50);
-const isSelected = ref<boolean>(false);
+const sliderValue = ref(50);
+
+const hour = Array.from({ length: 12 }, (_, i) => ({
+  value: String(i + 1).padStart(2, "0"),
+  name: String(i + 1).padStart(2, "0"),
+}));
+
+const minute = Array.from({ length: 60 }, (_, i) => ({
+  value: String(i).padStart(2, "0"),
+  name: String(i).padStart(2, "0"),
+}));
+
+const ampm = ["AM", "PM"].map((v) => ({ value: v, name: v }));
+
+const currentHour = ref("12");
+const currentMinute = ref("00");
+const currentAmPm = ref("AM");
 </script>
 
 <template>
   <div class="setting-container">
     <div class="empty-area"></div>
     <div class="content-area">
-      <!-- <div class="bar"></div> -->
       <div class="header">
         <img
           src="/icon/ic_chevron_left.svg"
@@ -32,7 +48,7 @@ const isSelected = ref<boolean>(false);
                 min="0"
                 max="100"
                 step="1"
-                v-model="value"
+                v-model="sliderValue"
                 class="slider"
               />
               <div :style="{ fontSize: '24px' }">aA</div>
@@ -55,7 +71,54 @@ const isSelected = ref<boolean>(false);
           </div>
         </div>
         <div class="title">Alarm</div>
-        <div class="alarm-picker" :style="{ height: '178px' }">(picker)</div>
+        <div class="alarm-picker">
+          <div class="picker-content">
+            <VueScrollPicker
+              v-model="currentHour"
+              :options="hour"
+              class="picker-column"
+            >
+              <template #default="{ option }">
+                <div
+                  class="picker-item"
+                  :class="{ selected: option.value === currentHour }"
+                >
+                  {{ option.name }}
+                </div>
+              </template>
+            </VueScrollPicker>
+
+            <VueScrollPicker
+              v-model="currentMinute"
+              :options="minute"
+              class="picker-column"
+            >
+              <template #default="{ option }">
+                <div
+                  class="picker-item"
+                  :class="{ selected: option.value === currentMinute }"
+                >
+                  {{ option.name }}
+                </div>
+              </template>
+            </VueScrollPicker>
+
+            <VueScrollPicker
+              v-model="currentAmPm"
+              :options="ampm"
+              class="picker-column"
+            >
+              <template #default="{ option }">
+                <div
+                  class="picker-item"
+                  :class="{ selected: option.value === currentAmPm }"
+                >
+                  {{ option.name }}
+                </div>
+              </template>
+            </VueScrollPicker>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -92,7 +155,7 @@ const isSelected = ref<boolean>(false);
     .bar {
       margin-left: 160px;
       width: 40px;
-      border: 1.5px solid #c6c6c6;
+      border: 1.5px solid $gray100;
       border-radius: 1000px;
     }
 
@@ -112,7 +175,7 @@ const isSelected = ref<boolean>(false);
       .alarm-picker {
         display: flex;
         flex-direction: column;
-        background-color: #363636;
+        background-color: $gray200;
         border-radius: 2px;
         padding: 16px;
 
@@ -128,7 +191,37 @@ const isSelected = ref<boolean>(false);
             width: 80%;
             height: 4px;
             border-radius: 50%;
-            background-color: #d987ee;
+            background-color: $primary02;
+          }
+        }
+
+        .picker-content {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          height: 140px;
+
+          .picker-column {
+            width: 60px;
+            height: 100%;
+            overflow: hidden;
+
+            .picker-item {
+              height: 40px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 16px;
+              color: $gray100;
+              opacity: 0.5;
+              transition: all 0.2s;
+            }
+
+            .picker-item.selected {
+              font-size: 24px;
+              color: $gray50;
+              opacity: 1;
+            }
           }
         }
       }
@@ -152,15 +245,19 @@ const isSelected = ref<boolean>(false);
         margin: 8px auto;
 
         .button {
+          display: flex;
+
+          justify-content: center;
+          width: 100%;
           border-radius: 4px;
-          background-color: #161616;
+          background: $linear;
           padding: 12px 16px;
           font-size: 12px;
-          color: #8e8e8e;
+          color: $gray100;
 
           &.selected {
-            background: linear-gradient(to right, #4e5899, #ce70ca);
-            color: #ffffff;
+            background: $gradient-primary;
+            color: $white;
           }
         }
       }

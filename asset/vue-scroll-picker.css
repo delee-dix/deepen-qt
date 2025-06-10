@@ -1,0 +1,72 @@
+.vue-scroll-picker {
+  position: relative;
+  width: 100%;
+  height: 10em;
+  overflow: hidden;
+  user-select: none;
+}
+
+.vue-scroll-picker-rotator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% - 0.6em);
+}
+
+.vue-scroll-picker-rotator-transition {
+  transition: top ease 150ms;
+}
+
+.vue-scroll-picker-item {
+  text-align: center;
+  line-height: 1.2em;
+  color: #363636;
+}
+
+.vue-scroll-picker-item[aria-selected="true"] {
+  color: #007bff;
+}
+
+.vue-scroll-picker-item[data-value=""],
+.vue-scroll-picker-item[aria-disabled="true"] {
+  color: #ccc;
+}
+
+.vue-scroll-picker-item[data-value=""][aria-selected="true"],
+.vue-scroll-picker-item[aria-disabled="true"][aria-selected="true"] {
+  color: #aaa;
+}
+
+.vue-scroll-picker-layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.vue-scroll-picker-layer-top,
+.vue-scroll-picker-layer-selection,
+.vue-scroll-picker-layer-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.vue-scroll-picker-layer-top {
+  box-sizing: border-box;
+  top: 0;
+  height: calc(50% - 1em);
+  cursor: pointer;
+}
+
+.vue-scroll-picker-layer-selection {
+  top: calc(50% - 1em);
+  bottom: calc(50% - 1em);
+}
+
+.vue-scroll-picker-layer-bottom {
+  bottom: 0;
+  height: calc(50% - 1em);
+  cursor: pointer;
+}
