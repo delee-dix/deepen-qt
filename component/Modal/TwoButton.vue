@@ -32,6 +32,9 @@
           <div class="modal-title">{{ props.title }}</div>
           <div class="modal-description">{{ props.description }}</div>
         </div>
+        <div class="modal-body-container">
+          <slot name="body" />
+        </div>
         <div class="modal-button-container">
           <ButtonPrimary :label="props.confirmLabel" />
           <ButtonText :label="props.cancelLabel" @click="closeModal" />
