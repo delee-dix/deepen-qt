@@ -1,19 +1,9 @@
-<script setup lang="ts">
-const titleList = [
-  "My Page",
-  "Edit Profile",
-  "Notice",
-  "Setting",
-  "Terms",
-  "Privacy Policy",
-];
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="mypage-container">
     <div class="empty-area"></div>
     <div class="content-area">
-      <!-- <div class="bar"></div> -->
       <div class="header">
         <div :style="{ width: '24px' }"></div>
         <div>My Page</div>
