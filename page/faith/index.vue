@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import AreaChart from "~/component/ui/chart/AreaChart.vue";
 </script>
 
 <template>
@@ -18,11 +19,12 @@ import { ref } from "vue";
       <div class="date">to <strong>May 30, 2025</strong></div>
     </div>
     <div class="chart">
-      <img
+      <!-- <img
         src="/img/img_chart_sample.png"
         alt="chart"
         :style="{ width: '95%' }"
-      />
+      /> -->
+      <AreaChart />
     </div>
     <div class="topic">
       <div class="subject">Key Exploration Topics</div>
