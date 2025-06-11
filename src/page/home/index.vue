@@ -21,6 +21,7 @@ const clickTogether = () => {
       <CommonIcon path="ic_library" :width="24" :height="24" @click="clickTogether" />
     </CommonHeader>
     <div class="hello-container">
+      <CommonTooltip text="Please invest just 5 seconds!&#10;I'm curious about you!" />
       <CommonIcon path="ic_symbol" :width="84" :height="84" />
       <div class="title">
         Hi, <strong>Deepen King</strong>
