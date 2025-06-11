@@ -13,7 +13,7 @@
 
 <template>
   <div class="splash-container">
-    <CommonImage src="/icon/ic_symbol.svg" alt="splash" :height="204" />
+    <CommonIcon :path="'ic_symbol'" alt="splash" :height="204" />
     <div class="title">Deepen QT</div>
   </div>
 </template>
