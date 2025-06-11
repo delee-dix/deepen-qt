@@ -48,10 +48,10 @@ const handleClickButton = () => {
     <div v-if="isChoice" class="choice-container">
       <div v-if="choiceTitle" class="choice-title">{{ choiceTitle }}</div>
       <div class="choice-select-list">
-        <ButtonChoice label="Delight" @clickButton="handleClickButton" />
-        <ButtonChoice label="Sorrow" @clickButton="handleClickButton" />
-        <ButtonChoice label="Stress" @clickButton="handleClickButton" />
-        <ButtonChoice label="Expect" @clickButton="handleClickButton" />
+        <CommonButtonChoice label="Delight" @clickButton="handleClickButton" />
+        <CommonButtonChoice label="Sorrow" @clickButton="handleClickButton" />
+        <CommonButtonChoice label="Stress" @clickButton="handleClickButton" />
+        <CommonButtonChoice label="Expect" @clickButton="handleClickButton" />
       </div>
     </div>
     <div ref="containerRef" class="chat-input-container">

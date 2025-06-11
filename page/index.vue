@@ -42,7 +42,7 @@ onMounted(() => {
         How are you feeling today?
       </div>
     </div>
-    <CommonInputChat v-model="chatContent" />
+    <CommonInputChat v-model="chatContent" isChoice choiceTitle="I am today" />
   </div>
 </template>
 
