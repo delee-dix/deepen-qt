@@ -4,9 +4,15 @@ import Splash from "~/component/Splash/index.vue";
 const router = useRouter();
 
 onMounted(() => {
-  setTimeout(() => {
+  const visited = localStorage.getItem("hasVisited");
+  if (!visited) {
+    localStorage.setItem("hasVisited", "true");
+    setTimeout(() => {
+      router.push("/home");
+    }, 2000);
+  } else {
     router.push("/home");
-  }, 2000);
+  }
 });
 </script>
 
