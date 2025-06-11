@@ -34,7 +34,7 @@ const sortingModalOpen = () => {
       <div class="prayer-content">
         <strong>April 28, 2025</strong>
         <div class="content-subject">Silent Whispers of the Morning</div>
-        <NuxtLink to="/prayer/id">
+        <NuxtLink to="/together/prayer/id">
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
         </NuxtLink>
       </div>

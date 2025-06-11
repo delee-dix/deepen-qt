@@ -61,7 +61,7 @@ const closeModal = () => {
   left: 0;
   width: 100dvw;
   height: 100dvh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,7 +105,7 @@ const closeModal = () => {
   }
 
   &.is-dim {
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
 

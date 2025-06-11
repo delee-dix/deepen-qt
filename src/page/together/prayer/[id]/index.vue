@@ -1,20 +1,17 @@
 <script setup lang="ts">
-import { ref } from "vue";
+const router = useRouter();
 
-const chatContent = ref<string>("");
-const isVisibleLeft = ref<boolean>(false);
-
-const toggleLeftSide = (e?: MouseEvent) => {
-  isVisibleLeft.value = !isVisibleLeft.value;
+const clickMypage = () => {
+  router.push("/mypage");
 };
 </script>
 
 <template>
   <div class="prayer-detail-container">
     <CommonHeader isQtDetail>
-      <CommonIcon path="ic_arrow_left" :width="24" :height="24" @click="toggleLeftSide" />
+      <CommonIcon path="ic_arrow_left" :width="24" :height="24" @click="router.back()" />
       <NuxtLink to="/"> Deepen QT </NuxtLink>
-      <CommonImage path="img_profile" :width="24" :height="24" />
+      <CommonImage path="img_profile" :width="24" :height="24" @click="clickMypage" />
     </CommonHeader>
     <div class="prayer-container">
       <div class="prayer-date">
@@ -41,9 +38,8 @@ const toggleLeftSide = (e?: MouseEvent) => {
       </div>
     </div>
     <div class="button-ghost-container">
-      <div class="button-ghost" @click="$router.push('/chatId')">New Conversation</div>
+      <div class="button-ghost" @click="$router.push('/home/chatId')">New Conversation</div>
     </div>
-    <LeftSide :isVisible="isVisibleLeft" @toggleLeftSide="toggleLeftSide" />
     <CommonImage path="img_bg_cross" class="bg-cross" />
   </div>
 </template>

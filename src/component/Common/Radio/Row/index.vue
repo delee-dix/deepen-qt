@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Radio from "./index.vue";
+import Radio from "../index.vue";
 
 const props = defineProps<{
   modelValue?: boolean;

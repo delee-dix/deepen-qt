@@ -11,7 +11,7 @@ const props = defineProps<{
 <template>
   <div class="prayer-list-container">
     <div v-for="(item, idx) in prayerItems" :key="idx" class="prayer-item">
-      <NuxtLink :to="`/prayer/id`" class="prayer-item-link">
+      <NuxtLink :to="`/together/prayer/id`" class="prayer-item-link">
         <div class="prayer-item-title">
           <strong>{{ item.date }}</strong>
           <div class="content-subject">{{ item.subject }}</div>

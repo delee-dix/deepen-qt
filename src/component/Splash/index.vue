@@ -1,15 +1,4 @@
-<script setup lang="ts">
-import { onMounted } from "vue";
-import { useRouter } from "nuxt/app";
-
-const router = useRouter();
-
-onMounted(() => {
-  setTimeout(() => {
-    router.push("/");
-  }, 3000);
-});
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="splash-container">

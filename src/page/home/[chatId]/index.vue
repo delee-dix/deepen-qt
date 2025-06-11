@@ -1,20 +1,25 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-const chatContent = ref<string>("");
-const isVisibleLeft = ref<boolean>(false);
+const router = useRouter();
 
-const toggleLeftSide = (e?: MouseEvent) => {
-  isVisibleLeft.value = !isVisibleLeft.value;
+const chatContent = ref<string>("");
+
+const clickHistory = () => {
+  router.push("/history");
+};
+
+const clickMypage = () => {
+  router.push("/mypage");
 };
 </script>
 
 <template>
   <div class="qt-detail-container">
     <CommonHeader isQtDetail>
-      <CommonIcon path="ic_menu_search" :width="24" :height="24" @click="toggleLeftSide" />
-      <NuxtLink to="/"> Deepen QT </NuxtLink>
-      <CommonImage path="img_profile" :width="24" :height="24" />
+      <CommonIcon path="ic_menu_search" :width="24" :height="24" @click="clickHistory" />
+      <NuxtLink to="/home"> Deepen QT </NuxtLink>
+      <CommonImage path="img_profile" :width="24" :height="24" @click="clickMypage" />
     </CommonHeader>
 
     <div class="chat-container">
@@ -48,7 +53,6 @@ const toggleLeftSide = (e?: MouseEvent) => {
       </div>
     </div>
     <CommonInputChat v-model="chatContent" />
-    <LeftSide :isVisible="isVisibleLeft" @toggleLeftSide="toggleLeftSide" />
     <CommonImage path="img_bg_cross" class="bg-cross" />
   </div>
 </template>

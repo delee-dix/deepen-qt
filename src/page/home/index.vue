@@ -1,37 +1,34 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
+const router = useRouter();
+
 const chatContent = ref("");
-const isVisibleLeft = ref<boolean>(false);
-const isVisibleRight = ref<boolean>(false);
-const isActive = ref<boolean>(false);
-const toggleLeftSide = (e?: MouseEvent) => {
-  isVisibleLeft.value = !isVisibleLeft.value;
+
+const clickHistory = () => {
+  router.push("/history");
 };
-const toggleRightSide = (e?: MouseEvent) => {
-  isVisibleRight.value = !isVisibleRight.value;
+
+const clickTogether = () => {
+  router.push("/together");
 };
 </script>
 
 <template>
   <div class="chat-list">
-    <Header>
-      <IconComponent path="ic_menu_search" :width="24" :height="24" @click="toggleLeftSide" />
-      <IconComponent path="ic_library" :width="24" :height="24" @click="toggleRightSide" />
-    </Header>
-    <LeftSide :isVisible="isVisibleLeft" @toggleLeftSide="toggleLeftSide" />
-    <RightSide :isVisible="isVisibleRight" @toggleRightSide="toggleRightSide" />
+    <CommonHeader>
+      <CommonIcon path="ic_menu_search" :width="24" :height="24" @click="clickHistory" />
+      <CommonIcon path="ic_library" :width="24" :height="24" @click="clickTogether" />
+    </CommonHeader>
     <div class="hello-container">
-      <IconComponent path="ic_symbol" :width="84" :height="84" />
+      <CommonIcon path="ic_symbol" :width="84" :height="84" />
       <div class="title">
         Hi, <strong>Deepen King</strong>
-        <InputRadio v-model="isActive" />
-        <InputRadioLabel v-model="isActive" label="라디오 버튼 예시" />
         <br />
         How are you feeling today?
       </div>
     </div>
-    <InputChat v-model="chatContent" />
+    <CommonInputChat v-model="chatContent" isChoice choiceTitle="I am today" />
   </div>
 </template>
 

@@ -1,18 +1,10 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref } from "vue";
 
-const emit = defineEmits<{
-  (event: "toggleLeftSide"): void;
-}>();
+const router = useRouter();
 
-const props = defineProps<{
-  isVisible: Boolean;
-}>();
-
-const isShowSide = computed(() => props.isVisible);
-
-const toggleLeftSide = () => {
-  emit("toggleLeftSide");
+const clickHome = () => {
+  router.push("/home");
 };
 
 const historyItems = ref([
@@ -35,18 +27,18 @@ const historyItems = ref([
 
 <template>
   <transition name="slide-left">
-    <div v-if="isShowSide" class="left-side-container">
+    <div class="left-side-container">
       <div class="search-bar-container">
         <CommonSearchBar />
-        <CommonIcon path="ic_arrow_right" :width="24" :height="24" @click="toggleLeftSide" />
+        <CommonIcon path="ic_arrow_right" :width="24" :height="24" @click="clickHome" />
       </div>
       <div class="history-list-container">
-        <LeftSideHistoryList title="Yesterday" :historyItems="historyItems" />
-        <LeftSideHistoryList title="2 days ago" :historyItems="historyItems" />
-        <LeftSideHistoryList title="3 days ago" :historyItems="historyItems" />
-        <LeftSideHistoryList title="4 days ago" :historyItems="historyItems" />
+        <HistoryList title="Yesterday" :historyItems="historyItems" />
+        <HistoryList title="2 days ago" :historyItems="historyItems" />
+        <HistoryList title="3 days ago" :historyItems="historyItems" />
+        <HistoryList title="4 days ago" :historyItems="historyItems" />
       </div>
-      <LeftSideProfile />
+      <HistoryProfile />
       <div class="background-radial-gradient"></div>
     </div>
   </transition>
@@ -100,5 +92,29 @@ const historyItems = ref([
     );
     opacity: 0.2;
   }
+}
+
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: transform 0.3s ease;
+}
+
+.slide-left-enter-from,
+.slide-left-leave-to {
+  transform: translateX(-100%);
+}
+
+.slide-right-enter-from,
+.slide-right-leave-to {
+  transform: translateX(100%);
+}
+
+.slide-left-enter-to,
+.slide-right-enter-to,
+.slide-left-leave-from,
+.slide-right-leave-from {
+  transform: translateX(0);
 }
 </style>

@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import { type Ref, ref, computed } from "vue";
-const emit = defineEmits<{
-  (event: "toggleRightSide"): void;
-}>();
+import { type Ref, ref } from "vue";
 
-const props = defineProps<{
-  isVisible: boolean;
-}>();
+const router = useRouter();
 
-const isShowSide = computed(() => props.isVisible);
+const clickHome = () => {
+  router.push("/home");
+};
 
 const prayerItems = [
   { date: "April 28, 2025", subject: "Silent Whispers of the Morning" },
@@ -31,14 +28,9 @@ const value = ref(today(getLocalTimeZone())) as Ref<DateValue>;
 
 <template>
   <transition name="slide-right">
-    <div v-if="isShowSide" class="right-side-container">
+    <div class="right-side-container">
       <div class="header-container">
-        <CommonIcon
-          path="ic_arrow_left"
-          :width="24"
-          :height="24"
-          @click="emit('toggleRightSide')"
-        />
+        <CommonIcon path="ic_arrow_left" :width="24" :height="24" @click="clickHome" />
       </div>
       <div class="body-container">
         <div class="calendar-container">
@@ -47,12 +39,12 @@ const value = ref(today(getLocalTimeZone())) as Ref<DateValue>;
         </div>
         <div class="prayer-container">
           <div class="prayer-title">
-            <NuxtLink to="/prayer" class="prayer-title-link">
+            <NuxtLink to="/together/prayer" class="prayer-title-link">
               Journey of Prayers
               <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
             </NuxtLink>
           </div>
-          <RightSidePrayerList title="Recent Prayers" :prayerItems="prayerItems" />
+          <TogetherPrayerList title="Recent Prayers" :prayerItems="prayerItems" />
         </div>
       </div>
 
@@ -148,5 +140,19 @@ const value = ref(today(getLocalTimeZone())) as Ref<DateValue>;
     );
     opacity: 0.2;
   }
+}
+
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: transform 0.3s ease;
+}
+
+.slide-right-enter-from,
+.slide-right-leave-to {
+  transform: translateX(100%);
+}
+
+.slide-right-leave-from {
+  transform: translateX(0);
 }
 </style>

@@ -35,28 +35,28 @@ const clickConfirm = () => {
         <div class="email">deepenking@deepen.com</div>
       </div>
       <div class="mypage-list">
-        <NuxtLink :to="`/mypage/notice`" class="notice">
+        <NuxtLink :to="'/mypage/notice'" class="notice">
           <div class="left">
             <img src="/icon/ic_notice.svg" alt="notice" />
             <div>Notice</div>
           </div>
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
         </NuxtLink>
-        <NuxtLink :to="`/mypage/setting`" class="setting">
+        <NuxtLink :to="'/mypage/setting'" class="setting">
           <div class="left">
             <img src="/icon/ic_sorting.svg" alt="setting" />
             <div>Setting</div>
           </div>
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
         </NuxtLink>
-        <NuxtLink :to="`/mypage/terms`" class="terms">
+        <NuxtLink :to="'/mypage/terms'" class="terms">
           <div class="left">
             <img src="/icon/ic_terms.svg" alt="terms" />
             <div>Terms</div>
           </div>
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
         </NuxtLink>
-        <NuxtLink :to="`/mypage/privacy`" class="privacy">
+        <NuxtLink :to="'/mypage/privacy'" class="privacy">
           <div class="left">
             <img src="/icon/ic_privacy.svg" alt="privacy" />
             <div>Privacy Policy</div>
@@ -73,7 +73,7 @@ const clickConfirm = () => {
       </div>
     </div>
   </div>
-  <ModalTwoButton
+  <CommonModalTwoButton
     modal-id="signout"
     title="Exit QT"
     description="Are you sure you want to exit QT?"

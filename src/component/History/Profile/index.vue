@@ -4,7 +4,7 @@
   <div class="profile-container">
     <div class="state">
       <CommonIcon path="ic_sparkle" :width="24" :height="24" />
-      <NuxtLink :to="`/faith`" class="button-state">State of faith</NuxtLink>
+      <NuxtLink :to="`/history/faith`" class="button-state">State of faith</NuxtLink>
     </div>
     <div class="info">
       <div class="my-info">
@@ -14,7 +14,7 @@
         </NuxtLink>
       </div>
       <div class="button-new-chat">
-        <NuxtLink :to="`/chatId`" class="button-new-chat-link">
+        <NuxtLink :to="`/home/chatId`" class="button-new-chat-link">
           <CommonIcon path="ic_plus" :width="24" :height="24" />
           New Chat
         </NuxtLink>

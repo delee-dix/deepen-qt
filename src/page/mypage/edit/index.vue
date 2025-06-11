@@ -62,7 +62,7 @@ const clickCancel = () => {
       </div>
     </div>
   </div>
-  <ModalThreeButton
+  <CommonModalThreeButton
     modal-id="photo"
     title="Edit Photo"
     description="Please choose your preferred method.?"
