@@ -22,8 +22,9 @@ logs
 .env
 .env.*
 !.env.example
-/.cursor
+/.cursor/*
 /.vscode
+/.firebase/*
 
 *storybook.log
 storybook-static
