@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { VueScrollPicker } from "vue-scroll-picker";
-import "@/asset/vue-scroll-picker.css";
+import { reactive, ref } from "vue";
 
 const sliderValue = ref(50);
 
@@ -17,9 +15,11 @@ const minute = Array.from({ length: 60 }, (_, i) => ({
 
 const ampm = ["AM", "PM"].map(v => ({ value: v, name: v }));
 
-const currentHour = ref("12");
-const currentMinute = ref("00");
-const currentAmPm = ref("AM");
+const currentAlarmTime = reactive({
+  hour: "10",
+  minute: "00",
+  ampm: "AM",
+});
 </script>
 
 <template>
@@ -27,9 +27,9 @@ const currentAmPm = ref("AM");
     <div class="empty-area"></div>
     <div class="content-area">
       <div class="header">
-        <img src="/icon/ic_chevron_left.svg" alt="prev" @click="$router.back()" />
-        <div>Setting</div>
-        <div>Save</div>
+        <CommonIcon path="ic_chevron_left" :width="24" :height="24" @click="$router.back()" />
+        <div class="header-title">Setting</div>
+        <div class="header-save">Save</div>
       </div>
       <div class="setting-content">
         <div class="title">Font & Theme</div>
@@ -69,29 +69,9 @@ const currentAmPm = ref("AM");
         <div class="title">Alarm</div>
         <div class="alarm-picker">
           <div class="picker-content">
-            <VueScrollPicker v-model="currentHour" :options="hour" class="picker-column">
-              <template #default="{ option }">
-                <div class="picker-item" :class="{ selected: option.value === currentHour }">
-                  {{ option.name }}
-                </div>
-              </template>
-            </VueScrollPicker>
-
-            <VueScrollPicker v-model="currentMinute" :options="minute" class="picker-column">
-              <template #default="{ option }">
-                <div class="picker-item" :class="{ selected: option.value === currentMinute }">
-                  {{ option.name }}
-                </div>
-              </template>
-            </VueScrollPicker>
-
-            <VueScrollPicker v-model="currentAmPm" :options="ampm" class="picker-column">
-              <template #default="{ option }">
-                <div class="picker-item" :class="{ selected: option.value === currentAmPm }">
-                  {{ option.name }}
-                </div>
-              </template>
-            </VueScrollPicker>
+            <CommonScrollPicker v-model="currentAlarmTime.hour" :options="hour" />
+            <CommonScrollPicker v-model="currentAlarmTime.minute" :options="minute" />
+            <CommonScrollPicker v-model="currentAlarmTime.ampm" :options="ampm" />
           </div>
         </div>
       </div>
@@ -139,6 +119,18 @@ const currentAmPm = ref("AM");
       justify-content: space-between;
       align-items: center;
       margin-top: 32px;
+
+      .header-title {
+        font-size: 18px;
+        font-weight: 500;
+        color: $white;
+      }
+
+      .header-save {
+        font-size: 14px;
+        font-weight: 400;
+        color: $body;
+      }
     }
 
     .setting-content {
@@ -175,29 +167,7 @@ const currentAmPm = ref("AM");
           justify-content: space-around;
           align-items: center;
           height: 140px;
-
-          .picker-column {
-            width: 60px;
-            height: 100%;
-            overflow: hidden;
-
-            .picker-item {
-              height: 40px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 16px;
-              color: $gray100;
-              opacity: 0.5;
-              transition: all 0.2s;
-            }
-
-            .picker-item.selected {
-              font-size: 24px;
-              color: $gray50;
-              opacity: 1;
-            }
-          }
+          gap: 16px;
         }
       }
 

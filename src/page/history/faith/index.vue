@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import AreaChart from "~/component/ui/chart/AreaChart.vue";
+const router = useRouter();
 </script>
 
 <template>
   <div class="faith-container">
     <div class="header">
-      <img src="/icon/ic_chevron_left.svg" alt="chevron-left" @click="$router.back()" />
-      <div>State of faith</div>
+      <NuxtLink to="/history" class="header-link">
+        <CommonIcon path="ic_chevron_left" :width="24" :height="24" />
+        <div class="header-link-text">State of Faith</div>
+      </NuxtLink>
     </div>
     <div class="my-faith">
       <div class="title">It's your faith state.</div>
@@ -14,7 +16,7 @@ import AreaChart from "~/component/ui/chart/AreaChart.vue";
       <div class="date">to <strong>May 30, 2025</strong></div>
     </div>
     <div class="chart">
-      <AreaChart />
+      <CommonChart />
     </div>
     <div class="topic">
       <div class="subject">Key Exploration Topics</div>
@@ -76,6 +78,18 @@ import AreaChart from "~/component/ui/chart/AreaChart.vue";
     align-items: center;
     font-size: 18px;
     gap: 8px;
+
+    .header-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .header-link-text {
+        font-size: 18px;
+        font-weight: 500;
+        color: $body;
+      }
+    }
   }
 
   .my-faith {

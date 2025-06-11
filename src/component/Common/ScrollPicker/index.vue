@@ -1,3 +1,56 @@
+<script setup lang="ts">
+import { computed } from "vue";
+import { VueScrollPicker, type VueScrollPickerOption } from "vue-scroll-picker";
+
+const emit = defineEmits<{
+  (e: "update:modelValue", value: string): void;
+}>();
+
+const props = defineProps<{
+  options: VueScrollPickerOption[];
+  modelValue: string;
+}>();
+
+const localValue = computed({
+  get: () => props.modelValue,
+  set: value => emit("update:modelValue", value),
+});
+</script>
+
+<template>
+  <VueScrollPicker v-model="localValue" :options="options" class="picker-column">
+    <template #default="{ option }">
+      <div class="picker-item" :class="{ selected: option.value === localValue }">
+        {{ option.name }}
+      </div>
+    </template>
+  </VueScrollPicker>
+</template>
+
+<style lang="scss">
+.picker-column {
+  width: 60px;
+  height: 100%;
+  overflow: hidden;
+
+  .picker-item {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: $gray100;
+    opacity: 0.5;
+    transition: all 0.2s;
+
+    &.selected {
+      font-size: 24px;
+      color: $gray50;
+      opacity: 1;
+    }
+  }
+}
+
 .vue-scroll-picker {
   position: relative;
   width: 100%;
@@ -70,3 +123,4 @@
   height: calc(50% - 1em);
   cursor: pointer;
 }
+</style>

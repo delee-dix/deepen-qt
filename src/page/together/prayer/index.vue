@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-const isModalopen = ref<boolean>(false);
+const isModalOpen = ref<boolean>(false);
 
 const sortingModalOpen = () => {
-  isModalopen.value = !isModalopen.value;
+  isModalOpen.value = !isModalOpen.value;
 };
 </script>
 
@@ -12,19 +12,21 @@ const sortingModalOpen = () => {
   <div class="prayer-list-container">
     <div class="header">
       <div class="left">
-        <img src="/icon/ic_chevron_left.svg" alt="chevron-left" @click="$router.back()" />
-        <div>Journey of Prayers</div>
+        <NuxtLink to="/together" class="header-link">
+          <CommonIcon path="ic_chevron_left" :width="24" :height="24" />
+          <div class="header-link-text">Journey of Prayers</div>
+        </NuxtLink>
       </div>
       <div class="right">
         <img src="/icon/ic_sorting.svg" alt="sorting" @click="sortingModalOpen" />
-        <div v-if="isModalopen" class="sorting-modal">
-          <div class="latest">
+        <div v-if="isModalOpen" class="sorting-modal">
+          <div class="sorting-modal-item active">
             <img src="/icon/ic_latest.svg" alt="latest" />
-            <div>Latest</div>
+            Latest
           </div>
-          <div class="older">
+          <div class="sorting-modal-item">
             <img src="/icon/ic_older.svg" alt="older" />
-            <div>Older</div>
+            Older
           </div>
         </div>
       </div>
@@ -150,25 +152,50 @@ const sortingModalOpen = () => {
       display: flex;
       justify-content: left;
       gap: 8px;
+      align-items: center;
+
+      .header-link {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+
+        .header-link-text {
+          font-size: 18px;
+          font-weight: 500;
+          color: $body;
+        }
+      }
     }
 
     .right {
       position: relative;
-      display: inline-block;
 
       .sorting-modal {
         display: flex;
         flex-direction: column;
         position: absolute;
-        background-color: #363636;
+        min-width: 86px;
+        top: 28px;
         right: 0;
+        background-color: $gray200;
+        border-radius: 8px;
 
-        .latest,
-        .older {
+        .sorting-modal-item {
+          width: 100%;
           display: flex;
           flex-direction: row;
+          align-items: center;
           gap: 4px;
           padding: 8px 12px;
+          font-size: 14px;
+          font-weight: 400;
+          color: $body;
+          cursor: pointer;
+
+          &.active {
+            color: $body-active;
+          }
         }
       }
     }

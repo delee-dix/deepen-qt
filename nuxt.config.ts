@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   srcDir: "src/",
   ssr: true,
-  css: ["~/asset/scss/global.scss", "~/asset/tailwind.css"],
+  css: ["~/asset/scss/global.scss", "~/asset/css/tailwind.css"],
   components: [{ path: "~/component" }],
   dir: {
     pages: "page",

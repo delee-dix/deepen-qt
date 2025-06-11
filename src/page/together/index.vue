@@ -19,11 +19,6 @@ const prayerItems = [
   { date: "April 20, 2025", subject: "A Day Anchored in Prayer" },
   { date: "April 19, 2025", subject: "A Day Anchored in Prayer" },
 ];
-
-import { type DateValue, getLocalTimeZone, today } from "@internationalized/date";
-import { Calendar } from "@/component/ui/calendar";
-
-const value = ref(today(getLocalTimeZone())) as Ref<DateValue>;
 </script>
 
 <template>
@@ -35,7 +30,7 @@ const value = ref(today(getLocalTimeZone())) as Ref<DateValue>;
       <div class="body-container">
         <div class="calendar-container">
           <div class="calendar-title">Attendance status</div>
-          <Calendar v-model="value" :weekday-format="'short'" class="rounded-md border" />
+          <CommonCalendar />
         </div>
         <div class="prayer-container">
           <div class="prayer-title">
