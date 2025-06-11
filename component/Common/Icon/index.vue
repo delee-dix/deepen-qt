@@ -1,13 +1,13 @@
 <script setup lang="ts">
-  import { computed } from "vue";
+import { computed } from "vue";
 
-  const props = defineProps<{
-    path: string;
-    width?: number;
-    height?: number;
-  }>();
+const props = defineProps<{
+  path: string;
+  width?: number;
+  height?: number;
+}>();
 
-  const iconPath = computed(() => `/icon/${props.path}.svg`);
+const iconPath = computed(() => `/icon/${props.path}.svg`);
 </script>
 
 <template>

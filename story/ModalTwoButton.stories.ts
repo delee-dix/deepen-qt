@@ -11,7 +11,7 @@ const meta = {
   parameters: {
     layout: "fullscreen",
   },
-  render: (args) => ({
+  render: args => ({
     components: { ModalTwoButton },
     setup() {
       const modalStore = useModalStore();

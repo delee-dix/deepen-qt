@@ -1,42 +1,46 @@
 <script setup lang="ts">
-  import { useModalStore } from "~/store/modal";
+import { useModalStore } from "~/store/modal";
 
-  const modalStore = useModalStore();
+const modalStore = useModalStore();
 
-  const emit = defineEmits<{
-    (event: "clickConfirmButton"): void;
-  }>();
+const emit = defineEmits<{
+  (event: "clickConfirmButton"): void;
+}>();
 
-  const props = withDefaults(
-    defineProps<{
-      modalId: string;
-      title: string;
-      description: string;
-      confirmLabel?: string;
-      cancelLabel?: string;
-      width?: string;
-      isDim?: boolean;
-      isBody?: boolean;
-    }>(),
-    {
-      confirmLabel: "Confirm",
-      cancelLabel: "Cancel",
-      isDim: true,
-      isBody: false,
-      width: "",
-    }
-  );
+const props = withDefaults(
+  defineProps<{
+    modalId: string;
+    title: string;
+    description: string;
+    confirmLabel?: string;
+    cancelLabel?: string;
+    width?: string;
+    isDim?: boolean;
+    isBody?: boolean;
+  }>(),
+  {
+    confirmLabel: "Confirm",
+    cancelLabel: "Cancel",
+    isDim: true,
+    isBody: false,
+    width: "",
+  }
+);
 
-  const isVisibleModal = computed(() => modalStore.modals[props.modalId]);
+const isVisibleModal = computed(() => modalStore.modals[props.modalId]);
 
-  const closeModal = () => {
-    modalStore.hideModal(props.modalId);
-  };
+const closeModal = () => {
+  modalStore.hideModal(props.modalId);
+};
 </script>
 
 <template>
   <transition name="modal">
-    <div v-if="isVisibleModal" class="modal-container" :class="{ 'is-dim': props.isDim, 'is-body': props.isBody }">
+    <div
+      v-if="isVisibleModal"
+      class="modal-container"
+      :class="{ 'is-dim': props.isDim, 'is-body': props.isBody }"
+    >
       <div class="modal" :style="{ width: props.width }">
         <div class="modal-title-container">
           <div class="modal-title">{{ props.title }}</div>
@@ -55,68 +59,68 @@
 </template>
 
 <style lang="scss" scoped>
-  .modal-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100dvw;
-    height: 100dvh;
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  z-index: 9999999;
+
+  .modal {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
+    flex-direction: column;
+    width: 280px;
+    height: fit-content;
+    border-radius: 4px;
+    padding: 24px;
+    padding-bottom: 12px;
+    gap: 24px;
+    background-color: $background-modal;
     z-index: 9999999;
+    box-shadow: 4px 4px 64px 0px rgba(0, 0, 0, 0.08);
 
-    .modal {
+    .modal-title-container {
       display: flex;
       flex-direction: column;
-      width: 280px;
-      height: fit-content;
-      border-radius: 4px;
-      padding: 24px;
-      padding-bottom: 12px;
-      gap: 24px;
-      background-color: $background-modal;
-      z-index: 9999999;
-      box-shadow: 4px 4px 64px 0px rgba(0, 0, 0, 0.08);
+      gap: 4px;
 
-      .modal-title-container {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-
-        .modal-title {
-          font-size: 18px;
-          font-weight: 700;
-          color: $body-active;
-        }
-
-        .modal-description {
-          font-size: 14px;
-          color: $body;
-        }
+      .modal-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: $body-active;
       }
 
-      .modal-button-container {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+      .modal-description {
+        font-size: 14px;
+        color: $body;
       }
     }
 
-    &.is-dim {
-      background-color: rgba(0, 0, 0, 0.5);
+    .modal-button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
   }
 
-  .modal-enter-active,
-  .modal-leave-active {
-    transition: opacity 0.3s ease;
+  &.is-dim {
+    background-color: rgba(0, 0, 0, 0.5);
   }
+}
 
-  .modal-enter-from,
-  .modal-leave-to {
-    opacity: 0;
-  }
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
 </style>

@@ -6,11 +6,7 @@
     <div class="content-area">
       <!-- <div class="bar"></div> -->
       <div class="header">
-        <img
-          src="/icon/ic_chevron_left.svg"
-          alt="prev"
-          @click="$router.back()"
-        />
+        <img src="/icon/ic_chevron_left.svg" alt="prev" @click="$router.back()" />
         <div>Notice</div>
         <div></div>
       </div>
@@ -28,54 +24,42 @@
         </div>
         <div class="notice-content">
           <div class="title">
-            <div class="title-text">
-              [Updates] Quiet Time Tips: How to Deepen Your Reflection
-            </div>
+            <div class="title-text">[Updates] Quiet Time Tips: How to Deepen Your Reflection</div>
             <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
           </div>
           <div class="date">April 29, 2025</div>
         </div>
         <div class="notice-content">
           <div class="title">
-            <div class="title-text">
-              [Latest News] Pray with Us: Global Mission Updates
-            </div>
+            <div class="title-text">[Latest News] Pray with Us: Global Mission Updates</div>
             <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
           </div>
           <div class="date">April 28, 2025</div>
         </div>
         <div class="notice-content">
           <div class="title">
-            <div class="title-text">
-              [Latest News] Daily Scripture Challenge Starts Today
-            </div>
+            <div class="title-text">[Latest News] Daily Scripture Challenge Starts Today</div>
             <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
           </div>
           <div class="date">April 27, 2025</div>
         </div>
         <div class="notice-content">
           <div class="title">
-            <div class="title-text">
-              [Updates] Upcoming Virtual QT Gathering Schedule
-            </div>
+            <div class="title-text">[Updates] Upcoming Virtual QT Gathering Schedule</div>
             <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
           </div>
           <div class="date">April 26, 2025</div>
         </div>
         <div class="notice-content">
           <div class="title">
-            <div class="title-text">
-              [Latest News] New Feature: Personalized Prayer Reminders
-            </div>
+            <div class="title-text">[Latest News] New Feature: Personalized Prayer Reminders</div>
             <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
           </div>
           <div class="date">April 25, 2025</div>
         </div>
         <div class="notice-content">
           <div class="title">
-            <div class="title-text">
-              [Notice] Your Quiet Space, Now with Enhanced UI
-            </div>
+            <div class="title-text">[Notice] Your Quiet Space, Now with Enhanced UI</div>
             <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
           </div>
           <div class="date">April 24, 2025</div>

@@ -13,7 +13,7 @@ const meta = {
   parameters: {
     layout: "fullscreen",
   },
-  render: (args) => ({
+  render: args => ({
     components: { ModalSurvey, RadioRow, InputTextarea },
     setup() {
       const modalStore = useModalStore();

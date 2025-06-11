@@ -16,11 +16,7 @@ $body-active: $gray50;
 
 // Gradient
 $gradient-primary: linear-gradient(90deg, #685ca3 0%, #e487f6 100%);
-$gradient-bubble: linear-gradient(
-  90deg,
-  rgba(78, 88, 153, 0.8) 0%,
-  rgba(206, 112, 202, 0.8) 100%
-);
+$gradient-bubble: linear-gradient(90deg, rgba(78, 88, 153, 0.8) 0%, rgba(206, 112, 202, 0.8) 100%);
 
 $gradient-header: linear-gradient(
   90deg,

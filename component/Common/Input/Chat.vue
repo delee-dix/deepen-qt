@@ -27,10 +27,7 @@ const adjustHeight = async () => {
   const maxHeight = 120;
   const minHeight = 24;
 
-  const newTextareaHeight = Math.min(
-    Math.max(scrollHeight, minHeight),
-    maxHeight
-  );
+  const newTextareaHeight = Math.min(Math.max(scrollHeight, minHeight), maxHeight);
   textareaRef.value.style.height = `${newTextareaHeight}px`;
 
   const containerHeight = newTextareaHeight + 56 + 32;

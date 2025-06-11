@@ -23,11 +23,7 @@ const prayerItems = [
   { date: "April 19, 2025", subject: "A Day Anchored in Prayer" },
 ];
 
-import {
-  type DateValue,
-  getLocalTimeZone,
-  today,
-} from "@internationalized/date";
+import { type DateValue, getLocalTimeZone, today } from "@internationalized/date";
 import { Calendar } from "@/component/ui/calendar";
 
 const value = ref(today(getLocalTimeZone())) as Ref<DateValue>;
@@ -47,11 +43,7 @@ const value = ref(today(getLocalTimeZone())) as Ref<DateValue>;
       <div class="body-container">
         <div class="calendar-container">
           <div class="calendar-title">Attendance status</div>
-          <Calendar
-            v-model="value"
-            :weekday-format="'short'"
-            class="rounded-md border"
-          />
+          <Calendar v-model="value" :weekday-format="'short'" class="rounded-md border" />
         </div>
         <div class="prayer-container">
           <div class="prayer-title">
@@ -60,10 +52,7 @@ const value = ref(today(getLocalTimeZone())) as Ref<DateValue>;
               <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
             </NuxtLink>
           </div>
-          <RightSidePrayerList
-            title="Recent Prayers"
-            :prayerItems="prayerItems"
-          />
+          <RightSidePrayerList title="Recent Prayers" :prayerItems="prayerItems" />
         </div>
       </div>
 

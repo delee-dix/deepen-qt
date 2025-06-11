@@ -5,26 +5,20 @@
     <div class="empty-area"></div>
     <div class="content-area">
       <div class="header">
-        <img
-          src="/icon/ic_chevron_left.svg"
-          alt="prev"
-          @click="$router.back()"
-        />
+        <img src="/icon/ic_chevron_left.svg" alt="prev" @click="$router.back()" />
         <div>Notice</div>
         <div></div>
       </div>
       <div class="detail-content">
         <div class="title">
-          <div class="title-text">
-            [Latest News] New Devotional Series: Journey with the Psalms
-          </div>
+          <div class="title-text">[Latest News] New Devotional Series: Journey with the Psalms</div>
           <div class="date">April 30, 2025</div>
         </div>
         <div class="content">
-          We’re excited to introduce a brand-new devotional series designed to
-          deepen your connection with God’s Word.<br />
-          This month, we invite you to Journey with the Psalms, exploring the
-          heartfelt prayers and praises found in the Book of Psalms.
+          We’re excited to introduce a brand-new devotional series designed to deepen your
+          connection with God’s Word.<br />
+          This month, we invite you to Journey with the Psalms, exploring the heartfelt prayers and
+          praises found in the Book of Psalms.
         </div>
         <br />
         <div class="image">
@@ -33,14 +27,13 @@
         <br />
         <div class="content">
           Here’s what to expect:<br /><br />
-          • <strong>Daily Reflections</strong>: Short meditations to inspire
-          your quiet moments.<br /><br />
-          • <strong>Audio Guide</strong>: Listen to reflections on key Psalms
-          while you start your day.<br /><br />
-          • <strong>Prayer Prompts</strong>: Thoughtful questions and prayer
-          cues to guide your conversation with God.<br /><br />
-          Join us in this spiritual journey as we uncover the timeless wisdom
-          and comfort of the Psalms.<br /><br />
+          • <strong>Daily Reflections</strong>: Short meditations to inspire your quiet moments.<br /><br />
+          • <strong>Audio Guide</strong>: Listen to reflections on key Psalms while you start your
+          day.<br /><br />
+          • <strong>Prayer Prompts</strong>: Thoughtful questions and prayer cues to guide your
+          conversation with God.<br /><br />
+          Join us in this spiritual journey as we uncover the timeless wisdom and comfort of the
+          Psalms.<br /><br />
           🙏 Let’s seek His presence together.
         </div>
       </div>

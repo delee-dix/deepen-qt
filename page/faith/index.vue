@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import AreaChart from "~/component/ui/chart/AreaChart.vue";
+import AreaChart from "~/component/ui/chart/AreaChart.vue";
 </script>
 
 <template>
@@ -63,66 +63,66 @@
 </template>
 
 <style lang="scss" scoped>
-  .faith-container {
-    background-color: #090607;
-    padding: 16px;
-    width: 100%;
-    height: 812px;
-    color: #c6c6c6;
-    overflow-y: auto;
+.faith-container {
+  background-color: #090607;
+  padding: 16px;
+  width: 100%;
+  height: 812px;
+  color: #c6c6c6;
+  overflow-y: auto;
 
-    .header {
-      display: flex;
-      align-items: center;
-      font-size: 18px;
-      gap: 8px;
-    }
+  .header {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    gap: 8px;
+  }
 
-    .my-faith {
-      margin-top: 28px;
+  .my-faith {
+    margin-top: 28px;
 
-      .title {
-        font-size: 24px;
-        padding: 12px 0;
-      }
-      .date {
-        font-size: 14px;
-      }
-    }
-
-    .keywords {
-      margin-top: 20px;
-
-      .tags {
-        display: flex;
-        flex-direction: row;
-        font-size: 11px;
-        gap: 4px;
-        margin-top: 8px;
-
-        .tag {
-          padding: 4px 12px 6px 12px;
-          border-radius: 100px;
-          border: 1px solid #c6c6c6;
-        }
-      }
-    }
-
-    .chart,
-    .topic,
-    .verses,
-    .suggest {
-      margin-top: 20px;
-    }
-
-    .subject {
-      font-size: 16px;
+    .title {
+      font-size: 24px;
       padding: 12px 0;
-      font-weight: 700;
     }
-
-    .text {
+    .date {
       font-size: 14px;
     }
   }
+
+  .keywords {
+    margin-top: 20px;
+
+    .tags {
+      display: flex;
+      flex-direction: row;
+      font-size: 11px;
+      gap: 4px;
+      margin-top: 8px;
+
+      .tag {
+        padding: 4px 12px 6px 12px;
+        border-radius: 100px;
+        border: 1px solid #c6c6c6;
+      }
+    }
+  }
+
+  .chart,
+  .topic,
+  .verses,
+  .suggest {
+    margin-top: 20px;
+  }
+
+  .subject {
+    font-size: 16px;
+    padding: 12px 0;
+    font-weight: 700;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+}
 </style>

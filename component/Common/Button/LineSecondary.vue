@@ -1,18 +1,18 @@
 <script setup lang="ts">
-  const emit = defineEmits<{
-    (event: "clickButton"): void;
-  }>();
+const emit = defineEmits<{
+  (event: "clickButton"): void;
+}>();
 
-  const props = withDefaults(
-    defineProps<{
-      label: string;
-      iconPath: string;
-    }>(),
-    {
-      label: "Label",
-      iconPath: "",
-    }
-  );
+const props = withDefaults(
+  defineProps<{
+    label: string;
+    iconPath: string;
+  }>(),
+  {
+    label: "Label",
+    iconPath: "",
+  }
+);
 </script>
 
 <template>
@@ -23,21 +23,21 @@
 </template>
 
 <style lang="scss" scoped>
-  .line-secondary-button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    height: 40px;
-    border: 1px solid $border;
-    border-radius: 4px;
-    user-select: none;
-    cursor: pointer;
+.line-secondary-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  border: 1px solid $border;
+  border-radius: 4px;
+  user-select: none;
+  cursor: pointer;
 
-    .line-secondary-button {
-      font-size: 14px;
-      font-weight: 400;
-      color: $body;
-    }
+  .line-secondary-button {
+    font-size: 14px;
+    font-weight: 400;
+    color: $body;
   }
+}
 </style>

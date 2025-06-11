@@ -6,44 +6,37 @@
     <div class="content-area">
       <!-- <div class="bar"></div> -->
       <div class="header">
-        <img
-          src="/icon/ic_chevron_left.svg"
-          alt="prev"
-          @click="$router.back()"
-        />
+        <img src="/icon/ic_chevron_left.svg" alt="prev" @click="$router.back()" />
         <div>Terms</div>
         <div></div>
       </div>
       <div class="terms-content">
         <div class="intro">
-          Welcome to Deepen QT, a space designed to help you deepen your
-          spiritual journey through daily reflections, prayers, and
-          conversations. Please read these Terms of Service (“Terms”) carefully.
-          By accessing or using our app, you agree to be bound by these Terms.
+          Welcome to Deepen QT, a space designed to help you deepen your spiritual journey through
+          daily reflections, prayers, and conversations. Please read these Terms of Service
+          (“Terms”) carefully. By accessing or using our app, you agree to be bound by these Terms.
         </div>
         <div class="one">
           <strong>1. Acceptance of Terms</strong><br />
-          By using Deepen QT, you agree to comply with and be legally bound by
-          these Terms. If you do not agree, please do not use the app.
+          By using Deepen QT, you agree to comply with and be legally bound by these Terms. If you
+          do not agree, please do not use the app.
         </div>
         <div class="two">
           <strong>2. Use of the Service</strong><br />
           • Deepen QT is intended for personal, non-commercial use.<br />
-          • You agree to use the app in a manner consistent with applicable laws
-          and regulations.<br />
+          • You agree to use the app in a manner consistent with applicable laws and regulations.<br />
           • You may not use the app to transmit any harmful or unlawful content.
         </div>
         <div class="three">
           <strong>3. Content and Intellectual Property</strong><br />
-          • All content, including text, images, and audio, is owned by Deepen
-          QT or its licensors and protected by intellectual property laws.<br />
-          • You may not reproduce, distribute, or modify any content without
-          written permission.
+          • All content, including text, images, and audio, is owned by Deepen QT or its licensors
+          and protected by intellectual property laws.<br />
+          • You may not reproduce, distribute, or modify any content without written permission.
         </div>
         <div class="four">
           <strong>4. Privacy</strong><br />
-          Your privacy is important to us. Please review our [Privacy Policy]
-          for details on how we collect and use personal information.
+          Your privacy is important to us. Please review our [Privacy Policy] for details on how we
+          collect and use personal information.
         </div>
       </div>
     </div>

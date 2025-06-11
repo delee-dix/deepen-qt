@@ -1,11 +1,11 @@
 <script setup lang="ts">
-  import { ref } from "vue";
+import { ref } from "vue";
 
-  const isModalopen = ref<boolean>(false);
+const isModalopen = ref<boolean>(false);
 
-  const sortingModalOpen = () => {
-    isModalopen.value = !isModalopen.value;
-  };
+const sortingModalOpen = () => {
+  isModalopen.value = !isModalopen.value;
+};
 </script>
 
 <template>
@@ -128,69 +128,69 @@
 </template>
 
 <style lang="scss" scoped>
-  .prayer-list-container {
-    background-color: #090607;
-    color: #c6c6c6;
+.prayer-list-container {
+  background-color: #090607;
+  color: #c6c6c6;
+  display: flex;
+  flex-direction: column;
+  width: 375px;
+  height: 812px;
+  margin: auto;
+  padding: 16px;
+  overflow-y: auto;
+  box-sizing: border-box;
+
+  .header {
     display: flex;
-    flex-direction: column;
-    width: 375px;
-    height: 812px;
-    margin: auto;
-    padding: 16px;
-    overflow-y: auto;
-    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 12px 0 0;
 
-    .header {
+    .left {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 12px 0 0;
-
-      .left {
-        display: flex;
-        justify-content: left;
-        gap: 8px;
-      }
-
-      .right {
-        position: relative;
-        display: inline-block;
-
-        .sorting-modal {
-          display: flex;
-          flex-direction: column;
-          position: absolute;
-          background-color: #363636;
-          right: 0;
-
-          .latest,
-          .older {
-            display: flex;
-            flex-direction: row;
-            gap: 4px;
-            padding: 8px 12px;
-          }
-        }
-      }
+      justify-content: left;
+      gap: 8px;
     }
 
-    .body {
-      display: flex;
-      flex-direction: column;
-      margin-top: 20px;
+    .right {
+      position: relative;
+      display: inline-block;
 
-      .prayer-content {
+      .sorting-modal {
         display: flex;
-        justify-content: space-between;
-        padding: 10px 0;
-        gap: 8px;
-        font-size: 14px;
-        border-bottom: 1px solid #c6c6c6;
+        flex-direction: column;
+        position: absolute;
+        background-color: #363636;
+        right: 0;
 
-        .content-subject {
-          width: 200px;
+        .latest,
+        .older {
+          display: flex;
+          flex-direction: row;
+          gap: 4px;
+          padding: 8px 12px;
         }
       }
     }
   }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+    .prayer-content {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      gap: 8px;
+      font-size: 14px;
+      border-bottom: 1px solid #c6c6c6;
+
+      .content-subject {
+        width: 200px;
+      }
+    }
+  }
+}
 </style>

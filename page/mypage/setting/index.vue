@@ -15,7 +15,7 @@ const minute = Array.from({ length: 60 }, (_, i) => ({
   name: String(i).padStart(2, "0"),
 }));
 
-const ampm = ["AM", "PM"].map((v) => ({ value: v, name: v }));
+const ampm = ["AM", "PM"].map(v => ({ value: v, name: v }));
 
 const currentHour = ref("12");
 const currentMinute = ref("00");
@@ -27,11 +27,7 @@ const currentAmPm = ref("AM");
     <div class="empty-area"></div>
     <div class="content-area">
       <div class="header">
-        <img
-          src="/icon/ic_chevron_left.svg"
-          alt="prev"
-          @click="$router.back()"
-        />
+        <img src="/icon/ic_chevron_left.svg" alt="prev" @click="$router.back()" />
         <div>Setting</div>
         <div>Save</div>
       </div>
@@ -73,46 +69,25 @@ const currentAmPm = ref("AM");
         <div class="title">Alarm</div>
         <div class="alarm-picker">
           <div class="picker-content">
-            <VueScrollPicker
-              v-model="currentHour"
-              :options="hour"
-              class="picker-column"
-            >
+            <VueScrollPicker v-model="currentHour" :options="hour" class="picker-column">
               <template #default="{ option }">
-                <div
-                  class="picker-item"
-                  :class="{ selected: option.value === currentHour }"
-                >
+                <div class="picker-item" :class="{ selected: option.value === currentHour }">
                   {{ option.name }}
                 </div>
               </template>
             </VueScrollPicker>
 
-            <VueScrollPicker
-              v-model="currentMinute"
-              :options="minute"
-              class="picker-column"
-            >
+            <VueScrollPicker v-model="currentMinute" :options="minute" class="picker-column">
               <template #default="{ option }">
-                <div
-                  class="picker-item"
-                  :class="{ selected: option.value === currentMinute }"
-                >
+                <div class="picker-item" :class="{ selected: option.value === currentMinute }">
                   {{ option.name }}
                 </div>
               </template>
             </VueScrollPicker>
 
-            <VueScrollPicker
-              v-model="currentAmPm"
-              :options="ampm"
-              class="picker-column"
-            >
+            <VueScrollPicker v-model="currentAmPm" :options="ampm" class="picker-column">
               <template #default="{ option }">
-                <div
-                  class="picker-item"
-                  :class="{ selected: option.value === currentAmPm }"
-                >
+                <div class="picker-item" :class="{ selected: option.value === currentAmPm }">
                   {{ option.name }}
                 </div>
               </template>

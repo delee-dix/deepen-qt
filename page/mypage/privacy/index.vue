@@ -6,27 +6,21 @@
     <div class="content-area">
       <!-- <div class="bar"></div> -->
       <div class="header">
-        <img
-          src="/icon/ic_chevron_left.svg"
-          alt="prev"
-          @click="$router.back()"
-        />
+        <img src="/icon/ic_chevron_left.svg" alt="prev" @click="$router.back()" />
         <div>Privacy Policy</div>
         <div></div>
       </div>
       <div class="privacy-content">
         <div class="intro">
-          Deepen QT (“we,” “our,” or “us”) is committed to protecting your
-          privacy. This Privacy Policy describes how we collect, use, and share
-          information when you use our app and services. By using Deepen QT, you
-          agree to the terms of this Privacy Policy.
+          Deepen QT (“we,” “our,” or “us”) is committed to protecting your privacy. This Privacy
+          Policy describes how we collect, use, and share information when you use our app and
+          services. By using Deepen QT, you agree to the terms of this Privacy Policy.
         </div>
         <div class="one">
           <strong>1. Information We Collect</strong><br />
           We may collect the following types of information:<br /><br />
           Personal information (such as your name, email address)<br /><br />
-          Usage data (including log information, device type, and interaction
-          data)<br /><br />
+          Usage data (including log information, device type, and interaction data)<br /><br />
           Content you share within the app (prayer notes, reflections, etc.)
         </div>
         <div class="two">
