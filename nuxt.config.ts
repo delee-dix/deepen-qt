@@ -3,6 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
+  srcDir: "src/",
   ssr: true,
   css: ["~/asset/scss/global.scss", "~/asset/tailwind.css"],
   components: [{ path: "~/component" }],
@@ -33,6 +34,6 @@ export default defineNuxtConfig({
      * Directory that the component lives in.
      * @default "./component/ui"
      */
-    componentDir: "./component/ui",
+    componentDir: "~/component/ui",
   },
 });
