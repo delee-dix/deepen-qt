@@ -24,3 +24,6 @@ logs
 !.env.example
 /.cursor
 /.vscode
+
+*storybook.log
+storybook-static

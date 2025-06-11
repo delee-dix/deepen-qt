@@ -13,6 +13,7 @@
   "dependencies": {
     "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
     "@nuxt/image": "^1.10.0",
+    "@pinia/nuxt": "^0.11.1",
     "@tailwindcss/vite": "^4.1.8",
     "@vueuse/core": "^13.3.0",
     "chart.js": "^4.4.9",
@@ -21,6 +22,7 @@
     "firebase": "^11.8.1",
     "lucide-vue-next": "^0.513.0",
     "nuxt": "^3.17.4",
+    "pinia": "^3.0.3",
     "reka-ui": "^2.3.1",
     "shadcn-nuxt": "^2.2.0",
     "tailwind-merge": "^3.3.0",

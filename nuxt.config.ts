@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
-  modules: ["@nuxt/image", "shadcn-nuxt"],
+  modules: ["@nuxt/image", "shadcn-nuxt", "@pinia/nuxt"],
   shadcn: {
     /**
      * Prefix for all the imported component
