@@ -5,9 +5,9 @@ import { useNavigateWithTransition } from "~/composable/useNavigateWithTransitio
 const navigator = useNavigateWithTransition();
 
 onMounted(() => {
-  const visited = localStorage.getItem("hasVisited");
+  const visited = sessionStorage.getItem("hasVisited");
   if (!visited) {
-    localStorage.setItem("hasVisited", "true");
+    sessionStorage.setItem("hasVisited", "true");
     setTimeout(() => {
       navigator.replace("/home");
     }, 2000);
