@@ -3,6 +3,10 @@
 
   const modalStore = useModalStore();
 
+  const emit = defineEmits<{
+    (event: "clickConfirmButton"): void;
+  }>();
+
   const props = withDefaults(
     defineProps<{
       modalId: string;
@@ -42,8 +46,8 @@
           <slot name="body" />
         </div>
         <div class="modal-button-container">
-          <ButtonPrimary :label="props.confirmLabel" />
-          <ButtonText :label="props.cancelLabel" @click="closeModal" />
+          <CommonButtonPrimary :label="props.confirmLabel" @click="emit('clickConfirmButton')" />
+          <CommonButtonText :label="props.cancelLabel" @click="closeModal" />
         </div>
       </div>
     </div>
@@ -57,10 +61,11 @@
     left: 0;
     width: 100dvw;
     height: 100dvh;
-    background-color: rgba(0, 0, 0, 0.5);
+
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: transparent;
     z-index: 9999999;
 
     .modal {
@@ -101,7 +106,7 @@
     }
 
     &.is-dim {
-      background-color: transparent;
+      background-color: rgba(0, 0, 0, 0.5);
     }
   }
 

@@ -17,7 +17,7 @@
 
 <template>
   <div class="line-secondary-button-container">
-    <IconComponent v-if="props.iconPath" :path="props.iconPath" :width="16" :height="16" />
+    <CommonIcon v-if="props.iconPath" :path="props.iconPath" :width="16" :height="16" />
     <div class="line-secondary-button" @click="emit('clickButton')">{{ label }}</div>
   </div>
 </template>

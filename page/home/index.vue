@@ -1,8 +1,6 @@
 <script setup lang="ts">
   import { ref } from "vue";
 
-  import { useModalStore } from "~/store/modal";
-
   const chatContent = ref("");
   const isVisibleLeft = ref<boolean>(false);
   const isVisibleRight = ref<boolean>(false);

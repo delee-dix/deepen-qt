@@ -47,17 +47,17 @@
           <div class="modal-description">{{ props.description }}</div>
         </div>
         <div class="modal-button-container">
-          <ButtonLinePrimary
+          <CommonButtonLinePrimary
             :label="props.firstLabel"
             :iconPath="props.firstIconPath"
             @click="emit('clickFirstButton')"
           />
-          <ButtonLineSecondary
+          <CommonButtonLineSecondary
             :label="props.secondLabel"
             :iconPath="props.secondIconPath"
             @click="emit('clickSecondButton')"
           />
-          <ButtonText :label="props.thirdLabel" @click="emit('clickThirdButton')" />
+          <CommonButtonText :label="props.thirdLabel" @click="emit('clickThirdButton')" />
         </div>
       </div>
     </div>
@@ -71,7 +71,7 @@
     left: 0;
     width: 100dvw;
     height: 100dvh;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,6 +87,7 @@
       padding-bottom: 12px;
       gap: 24px;
       background-color: $background-modal;
+
       z-index: 9999999;
       box-shadow: 4px 4px 64px 0px rgba(0, 0, 0, 0.08);
 
@@ -115,7 +116,7 @@
     }
 
     &.is-dim {
-      background-color: transparent;
+      background-color: rgba(0, 0, 0, 0.5);
     }
   }
 
