@@ -1,30 +1,22 @@
 <script setup lang="ts">
-import { ref } from "vue";
+  import { ref } from "vue";
 
-const isModalopen = ref<boolean>(false);
+  const isModalopen = ref<boolean>(false);
 
-const sortingModalOpen = () => {
-  isModalopen.value = !isModalopen.value;
-};
+  const sortingModalOpen = () => {
+    isModalopen.value = !isModalopen.value;
+  };
 </script>
 
 <template>
   <div class="prayer-list-container">
     <div class="header">
       <div class="left">
-        <img
-          src="/icon/ic_chevron_left.svg"
-          alt="chevron-left"
-          @click="$router.back()"
-        />
+        <img src="/icon/ic_chevron_left.svg" alt="chevron-left" @click="$router.back()" />
         <div>Journey of Prayers</div>
       </div>
       <div class="right">
-        <img
-          src="/icon/ic_sorting.svg"
-          alt="sorting"
-          @click="sortingModalOpen"
-        />
+        <img src="/icon/ic_sorting.svg" alt="sorting" @click="sortingModalOpen" />
         <div v-if="isModalopen" class="sorting-modal">
           <div class="latest">
             <img src="/icon/ic_latest.svg" alt="latest" />
@@ -136,69 +128,69 @@ const sortingModalOpen = () => {
 </template>
 
 <style lang="scss" scoped>
-.prayer-list-container {
-  background-color: #090607;
-  color: #c6c6c6;
-  display: flex;
-  flex-direction: column;
-  width: 375px;
-  height: 812px;
-  margin: auto;
-  padding: 16px;
-  overflow-y: auto;
-  box-sizing: border-box;
-
-  .header {
+  .prayer-list-container {
+    background-color: #090607;
+    color: #c6c6c6;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 12px 0 0;
+    flex-direction: column;
+    width: 375px;
+    height: 812px;
+    margin: auto;
+    padding: 16px;
+    overflow-y: auto;
+    box-sizing: border-box;
 
-    .left {
+    .header {
       display: flex;
-      justify-content: left;
-      gap: 8px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 12px 0 0;
+
+      .left {
+        display: flex;
+        justify-content: left;
+        gap: 8px;
+      }
+
+      .right {
+        position: relative;
+        display: inline-block;
+
+        .sorting-modal {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          background-color: #363636;
+          right: 0;
+
+          .latest,
+          .older {
+            display: flex;
+            flex-direction: row;
+            gap: 4px;
+            padding: 8px 12px;
+          }
+        }
+      }
     }
 
-    .right {
-      position: relative;
-      display: inline-block;
+    .body {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
 
-      .sorting-modal {
+      .prayer-content {
         display: flex;
-        flex-direction: column;
-        position: absolute;
-        background-color: #363636;
-        right: 0;
+        justify-content: space-between;
+        padding: 10px 0;
+        gap: 8px;
+        font-size: 14px;
+        border-bottom: 1px solid #c6c6c6;
 
-        .latest,
-        .older {
-          display: flex;
-          flex-direction: row;
-          gap: 4px;
-          padding: 8px 12px;
+        .content-subject {
+          width: 200px;
         }
       }
     }
   }
-
-  .body {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-
-    .prayer-content {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 0;
-      gap: 8px;
-      font-size: 14px;
-      border-bottom: 1px solid #c6c6c6;
-
-      .content-subject {
-        width: 200px;
-      }
-    }
-  }
-}
 </style>
