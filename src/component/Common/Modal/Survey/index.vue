@@ -3,11 +3,15 @@ import { useModalStore } from "~/store/modal";
 
 const modalStore = useModalStore();
 
+const emit = defineEmits<{
+  (event: "clickConfirm"): void;
+}>();
+
 const props = withDefaults(
   defineProps<{
     modalId: string;
+    description?: string;
     title: string;
-    description: string;
     confirmLabel?: string;
     cancelLabel?: string;
     width?: string;
@@ -15,6 +19,8 @@ const props = withDefaults(
     isBody?: boolean;
   }>(),
   {
+    description: "Please invest just 5 seconds!",
+    title: "I'm curious about you!",
     confirmLabel: "Confirm",
     cancelLabel: "Cancel",
     isDim: true,
@@ -25,7 +31,12 @@ const props = withDefaults(
 
 const isVisibleModal = computed(() => modalStore.modals[props.modalId]);
 
-const closeModal = () => {
+const clickConfirm = () => {
+  emit("clickConfirm");
+  modalStore.hideModal(props.modalId);
+};
+
+const clickCancel = () => {
   modalStore.hideModal(props.modalId);
 };
 </script>
@@ -46,8 +57,8 @@ const closeModal = () => {
           <slot name="body" />
         </div>
         <div class="modal-button-container">
-          <ButtonPrimary :label="props.confirmLabel" />
-          <ButtonText :label="props.cancelLabel" @click="closeModal" />
+          <CommonButtonPrimary :label="props.confirmLabel" @click="clickConfirm" />
+          <CommonButtonText :label="props.cancelLabel" @click="clickCancel" />
         </div>
       </div>
     </div>
