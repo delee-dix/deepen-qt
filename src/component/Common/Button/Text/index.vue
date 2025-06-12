@@ -23,7 +23,6 @@ defineProps<{
   font-weight: 400;
   color: $body;
   user-select: none;
-  user-drag: none;
   cursor: pointer;
 }
 </style>
