@@ -24,28 +24,28 @@ defineProps<{
 
   .tooltip-bubble {
     position: absolute;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
     bottom: calc(100% + 10px);
     left: 50%;
     transform: translateX(-50%);
     width: 240px;
-    background: rgba(60, 60, 60, 0.32);
+    background-color: $background;
+    border: 1px solid $border;
     backdrop-filter: blur(32px);
-    border: 1px solid #363636;
     border-radius: 4px;
     padding: 16px;
     box-shadow:
       4px 4px 24px 0px rgba(255, 255, 255, 0.08),
       inset 4px 4px 24px 0px rgba(255, 255, 255, 0.02);
     z-index: 1000;
-    display: flex;
-    gap: 8px;
-    flex-direction: row;
 
     align-items: center;
     justify-content: space-between;
 
     .tooltip-content {
-      color: #ffffff;
+      color: $white;
       font-family: Inter;
       font-size: 14px;
       font-weight: 400;
@@ -62,20 +62,17 @@ defineProps<{
       transform: translateX(-50%);
       width: 0;
       height: 0;
-      border-left: 7px solid transparent;
-      border-right: 7px solid transparent;
-      border-top: 10px solid rgba(60, 60, 60, 0.32);
 
-      &::after {
+      /* &::after {
         content: "";
         position: absolute;
         top: -11px;
         left: -8px;
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
-        border-top: 11px solid #363636;
+        border-top: 11px solid $border;
         z-index: -1;
-      }
+      } */
     }
   }
 }
