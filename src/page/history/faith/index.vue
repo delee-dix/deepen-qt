@@ -1,14 +1,20 @@
 <script setup lang="ts">
-const router = useRouter();
+import { usePageTransition } from "~/composables/useNavigateWithTransition";
+
+const { navigateRight } = usePageTransition();
+
+const clickHistory = () => {
+  navigateRight("/history");
+};
 </script>
 
 <template>
   <div class="faith-container">
     <div class="header">
-      <NuxtLink to="/history" class="header-link">
+      <div class="header-link" @click="clickHistory">
         <CommonIcon path="ic_chevron_left" :width="24" :height="24" />
         <div class="header-link-text">State of Faith</div>
-      </NuxtLink>
+      </div>
     </div>
     <div class="my-faith">
       <div class="title">It's your faith state.</div>

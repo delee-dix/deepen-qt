@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { usePageTransition } from "~/composables/useNavigateWithTransition";
 
-const router = useRouter();
+const { navigateRight, navigateTop } = usePageTransition();
 
 const chatContent = ref<string>("");
 
 const clickHistory = () => {
-  router.push("/history");
+  navigateRight("/history");
 };
 
 const clickMypage = () => {
-  router.push("/mypage");
+  navigateTop("/mypage");
 };
 </script>
 
@@ -111,29 +112,5 @@ const clickMypage = () => {
     object-fit: cover;
     background-color: rgba($color: $background, $alpha: 0.9);
   }
-}
-
-.slide-left-enter-active,
-.slide-left-leave-active,
-.slide-right-enter-active,
-.slide-right-leave-active {
-  transition: transform 0.3s ease;
-}
-
-.slide-left-enter-from,
-.slide-left-leave-to {
-  transform: translateX(-100%);
-}
-
-.slide-right-enter-from,
-.slide-right-leave-to {
-  transform: translateX(100%);
-}
-
-.slide-left-enter-to,
-.slide-right-enter-to,
-.slide-left-leave-from,
-.slide-right-leave-from {
-  transform: translateX(0);
 }
 </style>
