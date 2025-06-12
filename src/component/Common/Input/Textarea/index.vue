@@ -3,12 +3,13 @@ import { ref, nextTick } from "vue";
 
 const props = withDefaults(
   defineProps<{
-    modelValue?: string;
+    modelValue: string;
     placeholder?: string;
     disabled?: boolean;
   }>(),
   {
     disabled: false,
+    placeholder: "",
   }
 );
 
