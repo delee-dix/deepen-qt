@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { usePageTransition } from "~/composables/useNavigateWithTransition";
+
+const { navigateLeft } = usePageTransition();
+</script>
 
 <template>
   <div class="terms-container">
@@ -6,7 +10,7 @@
     <div class="content-area">
       <!-- <div class="bar"></div> -->
       <div class="header">
-        <img src="/icon/ic_chevron_left.svg" alt="prev" @click="$router.back()" />
+        <img src="/icon/ic_chevron_left.svg" alt="prev" @click="navigateLeft('/mypage')" />
         <div>Terms</div>
         <div></div>
       </div>

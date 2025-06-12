@@ -23,8 +23,7 @@ export default defineNuxtConfig({
     },
     plugins: [tailwindcss()],
   },
-
-  modules: ["@nuxt/image", "shadcn-nuxt", "@pinia/nuxt"],
+  modules: ["@nuxt/image", "shadcn-nuxt", "@pinia/nuxt", "motion-v/nuxt"],
   shadcn: {
     /**
      * Prefix for all the imported component
@@ -32,8 +31,8 @@ export default defineNuxtConfig({
     prefix: "",
     /**
      * Directory that the component lives in.
-     * @default "./component/ui"
+     * @default "./lib/ui"
      */
-    componentDir: "~/component/ui",
+    componentDir: "~/lib/ui",
   },
 });

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { type Ref, ref } from "vue";
+import { usePageTransition } from "~/composables/useNavigateWithTransition";
 
-const router = useRouter();
+const { navigateRight } = usePageTransition();
 
 const clickHome = () => {
-  router.push("/home");
+  navigateRight("/home");
 };
 
 const prayerItems = [
@@ -30,14 +30,14 @@ const prayerItems = [
       <div class="body-container">
         <div class="calendar-container">
           <div class="calendar-title">Attendance status</div>
-          <CommonCalendar />
+          <!-- <CommonCalendar /> -->
         </div>
         <div class="prayer-container">
           <div class="prayer-title">
-            <NuxtLink to="/together/prayer" class="prayer-title-link">
+            <div class="prayer-title-link" @click="navigateRight('/together/prayer')">
               Journey of Prayers
               <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-            </NuxtLink>
+            </div>
           </div>
           <TogetherPrayerList title="Recent Prayers" :prayerItems="prayerItems" />
         </div>
