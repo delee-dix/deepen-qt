@@ -39,7 +39,7 @@ const clickSurveyConfirm = () => {
     <div class="hello-container">
       <CommonTooltip
         text="Please invest just 5 seconds!&#10;I'm curious about you!"
-        @click="clickTooltip"
+        @click-tooltip="clickTooltip"
       />
       <CommonIcon path="ic_symbol" :width="84" :height="84" />
       <div class="title">
@@ -50,6 +50,7 @@ const clickSurveyConfirm = () => {
     </div>
     <CommonInputChat v-model="chatContent" isChoice choiceTitle="I am today" />
   </div>
+
   <CommonModalSurvey
     modalId="survey"
     title="How regularly do you attend worship services?"
