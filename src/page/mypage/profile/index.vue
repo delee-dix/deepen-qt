@@ -93,7 +93,7 @@ onMounted(() => {
           @input="onInput"
           placeholder="Name"
         >
-          {{ newDisplayName }}
+          {{ newDisplayName ?? "Deepen King" }}
         </div>
         <br />
         <div>User Email</div>
