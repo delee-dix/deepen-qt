@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Line } from "vue-chartjs";
+
 import {
   Chart as ChartJS,
   Title,
@@ -9,89 +11,94 @@ import {
   Filler,
   PointElement,
   LineElement,
+  type ChartOptions,
+  type TooltipItem,
+  type Chart as ChartType,
 } from "chart.js";
-import { Line } from "vue-chartjs";
 
 ChartJS.register(
   Title,
   Tooltip,
   Legend,
+  Filler,
   CategoryScale,
   LinearScale,
-  Filler,
   PointElement,
   LineElement
 );
 
-const chartData = {
-  labels: ["January", "February", "March", "April", "May", "June"],
+const chartRef = ref<InstanceType<typeof Line> | null>(null);
+
+const labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+const chartData = ref({
+  labels,
   datasets: [
     {
       label: "QT",
-      data: [186, 305, 237, 73, 209, 214],
+      data: [276, 205, 267, 222, 300, 214, 153],
       fill: true,
-      backgroundColor: "#7a63af",
-      borderColor: "#d987ee",
-      tension: 0.4,
-      pointRadius: 3,
-      pointHoverRadius: 6,
+      backgroundColor: "#000",
+      tension: 0,
+      pointRadius: 2,
+      pointHoverRadius: 4,
     },
   ],
-};
+});
 
-const chartOptions = {
+const chartOptions: ChartOptions<"line"> = {
   responsive: true,
   plugins: {
-    legend: {
-      display: true,
-      position: "top" as const,
-    },
+    legend: { display: false },
     tooltip: {
       enabled: true,
-      mode: "index" as const,
+      mode: "index",
       intersect: false,
-    },
-  },
-  scales: {
-    x: {
-      type: "category" as const,
-      grid: {
-        display: false,
-      },
-      ticks: {
-        maxRotation: 0,
-        callback: function (tickValue: string | number, index: number) {
-          return chartData.labels[index].slice(0, 3);
+      backgroundColor: "#090607",
+      borderColor: "#363636",
+      borderWidth: 2,
+      boxWidth: 2,
+      padding: 8,
+      boxPadding: 8,
+      callbacks: {
+        title: () => [],
+        label: (tooltipItem: TooltipItem<"line">) => {
+          const label = labels[tooltipItem.dataIndex] || "";
+          const value = tooltipItem.formattedValue || tooltipItem.parsed.y || "";
+          return `${label}: ${value}`;
         },
       },
     },
-    y: {
-      type: "linear" as const,
-      beginAtZero: true,
-      grid: {
-        color: "#363636",
-        drawBorder: false,
-      },
-    },
+  },
+  scales: {
+    x: { display: false },
+    y: { display: false, beginAtZero: true },
   },
 };
+
+watchEffect(() => {
+  const chart = chartRef.value?.chart as ChartType<"line"> | undefined;
+  if (!chart) return;
+
+  const ctx = chart.ctx;
+  const area = chart.chartArea;
+  if (!area) return;
+
+  const gradient = ctx.createLinearGradient(0, area.top, 0, area.bottom);
+  gradient.addColorStop(1.0, "#090411");
+  gradient.addColorStop(0.94, "#160829");
+  gradient.addColorStop(0.81, "#220c3f");
+  gradient.addColorStop(0.68, "#270d4a");
+  gradient.addColorStop(0.54, "#351066");
+  gradient.addColorStop(0.4, "#471489");
+  gradient.addColorStop(0.25, "#4a1989");
+  gradient.addColorStop(0.08, "#5f1cb7");
+
+  chart.data.datasets[0].backgroundColor = gradient;
+  chart.update();
+});
 </script>
 
 <template>
-  <div class="card max-w-md mx-auto">
-    <section class="p-4">
-      <Line :data="chartData" :options="chartOptions" />
-    </section>
-    <footer class="p-4 border-t text-sm text-gray-600 flex items-center gap-2">
-      <span class="ml-auto text-gray-400">January - June 2024</span>
-    </footer>
-  </div>
+  <Line ref="chartRef" :data="chartData" :options="chartOptions" />
 </template>
-
-<style scoped>
-.card {
-  background: #363636;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.1);
-}
-</style>
