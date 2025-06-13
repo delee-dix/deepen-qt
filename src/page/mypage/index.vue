@@ -91,7 +91,7 @@ const clickConfirm = () => {
   height: 100vh;
   top: 0;
   left: 0;
-  position: fixed;
+  position: absolute;
   margin: auto;
   box-sizing: border-box;
 

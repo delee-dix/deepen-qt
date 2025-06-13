@@ -46,7 +46,7 @@
   height: 100vh;
   top: 0;
   left: 0;
-  position: fixed;
+  position: absolute;
   margin: auto;
   box-sizing: border-box;
 
@@ -63,6 +63,7 @@
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     background-color: #1e1e1e;
+    text-align: left;
 
     .bar {
       margin-left: 160px;
