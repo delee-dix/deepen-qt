@@ -50,18 +50,18 @@ const prayerItems = [
 
 <style lang="scss" scoped>
 .right-side-container {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   background-color: $background;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   overflow-y: auto;
 
   .header-container {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     background-color: $background;

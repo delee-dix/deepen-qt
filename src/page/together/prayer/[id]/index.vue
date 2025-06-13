@@ -94,13 +94,14 @@ const clickMypage = () => {
   }
 
   .bg-cross {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: -1;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    background-color: rgba($color: $background, $alpha: 0.9);
   }
 }
 
