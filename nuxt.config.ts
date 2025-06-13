@@ -10,6 +10,11 @@ export default defineNuxtConfig({
   dir: {
     pages: "page",
   },
+  nitro: {
+    routeRules: {
+      "/.well-known/**": { prerender: false },
+    },
+  },
   vite: {
     server: {
       allowedHosts: ["c1b9-175-193-34-14.ngrok-free.app"],
@@ -26,14 +31,7 @@ export default defineNuxtConfig({
 
   modules: ["@nuxt/image", "shadcn-nuxt", "@pinia/nuxt"],
   shadcn: {
-    /**
-     * Prefix for all the imported component
-     */
     prefix: "",
-    /**
-     * Directory that the component lives in.
-     * @default "./component/ui"
-     */
-    componentDir: "~/component/ui",
+    componentDir: "~/lib/ui",
   },
 });
