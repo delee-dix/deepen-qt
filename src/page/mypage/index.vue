@@ -12,6 +12,8 @@ const clickConfirm = () => {
   router.push("/");
   modalStore.hideModal("signout");
 };
+
+const displayName = sessionStorage.getItem("displayName");
 </script>
 
 <template>
@@ -24,7 +26,7 @@ const clickConfirm = () => {
         <img src="/icon/ic_close.svg" alt="chevron-left" @click="router.back()" />
       </div>
       <div class="profile-area">
-        <NuxtLink :to="`/mypage/edit`">
+        <NuxtLink :to="`/mypage/profile`">
           <div class="profile-image">
             <img
               src="/img/img_profile_change.png"
@@ -33,7 +35,7 @@ const clickConfirm = () => {
             />
           </div>
         </NuxtLink>
-        <div class="nickname">Deepen King</div>
+        <div class="nickname">{{ displayName ?? "Deepen King" }}</div>
         <div class="email">deepenking@deepen.com</div>
       </div>
       <div class="mypage-list">

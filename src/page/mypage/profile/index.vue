@@ -2,14 +2,17 @@
 import { useModalStore } from "~/store/modal";
 
 const modalStore = useModalStore();
+const router = useRouter();
 
-const titleList = ["My Page", "Edit Profile", "Notice", "Setting", "Terms", "Privacy Policy"];
-
-const message = ref("");
+const displayName = ref("");
+const newDisplayName = sessionStorage.getItem("displayName");
 const editableDiv = ref<HTMLDivElement | null>(null);
 
+const profileImage = ref("/img/img_profile_change.png");
+const fileInput = ref<HTMLInputElement | null>(null);
+
 const onInput = () => {
-  message.value = editableDiv.value?.innerText.trim() || "";
+  displayName.value = editableDiv.value?.innerText.trim() || "";
 };
 
 const clickProfile = () => {
@@ -22,11 +25,44 @@ const clickCamera = () => {
 
 const clickLibrary = () => {
   console.log("clickLibrary");
+  modalStore.hideModal("photo");
+  fileInput.value?.click();
 };
 
 const clickCancel = () => {
   modalStore.hideModal("photo");
 };
+
+const onSaveValue = () => {
+  sessionStorage.setItem("displayName", displayName.value);
+  sessionStorage.setItem("profilePhoto", fileInput.value?.value || "");
+  router.push("/mypage");
+};
+
+const onFileChange = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  const file = target.files?.[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      profileImage.value = result;
+      sessionStorage.setItem("profilePhoto", result);
+    };
+    reader.readAsDataURL(file);
+  }
+};
+
+onMounted(() => {
+  const savedName = sessionStorage.getItem("displayName");
+  const savedImage = sessionStorage.getItem("profileImage");
+  if (savedName) {
+    displayName.value = savedName;
+  }
+  if (savedImage) {
+    profileImage.value = savedImage;
+  }
+});
 </script>
 
 <template>
@@ -36,15 +72,11 @@ const clickCancel = () => {
       <div class="header">
         <img src="/icon/ic_chevron_left.svg" alt="prev" @click="$router.back()" />
         <div>Edit Profile</div>
-        <div>Save</div>
+        <div @click="onSaveValue">Save</div>
       </div>
       <div class="profile-area" @click="clickProfile">
         <div class="profile-image">
-          <img
-            src="/img/img_profile_change.png"
-            alt="profile"
-            :style="{ width: '120px', height: '120px' }"
-          />
+          <img :src="profileImage" alt="profile" :style="{ width: '120px', height: '120px' }" />
         </div>
       </div>
       <div class="mypage-list">
@@ -55,7 +87,9 @@ const clickCancel = () => {
           contenteditable="true"
           @input="onInput"
           placeholder="Name"
-        ></div>
+        >
+          {{ newDisplayName ?? "Deepen King" }}
+        </div>
         <br />
         <div>User Email</div>
         <div class="input">deepenking@deepen.com</div>
@@ -75,6 +109,8 @@ const clickCancel = () => {
     @click-second-button="clickLibrary"
     @click-third-button="clickCancel"
   />
+
+  <input type="file" ref="fileInput" accept="image/*" @change="onFileChange" />
 </template>
 
 <style lang="scss" scoped>
