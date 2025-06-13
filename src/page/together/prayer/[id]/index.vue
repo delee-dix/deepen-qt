@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { usePageTransition } from "~/composables/useNavigateWithTransition";
+import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
 
-const { navigateLeft, navigate, navigateTop } = usePageTransition();
+const { navigateLeft, navigate, navigateTop } = useNavigateWithTransition();
 
 const clickMypage = () => {
   navigateTop("/mypage");

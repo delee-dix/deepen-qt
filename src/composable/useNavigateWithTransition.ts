@@ -3,24 +3,11 @@ import { usePageStack } from "./usePageStack";
 
 const transitionDirection = ref<"right" | "left" | "top" | "bottom" | "default">("default");
 
-export function usePageTransition() {
+export function useNavigateWithTransition() {
   const { pageStack, push, pop, getCurrentStack } = usePageStack();
 
   return {
     transitionDirection,
-    pageStack,
-
-    setRight() {
-      transitionDirection.value = "right";
-    },
-
-    setLeft() {
-      transitionDirection.value = "left";
-    },
-
-    reset() {
-      transitionDirection.value = "default";
-    },
 
     navigate(path: string) {
       push(path);
@@ -82,17 +69,13 @@ export function usePageTransition() {
       return navigateTo(previousPath);
     },
 
+    reset() {
+      transitionDirection.value = "default";
+    },
+
     getDirection() {
       return transitionDirection.value;
     },
-
-    setPageTransition(to: any, direction: "right" | "left") {
-      if (to.meta.pageTransition && typeof to.meta.pageTransition !== "boolean") {
-        to.meta.pageTransition.name = direction === "right" ? "slide-left" : "slide-right";
-      }
-    },
-
-    getCurrentStack,
 
     clearStack() {
       const currentPath = useRoute().fullPath;

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { usePageTransition } from "~/composables/useNavigateWithTransition";
+import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
 
-const { navigateRight } = usePageTransition();
+const { navigateRight } = useNavigateWithTransition();
 
 const clickHome = () => {
   navigateRight("/home");

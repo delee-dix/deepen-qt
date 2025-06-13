@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useModalStore } from "~/store/modal";
-import { usePageTransition } from "~/composables/useNavigateWithTransition";
+import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
 
-const { navigateLeft, navigateRight } = usePageTransition();
+const { navigateLeft, navigateRight } = useNavigateWithTransition();
 
 const modalStore = useModalStore();
 const surveyChoice = ref("");

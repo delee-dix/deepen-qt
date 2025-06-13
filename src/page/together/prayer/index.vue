@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { usePageTransition } from "~/composables/useNavigateWithTransition";
+import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
 
-const { navigateLeft, navigateRight } = usePageTransition();
+const { navigateLeft, navigateRight } = useNavigateWithTransition();
 
 const isModalOpen = ref<boolean>(false);
 

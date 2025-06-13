@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { usePageTransition } from "~/composables/useNavigateWithTransition";
+import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
 
-const { navigateLeft } = usePageTransition();
+const { navigateLeft } = useNavigateWithTransition();
 </script>
 
 <template>
