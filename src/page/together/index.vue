@@ -28,7 +28,7 @@ const prayerItems = [
       <div class="body-container">
         <div class="calendar-container">
           <div class="calendar-title">Attendance status</div>
-          <!-- <CommonCalendar /> -->
+          <CommonCalendar />
         </div>
         <div class="prayer-container">
           <div class="prayer-title">
