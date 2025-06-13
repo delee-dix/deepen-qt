@@ -19,7 +19,7 @@ a {
 #__nuxt {
   display: flex;
   position: relative;
-  max-width: 400px;
+  max-width: $mobile;
   height: 100dvh;
   overflow: hidden;
 }
