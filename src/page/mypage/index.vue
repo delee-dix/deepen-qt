@@ -2,12 +2,14 @@
 import { useModalStore } from "~/store/modal";
 
 const modalStore = useModalStore();
+const router = useRouter();
 
 const clickSignout = () => {
   modalStore.showModal("signout");
 };
 
 const clickConfirm = () => {
+  router.push("/");
   modalStore.hideModal("signout");
 };
 </script>
@@ -19,7 +21,7 @@ const clickConfirm = () => {
       <div class="header">
         <div :style="{ width: '24px' }"></div>
         <div>My Page</div>
-        <img src="/icon/ic_close.svg" alt="chevron-left" @click="$router.back()" />
+        <img src="/icon/ic_close.svg" alt="chevron-left" @click="router.back()" />
       </div>
       <div class="profile-area">
         <NuxtLink :to="`/mypage/edit`">
