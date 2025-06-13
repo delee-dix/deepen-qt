@@ -216,6 +216,9 @@ const sortingModalOpen = () => {
 
       .content-subject {
         width: 200px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
       }
     }
   }

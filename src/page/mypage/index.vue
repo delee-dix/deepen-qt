@@ -87,6 +87,7 @@ const clickConfirm = () => {
   color: #c6c6c6;
   display: flex;
   flex-direction: column;
+  justify-content: end;
   width: 100%;
   height: 100vh;
   top: 0;
@@ -100,7 +101,6 @@ const clickConfirm = () => {
   }
 
   .content-area {
-    bottom: 0;
     display: flex;
     padding: 16px;
     flex-direction: column;
