@@ -6,7 +6,9 @@
 
 body {
   margin: 0;
-  background-color: $background;
+  background-color: #ffffff;
+  position: relative;
+  text-align: -webkit-center;
 }
 
 a {
@@ -15,5 +17,8 @@ a {
 }
 
 #__nuxt {
+  display: flex;
+  position: relative;
+  max-width: 400px;
   height: 100dvh;
 }

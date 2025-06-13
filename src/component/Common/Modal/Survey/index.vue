@@ -67,10 +67,10 @@ const clickCancel = () => {
 
 <style lang="scss" scoped>
 .modal-survey-container {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100dvw;
+  width: 100%;
   height: 100dvh;
   background-color: transparent;
   display: flex;

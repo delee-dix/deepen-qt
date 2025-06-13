@@ -17,7 +17,7 @@ const props = withDefaults(
 
 <style lang="scss" scoped>
 .header {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: 1000;
