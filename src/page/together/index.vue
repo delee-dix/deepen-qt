@@ -93,6 +93,7 @@ const prayerItems = [
         font-size: 18px;
         font-weight: 500;
         color: $body;
+        text-align: left;
       }
     }
 
