@@ -2,16 +2,16 @@
 import { useModalStore } from "~/store/modal";
 
 const modalStore = useModalStore();
+const router = useRouter();
 
-const titleList = ["My Page", "Edit Profile", "Notice", "Setting", "Terms", "Privacy Policy"];
-
-const message = ref("");
+const displayName = ref("");
+const newDisplayName = sessionStorage.getItem("displayName");
 const editableDiv = ref<HTMLDivElement | null>(null);
 
 const navigator = useNavigateWithTransition();
 
 const onInput = () => {
-  message.value = editableDiv.value?.innerText.trim() || "";
+  displayName.value = editableDiv.value?.innerText.trim() || "";
 };
 
 const clickMypage = () => {
@@ -33,6 +33,11 @@ const clickLibrary = () => {
 const clickCancel = () => {
   modalStore.hideModal("photo");
 };
+
+const saveName = () => {
+  sessionStorage.setItem("displayName", displayName.value);
+  router.push("/mypage");
+};
 </script>
 
 <template>
@@ -42,7 +47,7 @@ const clickCancel = () => {
       <div class="header">
         <CommonIcon path="ic_chevron_left" @click="clickMypage" />
         <div>Edit Profile</div>
-        <div>Save</div>
+        <div @click="saveName">Save</div>
       </div>
       <div class="profile-area" @click="clickProfile">
         <div class="profile-image">
@@ -61,7 +66,9 @@ const clickCancel = () => {
           contenteditable="true"
           @input="onInput"
           placeholder="Name"
-        ></div>
+        >
+          {{ newDisplayName }}
+        </div>
         <br />
         <div>User Email</div>
         <div class="input">deepenking@deepen.com</div>

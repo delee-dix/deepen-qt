@@ -30,6 +30,7 @@ const clickTerms = () => {
 const clickPrivacy = () => {
   navigator.pushLeft("/mypage/privacy");
 };
+const displayName = sessionStorage.getItem("displayName");
 </script>
 
 <template>
@@ -50,7 +51,7 @@ const clickPrivacy = () => {
           />
         </div>
 
-        <div class="nickname">Deepen King</div>
+        <div class="nickname">{{ displayName }}</div>
         <div class="email">deepenking@deepen.com</div>
       </div>
       <div class="mypage-list">
