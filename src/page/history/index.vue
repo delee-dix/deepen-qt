@@ -46,17 +46,17 @@ const historyItems = ref([
 
 <style lang="scss" scoped>
 .left-side-container {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   background-color: $background;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100dvh;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 
   .search-bar-container {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: 1000;
@@ -75,6 +75,7 @@ const historyItems = ref([
     height: 100%;
     padding-bottom: 264px;
     overflow-y: auto;
+    text-align: left;
   }
 
   .background-radial-gradient {

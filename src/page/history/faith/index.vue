@@ -66,10 +66,10 @@ const router = useRouter();
 
 <style lang="scss" scoped>
 .faith-container {
-  background-color: #090607;
+  background-color: $background;
   padding: 16px;
   width: 100%;
-  height: 812px;
+  height: 100dvh;
   color: #c6c6c6;
   overflow-y: auto;
 
@@ -94,6 +94,7 @@ const router = useRouter();
 
   .my-faith {
     margin-top: 28px;
+    text-align: left;
 
     .title {
       font-size: 24px;
@@ -106,6 +107,7 @@ const router = useRouter();
 
   .keywords {
     margin-top: 20px;
+    text-align: left;
 
     .tags {
       display: flex;
@@ -127,16 +129,19 @@ const router = useRouter();
   .verses,
   .suggest {
     margin-top: 20px;
+    text-align: left;
   }
 
   .subject {
     font-size: 16px;
     padding: 12px 0;
     font-weight: 700;
+    text-align: left;
   }
 
   .text {
     font-size: 14px;
+    text-align: left;
   }
 }
 </style>
