@@ -33,7 +33,7 @@ const displayName = sessionStorage.getItem("displayName");
             />
           </div>
         </NuxtLink>
-        <div class="nickname">{{ displayName }}</div>
+        <div class="nickname">{{ displayName ?? "Deepen King" }}</div>
         <div class="email">deepenking@deepen.com</div>
       </div>
       <div class="mypage-list">
