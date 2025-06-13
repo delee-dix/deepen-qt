@@ -1,7 +1,15 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 
-const sliderValue = ref(50);
+const sliderValue = ref(5);
+const isSelected = ref<boolean>(false);
+const fontList = ["Helvetica", "Arial"];
+const themeList = ["System", "Dark", "Light"];
+
+const selectedValue = () => {
+  isSelected.value = !isSelected.value;
+  console.log(isSelected.value);
+};
 
 const hour = Array.from({ length: 12 }, (_, i) => ({
   value: String(i + 1).padStart(2, "0"),
@@ -17,9 +25,17 @@ const ampm = ["AM", "PM"].map(v => ({ value: v, name: v }));
 
 const currentAlarmTime = reactive({
   hour: "10",
-  minute: "00",
+  minute: "02",
   ampm: "AM",
 });
+
+const saveSetting = () => {
+  console.log("saveSetting");
+  sessionStorage.setItem("fontSize", sliderValue.value.toString());
+  sessionStorage.setItem("font", fontList[0]);
+  sessionStorage.setItem("Theme", themeList[0]);
+  sessionStorage.setItem("alarmTime", JSON.stringify(currentAlarmTime));
+};
 </script>
 
 <template>
@@ -29,7 +45,7 @@ const currentAlarmTime = reactive({
       <div class="header">
         <CommonIcon path="ic_chevron_left" :width="24" :height="24" @click="$router.back()" />
         <div class="header-title">Setting</div>
-        <div class="header-save">Save</div>
+        <div class="header-save" @click="saveSetting">Save</div>
       </div>
       <div class="setting-content">
         <div class="title">Font & Theme</div>
@@ -42,27 +58,28 @@ const currentAlarmTime = reactive({
                 type="range"
                 id="volume"
                 min="0"
-                max="100"
+                max="10"
                 step="1"
                 v-model="sliderValue"
                 class="slider"
               />
-              <div :style="{ fontSize: '24px' }">aA</div>
+              <!-- <CommonSlider /> -->
+              <div :style="{ fontSize: '27px' }">aA</div>
             </div>
           </div>
           <div class="font">
             <div class="sub-title">Font</div>
             <div class="buttons">
-              <div class="button selected">Helvetica</div>
-              <div class="button">Arial</div>
+              <div class="button selected">{{ fontList[0] }}</div>
+              <div class="button" @click="selectedValue">{{ fontList[1] }}</div>
             </div>
           </div>
           <div class="theme">
             <div class="sub-title">Theme</div>
             <div class="buttons">
-              <div class="button selected">System</div>
-              <div class="button">Dark</div>
-              <div class="button">Light</div>
+              <div class="button selected">{{ themeList[0] }}</div>
+              <div class="button">{{ themeList[1] }}</div>
+              <div class="button">{{ themeList[2] }}</div>
             </div>
           </div>
         </div>
