@@ -77,7 +77,7 @@ const handleClickButton = () => {
 
 <style lang="scss" scoped>
 .chat-total-input-container {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   display: flex;

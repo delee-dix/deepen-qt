@@ -9,11 +9,13 @@
         <div>Notice</div>
         <div></div>
       </div>
+
       <div class="detail-content">
         <div class="title">
           <div class="title-text">[Latest News] New Devotional Series: Journey with the Psalms</div>
           <div class="date">April 30, 2025</div>
         </div>
+        <div class="bar"></div>
         <div class="content">
           We’re excited to introduce a brand-new devotional series designed to deepen your
           connection with God’s Word.<br />
@@ -51,7 +53,7 @@
   height: 100vh;
   top: 0;
   left: 0;
-  position: fixed;
+  position: absolute;
   margin: auto;
   box-sizing: border-box;
 
@@ -70,13 +72,6 @@
     background-color: #1e1e1e;
     overflow-y: auto;
 
-    .bar {
-      margin-left: 160px;
-      width: 40px;
-      border: 1.5px solid #c6c6c6;
-      border-radius: 1000px;
-    }
-
     .header {
       display: flex;
       justify-content: space-between;
@@ -88,6 +83,8 @@
       display: flex;
       flex-direction: column;
       margin-top: 24px;
+      align-items: center;
+      text-align: left;
 
       .title {
         margin-bottom: 24px;
@@ -100,6 +97,13 @@
         .date {
           font-size: 12px;
         }
+      }
+
+      .bar {
+        width: 100%;
+        border: 0.1px solid #c6c6c6;
+        border-radius: 1000px;
+        margin-bottom: 24px;
       }
     }
   }

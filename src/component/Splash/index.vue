@@ -19,7 +19,7 @@
   height: 100vh;
   top: 0;
   left: 0;
-  position: fixed;
+  position: absolute;
   margin: auto;
   padding: 16px;
   box-sizing: border-box;

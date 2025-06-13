@@ -135,8 +135,8 @@ const sortingModalOpen = () => {
   color: #c6c6c6;
   display: flex;
   flex-direction: column;
-  width: 375px;
-  height: 812px;
+  width: 100%;
+  height: 100dvh;
   margin: auto;
   padding: 16px;
   overflow-y: auto;

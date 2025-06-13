@@ -27,7 +27,7 @@
 .profile-container {
   display: flex;
   flex-direction: column;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   z-index: 1000;

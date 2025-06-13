@@ -43,25 +43,25 @@ const prayerItems = [
         </div>
       </div>
 
-      <div class="background-radial-gradient"></div>
+      <CommonBackgroundGradient />
     </div>
   </transition>
 </template>
 
 <style lang="scss" scoped>
 .right-side-container {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   background-color: $background;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   overflow-y: auto;
 
   .header-container {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     background-color: $background;
@@ -93,6 +93,7 @@ const prayerItems = [
         font-size: 18px;
         font-weight: 500;
         color: $body;
+        text-align: left;
       }
     }
 
@@ -118,22 +119,6 @@ const prayerItems = [
         }
       }
     }
-  }
-
-  .background-radial-gradient {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 320px;
-    z-index: 99999;
-    pointer-events: none;
-    background: radial-gradient(
-      circle at 48% 100%,
-      rgba(255, 255, 255, 0.6) 0%,
-      rgba(165, 75, 179, 0) 90%
-    );
-    opacity: 0.2;
   }
 }
 
