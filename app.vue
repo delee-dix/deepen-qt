@@ -1,3 +1,8 @@
 <template>
-  <NuxtPage />
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
+  <!-- <NuxtLayout :name="'pure-transition'">
+    <NuxtPage />
+  </NuxtLayout> -->
 </template>
