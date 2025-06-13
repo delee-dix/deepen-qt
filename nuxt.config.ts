@@ -9,6 +9,7 @@ export default defineNuxtConfig({
   components: [{ path: "~/component" }],
   dir: {
     pages: "page",
+    layouts: "layout",
   },
   vite: {
     server: {

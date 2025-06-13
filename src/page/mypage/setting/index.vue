@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
-import { usePageTransition } from "~/composables/useNavigateWithTransition";
+import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
 
-const { navigateLeft } = usePageTransition();
+const { navigateRight } = useNavigateWithTransition();
 
 const sliderValue = ref(50);
 
@@ -34,7 +34,7 @@ const currentAlarmTime = reactive({
           path="ic_chevron_left"
           :width="24"
           :height="24"
-          @click="navigateLeft('/mypage')"
+          @click="navigateRight('/mypage')"
         />
         <div class="header-title">Setting</div>
         <div class="header-save">Save</div>

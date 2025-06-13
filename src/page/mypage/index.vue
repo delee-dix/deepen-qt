@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useModalStore } from "~/store/modal";
-import { usePageTransition } from "~/composables/useNavigateWithTransition";
+import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
 
 const modalStore = useModalStore();
-const { navigateBack, navigateRight } = usePageTransition();
+const { navigateBottom, navigateLeft } = useNavigateWithTransition();
 
 const clickSignout = () => {
   modalStore.showModal("signout");
@@ -22,10 +22,10 @@ const clickConfirm = () => {
       <div class="header">
         <div :style="{ width: '24px' }"></div>
         <div>My Page</div>
-        <img src="/icon/ic_close.svg" alt="chevron-left" @click="navigateBack" />
+        <img src="/icon/ic_close.svg" alt="chevron-left" @click="navigateBottom('/home')" />
       </div>
       <div class="profile-area">
-        <div class="profile-image" @click="navigateRight('/mypage/edit')">
+        <div class="profile-image" @click="navigateLeft('/mypage/edit')">
           <img
             src="/img/img_profile_change.png"
             alt="profile"
@@ -37,28 +37,28 @@ const clickConfirm = () => {
         <div class="email">deepenking@deepen.com</div>
       </div>
       <div class="mypage-list">
-        <div class="notice" @click="navigateRight('/mypage/notice')">
+        <div class="notice" @click="navigateLeft('/mypage/notice')">
           <div class="left">
             <img src="/icon/ic_notice.svg" alt="notice" />
             <div>Notice</div>
           </div>
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
         </div>
-        <div class="setting" @click="navigateRight('/mypage/setting')">
+        <div class="setting" @click="navigateLeft('/mypage/setting')">
           <div class="left">
             <img src="/icon/ic_sorting.svg" alt="setting" />
             <div>Setting</div>
           </div>
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
         </div>
-        <div class="terms" @click="navigateRight('/mypage/terms')">
+        <div class="terms" @click="navigateLeft('/mypage/terms')">
           <div class="left">
             <img src="/icon/ic_terms.svg" alt="terms" />
             <div>Terms</div>
           </div>
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
         </div>
-        <div class="privacy" @click="navigateRight('/mypage/privacy')">
+        <div class="privacy" @click="navigateLeft('/mypage/privacy')">
           <div class="left">
             <img src="/icon/ic_privacy.svg" alt="privacy" />
             <div>Privacy Policy</div>

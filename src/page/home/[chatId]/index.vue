@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { usePageTransition } from "~/composables/useNavigateWithTransition";
+import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
 
-const { navigateRight, navigateTop } = usePageTransition();
+const { navigateRight, navigateTop, navigate } = useNavigateWithTransition();
 
 const chatContent = ref<string>("");
 
@@ -19,7 +19,7 @@ const clickMypage = () => {
   <div class="qt-detail-container">
     <CommonHeader isQtDetail>
       <CommonIcon path="ic_menu_search" :width="24" :height="24" @click="clickHistory" />
-      <NuxtLink to="/home"> Deepen QT </NuxtLink>
+      <div class="title" @click="navigate('/home')">Deepen QT</div>
       <CommonImage path="img_profile" :width="24" :height="24" @click="clickMypage" />
     </CommonHeader>
 

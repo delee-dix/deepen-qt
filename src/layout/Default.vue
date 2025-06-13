@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 import { watch, ref, nextTick } from "vue";
-import { usePageTransition } from "~/composables/useNavigateWithTransition";
+import { usePageStack } from "~/composable/usePageStack";
+import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
 import { MotionConfig, motion } from "motion-v";
 
 const route = useRoute();
-const { transitionDirection, getDirection } = usePageTransition();
+const { transitionDirection, getDirection, reset } = useNavigateWithTransition();
 const { pageStack } = usePageStack();
 
 const initial = ref<any>({});
@@ -39,7 +40,7 @@ const variants = {
 
 watch(
   () => route.fullPath,
-  async to => {
+  async () => {
     isAnimating.value = true;
 
     const direction = getDirection();
@@ -55,7 +56,7 @@ watch(
 
     setTimeout(() => {
       isAnimating.value = false;
-      // reset();
+      reset();
     }, 300);
   },
   { immediate: true }

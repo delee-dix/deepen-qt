@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { usePageTransition } from "~/composables/useNavigateWithTransition";
+import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
 
-const { navigateLeft } = usePageTransition();
+const { navigateBack } = useNavigateWithTransition();
 
 const clickHome = () => {
-  navigateLeft("/home");
+  navigateBack();
 };
 
 const historyItems = ref([
