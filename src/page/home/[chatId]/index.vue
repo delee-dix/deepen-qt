@@ -1,17 +1,14 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
-
-const { navigateRight, navigateTop, navigate } = useNavigateWithTransition();
+const navigator = useNavigateWithTransition();
 
 const chatContent = ref<string>("");
 
 const clickHistory = () => {
-  navigateRight("/history");
+  navigator.pushRight("/history");
 };
 
 const clickMypage = () => {
-  navigateTop("/mypage");
+  navigator.pushTop("/mypage");
 };
 </script>
 
@@ -19,7 +16,7 @@ const clickMypage = () => {
   <div class="qt-detail-container">
     <CommonHeader isQtDetail>
       <CommonIcon path="ic_menu_search" :width="24" :height="24" @click="clickHistory" />
-      <div class="title" @click="navigate('/home')">Deepen QT</div>
+      <div class="title" @click="navigator.push('/home')">Deepen QT</div>
       <CommonImage path="img_profile" :width="24" :height="24" @click="clickMypage" />
     </CommonHeader>
 

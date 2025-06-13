@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 import { watch, ref, nextTick } from "vue";
-import { usePageStack } from "~/composable/usePageStack";
-import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
 import { MotionConfig, motion } from "motion-v";
 
 const route = useRoute();
-const { transitionDirection, getDirection, reset } = useNavigateWithTransition();
-const { pageStack } = usePageStack();
+const { transitionDirection, getDirection, resetDirection } = useNavigateWithTransition();
+const { pageStack } = usePageHistoryStore();
 
 const initial = ref<any>({});
 const animate = ref<any>({});
@@ -17,24 +15,24 @@ const animationKey = ref<number>(0);
 
 const variants = {
   default: {
-    initial: { x: 0 },
-    animate: { x: 0 },
-  },
-  left: {
-    initial: { x: 100 },
-    animate: { x: 0 },
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
   },
   right: {
-    initial: { x: -100 },
-    animate: { x: 0 },
+    initial: { x: "-100%" },
+    animate: { x: "0%" },
+  },
+  left: {
+    initial: { x: "100%" },
+    animate: { x: "0%" },
   },
   top: {
-    initial: { y: 100 },
-    animate: { y: 0 },
+    initial: { y: "100%" },
+    animate: { y: "0%" },
   },
   bottom: {
-    initial: { y: -100 },
-    animate: { y: 0 },
+    initial: { y: "-100%" },
+    animate: { y: "0%" },
   },
 };
 
@@ -56,7 +54,7 @@ watch(
 
     setTimeout(() => {
       isAnimating.value = false;
-      reset();
+      // resetDirection();
     }, 300);
   },
   { immediate: true }
@@ -64,14 +62,14 @@ watch(
 </script>
 
 <template>
-  <MotionConfig :transition="{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }">
+  <MotionConfig :transition="{ duration: 0.3, ease: 'easeInOut' }">
     <motion.div
       :key="`${route.fullPath}-${animationKey}`"
       :initial="initial"
       :animate="animate"
       class="page-container"
     >
-      <NuxtPage />
+      <slot />
     </motion.div>
   </MotionConfig>
 </template>

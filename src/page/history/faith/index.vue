@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
-
-const { navigateRight } = useNavigateWithTransition();
+const navigator = useNavigateWithTransition();
 
 const clickHistory = () => {
-  navigateRight("/history");
+  navigator.pushRight("/history");
 };
 </script>
 

@@ -11,6 +11,9 @@ export default defineNuxtConfig({
     pages: "page",
     layouts: "layout",
   },
+  imports: {
+    dirs: ["composable", "store"],
+  },
   vite: {
     server: {
       allowedHosts: ["c1b9-175-193-34-14.ngrok-free.app"],
