@@ -1,94 +1,71 @@
-import { ref } from "vue";
-import { usePageStack } from "./usePageStack";
+type Direction = "right" | "left" | "top" | "bottom" | "default";
 
-const transitionDirection = ref<"right" | "left" | "top" | "bottom" | "default">("default");
+const transitionDirection = ref<Direction>("default");
 
 export function useNavigateWithTransition() {
-  const { pageStack, push, pop, getCurrentStack } = usePageStack();
+  const pageHistoryStore = usePageHistoryStore();
+
+  const push = (path: string, direction: Direction = "default") => {
+    pageHistoryStore.pushState(path);
+    transitionDirection.value = direction;
+
+    return navigateTo(path);
+  };
+
+  const replace = (path: string, direction: Direction = "default") => {
+    pageHistoryStore.replaceState(path);
+    transitionDirection.value = direction;
+
+    return navigateTo(path, { replace: true });
+  };
+
+  const back = () => {
+    transitionDirection.value = getReverseDirection(transitionDirection.value);
+
+    pageHistoryStore.popState();
+
+    const stack = pageHistoryStore.getState();
+    const previousPath = stack.length > 0 ? stack[stack.length - 1] : "/home";
+
+    return navigateTo(previousPath);
+  };
+
+  const getReverseDirection = (dir: Direction): Direction =>
+    (
+      ({
+        right: "left",
+        left: "right",
+        top: "bottom",
+        bottom: "top",
+        default: "default",
+      }) as const
+    )[dir];
+
+  const clearStack = () => {
+    const currentPath = useRoute().fullPath;
+    pageHistoryStore.pageStack.value.length = 0;
+    pageHistoryStore.pushState(currentPath);
+  };
 
   return {
     transitionDirection,
-
-    navigate(path: string) {
-      push(path);
-      transitionDirection.value = "default";
-      return navigateTo(path);
-    },
-
-    navigateRight(path: string) {
-      push(path);
-      transitionDirection.value = "right";
-      return navigateTo(path);
-    },
-
-    navigateLeft(path: string) {
-      push(path);
-      transitionDirection.value = "left";
-      return navigateTo(path);
-    },
-
-    navigateTop(path: string) {
-      push(path);
-      transitionDirection.value = "top";
-      return navigateTo(path);
-    },
-
-    navigateBottom(path: string) {
-      push(path);
-      transitionDirection.value = "bottom";
-      return navigateTo(path);
-    },
-
-    navigateBack() {
-      const currentDirection = transitionDirection.value;
-
-      switch (currentDirection) {
-        case "right":
-          transitionDirection.value = "left";
-          break;
-        case "left":
-          transitionDirection.value = "right";
-          break;
-        case "top":
-          transitionDirection.value = "bottom";
-          break;
-        case "bottom":
-          transitionDirection.value = "top";
-          break;
-        case "default":
-        default:
-          transitionDirection.value = "default";
-          break;
-      }
-
-      pop();
-
-      const stack = getCurrentStack();
-      const previousPath = stack.length > 0 ? stack[stack.length - 1] : "/home";
-
-      return navigateTo(previousPath);
-    },
-
-    reset() {
-      transitionDirection.value = "default";
-    },
-
-    getDirection() {
-      return transitionDirection.value;
-    },
-
-    clearStack() {
-      const currentPath = useRoute().fullPath;
-      pageStack.value.length = 0;
-      push(currentPath);
-    },
-
-    getStackLength() {
-      return getCurrentStack().length;
-    },
-
-    canGoBack() {
-      return getCurrentStack().length > 1;
-    },
+    //
+    push,
+    pushRight: (path: string) => push(path, "right"),
+    pushLeft: (path: string) => push(path, "left"),
+    pushTop: (path: string) => push(path, "top"),
+    pushBottom: (path: string) => push(path, "bottom"),
+    //
+    replace,
+    replaceRight: (path: string) => replace(path, "right"),
+    replaceLeft: (path: string) => replace(path, "left"),
+    replaceTop: (path: string) => replace(path, "top"),
+    replaceBottom: (path: string) => replace(path, "bottom"),
+    //
+    back,
+    //
+    clearStack,
+    getDirection: () => transitionDirection.value,
+    resetDirection: () => (transitionDirection.value = "default"),
   };
 }

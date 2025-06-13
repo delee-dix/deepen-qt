@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
-
-const { navigateLeft, navigateRight } = useNavigateWithTransition();
+const navigator = useNavigateWithTransition();
 
 const isModalOpen = ref<boolean>(false);
 
@@ -15,7 +12,7 @@ const sortingModalOpen = () => {
   <div class="prayer-list-container">
     <div class="header">
       <div class="left">
-        <div class="header-link" @click="navigateLeft('/together')">
+        <div class="header-link" @click="navigator.pushRight('/together')">
           <CommonIcon path="ic_chevron_left" :width="24" :height="24" />
           <div class="header-link-text">Journey of Prayers</div>
         </div>
@@ -42,7 +39,7 @@ const sortingModalOpen = () => {
         <img
           src="/icon/ic_chevron_right.svg"
           alt="chevron-right"
-          @click="navigateRight('/together/prayer/id')"
+          @click="navigator.pushLeft('/together/prayer/id')"
         />
       </div>
       <div class="prayer-content">

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import Splash from "~/component/Splash/index.vue";
 
-const router = useRouter();
+const navigator = useNavigateWithTransition();
 
 onMounted(() => {
   setTimeout(() => {
-    router.push("/home");
+    navigator.replace("/home");
   }, 2000);
 });
 </script>

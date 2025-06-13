@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
-
-const { navigateRight } = useNavigateWithTransition();
+const navigator = useNavigateWithTransition();
 
 const clickHome = () => {
-  navigateRight("/home");
+  navigator.pushRight("/home");
 };
 
 const prayerItems = [
@@ -34,7 +32,7 @@ const prayerItems = [
         </div>
         <div class="prayer-container">
           <div class="prayer-title">
-            <div class="prayer-title-link" @click="navigateRight('/together/prayer')">
+            <div class="prayer-title-link" @click="navigator.pushLeft('/together/prayer')">
               Journey of Prayers
               <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
             </div>

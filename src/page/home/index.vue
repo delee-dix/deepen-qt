@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { useModalStore } from "~/store/modal";
-import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
 
-const { navigateLeft, navigateRight } = useNavigateWithTransition();
+const navigator = useNavigateWithTransition();
 
 const modalStore = useModalStore();
 const surveyChoice = ref("");
@@ -11,11 +9,11 @@ const surveyContent = ref("");
 const chatContent = ref("");
 
 const clickHistory = () => {
-  navigateRight("/history");
+  navigator.pushRight("/history");
 };
 
 const clickTogether = () => {
-  navigateLeft("/together");
+  navigator.pushLeft("/together");
 };
 
 const clickTooltip = () => {

@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
-
-const { navigateBack } = useNavigateWithTransition();
+const navigator = useNavigateWithTransition();
 </script>
 
 <template>
@@ -9,7 +7,11 @@ const { navigateBack } = useNavigateWithTransition();
     <div class="empty-area"></div>
     <div class="content-area">
       <div class="header">
-        <img src="/icon/ic_chevron_left.svg" alt="prev" @click="navigateBack" />
+        <img
+          src="/icon/ic_chevron_left.svg"
+          alt="prev"
+          @click="navigator.replaceRight('/mypage')"
+        />
         <div>Notice</div>
         <div></div>
       </div>

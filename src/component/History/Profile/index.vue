@@ -1,21 +1,19 @@
 <script setup lang="ts">
-import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
-
-const { navigateTop, navigateLeft } = useNavigateWithTransition();
+const navigator = useNavigateWithTransition();
 </script>
 
 <template>
   <div class="profile-container">
     <div class="state">
       <CommonIcon path="ic_sparkle" :width="24" :height="24" />
-      <div class="button-state" @click="navigateLeft('/history/faith')">State of faith</div>
+      <div class="button-state" @click="navigator.pushLeft('/history/faith')">State of faith</div>
     </div>
     <div class="info">
-      <div class="my-info" @click="navigateTop('/mypage')">
+      <div class="my-info" @click="navigator.pushTop('/mypage')">
         <CommonImage path="img_profile" :width="24" :height="24" />
         <div class="name">Deepen King</div>
       </div>
-      <div class="button-new-chat" @click="navigateLeft('/home/chatId')">
+      <div class="button-new-chat" @click="navigator.pushLeft('/home/chatId')">
         <CommonIcon path="ic_plus" :width="24" :height="24" />
         New Chat
       </div>
