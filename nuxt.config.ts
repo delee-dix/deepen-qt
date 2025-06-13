@@ -4,16 +4,11 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
   srcDir: "src/",
-  ssr: true,
+  ssr: false,
   css: ["~/asset/scss/global.scss", "~/asset/css/tailwind.css"],
   components: [{ path: "~/component" }],
   dir: {
     pages: "page",
-  },
-  nitro: {
-    routeRules: {
-      "/.well-known/**": { prerender: false },
-    },
   },
   vite: {
     server: {
