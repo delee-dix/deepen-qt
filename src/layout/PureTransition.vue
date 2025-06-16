@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 import { watch, ref, nextTick } from "vue";
+import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
+import { usePageHistoryStore } from "~/store/pageHistory";
 
 const route = useRoute();
 const { getDirection, resetDirection } = useNavigateWithTransition();

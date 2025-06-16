@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
+import { useModalStore } from "~/store/modal";
+
+const router = useRouter();
 const modalStore = useModalStore();
 const navigator = useNavigateWithTransition();
 
@@ -11,8 +15,8 @@ const clickConfirm = () => {
   modalStore.hideModal("signout");
 };
 
-const clickEdit = () => {
-  navigator.pushLeft("/mypage/edit");
+const clickProfile = () => {
+  navigator.pushLeft("/mypage/profile");
 };
 
 const clickNotice = () => {
@@ -30,6 +34,14 @@ const clickTerms = () => {
 const clickPrivacy = () => {
   navigator.pushLeft("/mypage/privacy");
 };
+
+const displayName = ref("");
+const profilePhoto = ref("");
+
+onMounted(() => {
+  displayName.value = sessionStorage.getItem("displayName") || "";
+  profilePhoto.value = sessionStorage.getItem("profilePhoto") || "";
+});
 </script>
 
 <template>
@@ -42,15 +54,11 @@ const clickPrivacy = () => {
         <CommonIcon path="ic_close" @click="navigator.back()" />
       </div>
       <div class="profile-area">
-        <div class="profile-image" @click="clickEdit">
-          <img
-            src="/img/img_profile_change.png"
-            alt="profile"
-            :style="{ width: '120px', height: '120px' }"
-          />
+        <div class="profile-image" @click="clickProfile">
+          <img :src="profilePhoto" alt="profile" :style="{ width: '120px', height: '120px' }" />
         </div>
 
-        <div class="nickname">Deepen King</div>
+        <div class="nickname">{{ displayName ?? "Deepen King" }}</div>
         <div class="email">deepenking@deepen.com</div>
       </div>
       <div class="mypage-list">

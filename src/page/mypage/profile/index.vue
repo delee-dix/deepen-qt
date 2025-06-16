@@ -1,17 +1,19 @@
 <script setup lang="ts">
+import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
 import { useModalStore } from "~/store/modal";
 
 const modalStore = useModalStore();
+const router = useRouter();
 
-const titleList = ["My Page", "Edit Profile", "Notice", "Setting", "Terms", "Privacy Policy"];
-
-const message = ref("");
+const displayName = ref("");
 const editableDiv = ref<HTMLDivElement | null>(null);
 
 const navigator = useNavigateWithTransition();
+const profilePhoto = ref("/img/img_profile_change.png");
+const fileInput = ref<HTMLInputElement | null>(null);
 
 const onInput = () => {
-  message.value = editableDiv.value?.innerText.trim() || "";
+  displayName.value = editableDiv.value?.innerText.trim() || "";
 };
 
 const clickMypage = () => {
@@ -28,11 +30,49 @@ const clickCamera = () => {
 
 const clickLibrary = () => {
   console.log("clickLibrary");
+  modalStore.hideModal("photo");
+  fileInput.value?.click();
 };
 
 const clickCancel = () => {
   modalStore.hideModal("photo");
 };
+
+const onSaveValue = () => {
+  sessionStorage.setItem("displayName", displayName.value);
+  sessionStorage.setItem("profilePhoto", profilePhoto.value || "");
+  router.push("/mypage");
+};
+
+const onFileChange = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  const file = target.files?.[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      profilePhoto.value = result;
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem("profilePhoto", result);
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+};
+
+onMounted(() => {
+  const savedName = sessionStorage.getItem("displayName");
+  const savedPhoto = sessionStorage.getItem("profilePhoto");
+  if (savedName) {
+    displayName.value = savedName;
+  }
+  if (savedPhoto) {
+    profilePhoto.value = savedPhoto;
+  }
+  if (editableDiv.value) {
+    editableDiv.value.innerText = displayName.value || "Deepen King";
+  }
+});
 </script>
 
 <template>
@@ -42,15 +82,11 @@ const clickCancel = () => {
       <div class="header">
         <CommonIcon path="ic_chevron_left" @click="clickMypage" />
         <div>Edit Profile</div>
-        <div>Save</div>
+        <div @click="onSaveValue" @drag="false">Save</div>
       </div>
       <div class="profile-area" @click="clickProfile">
         <div class="profile-image">
-          <img
-            src="/img/img_profile_change.png"
-            alt="profile"
-            :style="{ width: '120px', height: '120px' }"
-          />
+          <img :src="profilePhoto" alt="profile" style="width: 120px; height: 120px" />
         </div>
       </div>
       <div class="mypage-list">
@@ -81,6 +117,8 @@ const clickCancel = () => {
     @click-second-button="clickLibrary"
     @click-third-button="clickCancel"
   />
+
+  <input type="file" ref="fileInput" accept="image/*" @change="onFileChange" />
 </template>
 
 <style lang="scss" scoped>
