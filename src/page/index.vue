@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Splash from "~/component/Splash/index.vue";
+import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
 
 const navigator = useNavigateWithTransition();
 
