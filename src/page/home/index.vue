@@ -35,7 +35,7 @@ const clickSurveyConfirm = () => {
     </CommonHeader>
     <div class="hello-container">
       <CommonTooltip
-        text="Please invest just 5 seconds!&#10;I'm curious about you!"
+        :text="`Please invest just 5 seconds\nI'm curious about you!`"
         @click-tooltip="clickTooltip"
       />
       <CommonIcon path="ic_symbol" :width="84" :height="84" />
