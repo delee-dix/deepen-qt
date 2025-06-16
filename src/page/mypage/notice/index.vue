@@ -1,12 +1,17 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const navigator = useNavigateWithTransition();
+
+const clickMypage = () => {
+  navigator.replaceRight("/mypage");
+};
+</script>
 
 <template>
   <div class="notice-container">
     <div class="empty-area"></div>
     <div class="content-area">
-      <!-- <div class="bar"></div> -->
       <div class="header">
-        <img src="/icon/ic_chevron_left.svg" alt="prev" @click="$router.back()" />
+        <img src="/icon/ic_chevron_left.svg" alt="prev" @click="clickMypage" />
         <div>Notice</div>
         <div></div>
       </div>

@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { ref } from "vue";
+const navigator = useNavigateWithTransition();
 
 const isModalOpen = ref<boolean>(false);
+
+const clickTogether = () => {
+  navigator.pushRight("/together");
+};
 
 const sortingModalOpen = () => {
   isModalOpen.value = !isModalOpen.value;
@@ -12,10 +16,10 @@ const sortingModalOpen = () => {
   <div class="prayer-list-container">
     <div class="header">
       <div class="left">
-        <NuxtLink to="/together" class="header-link">
+        <div class="header-link" @click="clickTogether">
           <CommonIcon path="ic_chevron_left" :width="24" :height="24" />
           <div class="header-link-text">Journey of Prayers</div>
-        </NuxtLink>
+        </div>
       </div>
       <div class="right">
         <img src="/icon/ic_sorting.svg" alt="sorting" @click="sortingModalOpen" />
@@ -36,9 +40,11 @@ const sortingModalOpen = () => {
       <div class="prayer-content">
         <strong>April 28, 2025</strong>
         <div class="content-subject">Silent Whispers of the Morning</div>
-        <NuxtLink to="/together/prayer/id">
-          <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-        </NuxtLink>
+        <img
+          src="/icon/ic_chevron_right.svg"
+          alt="chevron-right"
+          @click="navigator.pushLeft('/together/prayer/id')"
+        />
       </div>
       <div class="prayer-content">
         <strong>April 27, 2025</strong>

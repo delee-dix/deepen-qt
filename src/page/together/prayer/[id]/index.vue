@@ -1,16 +1,20 @@
 <script setup lang="ts">
-const router = useRouter();
+const navigator = useNavigateWithTransition();
 
 const clickMypage = () => {
-  router.push("/mypage");
+  navigator.pushTop("/mypage");
+};
+
+const clickPrayer = () => {
+  navigator.pushRight("/together/prayer");
 };
 </script>
 
 <template>
   <div class="prayer-detail-container">
     <CommonHeader isQtDetail>
-      <CommonIcon path="ic_arrow_left" :width="24" :height="24" @click="router.back()" />
-      <NuxtLink to="/"> Deepen QT </NuxtLink>
+      <CommonIcon path="ic_arrow_left" :width="24" :height="24" @click="clickPrayer" />
+      <div class="title" @click="navigator.push('/home')">Deepen QT</div>
       <CommonImage path="img_profile" :width="24" :height="24" @click="clickMypage" />
     </CommonHeader>
     <div class="prayer-container">
@@ -38,7 +42,7 @@ const clickMypage = () => {
       </div>
     </div>
     <div class="button-ghost-container">
-      <div class="button-ghost" @click="$router.push('/home/chatId')">New Conversation</div>
+      <div class="button-ghost" @click="navigator.push('/home/chatId')">New Conversation</div>
     </div>
     <CommonImage path="img_bg_cross" class="bg-cross" />
   </div>

@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import { ref } from "vue";
-
-const router = useRouter();
+const navigator = useNavigateWithTransition();
 
 const chatContent = ref<string>("");
 
 const clickHistory = () => {
-  router.push("/history");
+  navigator.pushRight("/history");
 };
 
 const clickMypage = () => {
-  router.push("/mypage");
+  navigator.pushTop("/mypage");
 };
 </script>
 
@@ -18,7 +16,7 @@ const clickMypage = () => {
   <div class="qt-detail-container">
     <CommonHeader isQtDetail>
       <CommonIcon path="ic_menu_search" :width="24" :height="24" @click="clickHistory" />
-      <NuxtLink to="/home"> Deepen QT </NuxtLink>
+      <div class="title" @click="navigator.push('/home')">Deepen QT</div>
       <CommonImage path="img_profile" :width="24" :height="24" @click="clickMypage" />
     </CommonHeader>
 
@@ -111,29 +109,5 @@ const clickMypage = () => {
     object-fit: cover;
     background-color: rgba($color: $background, $alpha: 0.9);
   }
-}
-
-.slide-left-enter-active,
-.slide-left-leave-active,
-.slide-right-enter-active,
-.slide-right-leave-active {
-  transition: transform 0.3s ease;
-}
-
-.slide-left-enter-from,
-.slide-left-leave-to {
-  transform: translateX(-100%);
-}
-
-.slide-right-enter-from,
-.slide-right-leave-to {
-  transform: translateX(100%);
-}
-
-.slide-left-enter-to,
-.slide-right-enter-to,
-.slide-left-leave-from,
-.slide-right-leave-from {
-  transform: translateX(0);
 }
 </style>

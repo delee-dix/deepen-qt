@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { useModalStore } from "~/store/modal";
-
 const modalStore = useModalStore();
-const router = useRouter();
+const navigator = useNavigateWithTransition();
 
 const clickSignout = () => {
   modalStore.showModal("signout");
@@ -11,6 +9,26 @@ const clickSignout = () => {
 const clickConfirm = () => {
   router.push("/");
   modalStore.hideModal("signout");
+};
+
+const clickEdit = () => {
+  navigator.pushLeft("/mypage/edit");
+};
+
+const clickNotice = () => {
+  navigator.pushLeft("/mypage/notice");
+};
+
+const clickSetting = () => {
+  navigator.pushLeft("/mypage/setting");
+};
+
+const clickTerms = () => {
+  navigator.pushLeft("/mypage/terms");
+};
+
+const clickPrivacy = () => {
+  navigator.pushLeft("/mypage/privacy");
 };
 </script>
 
@@ -21,50 +39,49 @@ const clickConfirm = () => {
       <div class="header">
         <div :style="{ width: '24px' }"></div>
         <div>My Page</div>
-        <img src="/icon/ic_close.svg" alt="chevron-left" @click="router.back()" />
+        <CommonIcon path="ic_close" @click="navigator.back()" />
       </div>
       <div class="profile-area">
-        <NuxtLink :to="`/mypage/edit`">
-          <div class="profile-image">
-            <img
-              src="/img/img_profile_change.png"
-              alt="profile"
-              :style="{ width: '120px', height: '120px' }"
-            />
-          </div>
-        </NuxtLink>
+        <div class="profile-image" @click="clickEdit">
+          <img
+            src="/img/img_profile_change.png"
+            alt="profile"
+            :style="{ width: '120px', height: '120px' }"
+          />
+        </div>
+
         <div class="nickname">Deepen King</div>
         <div class="email">deepenking@deepen.com</div>
       </div>
       <div class="mypage-list">
-        <NuxtLink :to="'/mypage/notice'" class="notice">
+        <div class="notice" @click="clickNotice">
           <div class="left">
             <img src="/icon/ic_notice.svg" alt="notice" />
             <div>Notice</div>
           </div>
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-        </NuxtLink>
-        <NuxtLink :to="'/mypage/setting'" class="setting">
+        </div>
+        <div class="setting" @click="clickSetting">
           <div class="left">
             <img src="/icon/ic_sorting.svg" alt="setting" />
             <div>Setting</div>
           </div>
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-        </NuxtLink>
-        <NuxtLink :to="'/mypage/terms'" class="terms">
+        </div>
+        <div class="terms" @click="clickTerms">
           <div class="left">
             <img src="/icon/ic_terms.svg" alt="terms" />
             <div>Terms</div>
           </div>
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-        </NuxtLink>
-        <NuxtLink :to="'/mypage/privacy'" class="privacy">
+        </div>
+        <div class="privacy" @click="clickPrivacy">
           <div class="left">
             <img src="/icon/ic_privacy.svg" alt="privacy" />
             <div>Privacy Policy</div>
           </div>
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-        </NuxtLink>
+        </div>
         <div class="signout" @click="clickSignout">
           <div class="left">
             <img src="/icon/ic_signout.svg" alt="privacy" />

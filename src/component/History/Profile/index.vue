@@ -1,23 +1,21 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const navigator = useNavigateWithTransition();
+</script>
 
 <template>
   <div class="profile-container">
     <div class="state">
       <CommonIcon path="ic_sparkle" :width="24" :height="24" />
-      <NuxtLink :to="`/history/faith`" class="button-state">State of faith</NuxtLink>
+      <div class="button-state" @click="navigator.pushLeft('/history/faith')">State of faith</div>
     </div>
     <div class="info">
-      <div class="my-info">
+      <div class="my-info" @click="navigator.pushTop('/mypage')">
         <CommonImage path="img_profile" :width="24" :height="24" />
-        <NuxtLink :to="`/mypage`">
-          <div class="name">Deepen King</div>
-        </NuxtLink>
+        <div class="name">Deepen King</div>
       </div>
-      <div class="button-new-chat">
-        <NuxtLink :to="`/home/chatId`" class="button-new-chat-link">
-          <CommonIcon path="ic_plus" :width="24" :height="24" />
-          New Chat
-        </NuxtLink>
+      <div class="button-new-chat" @click="navigator.pushLeft('/home/chatId')">
+        <CommonIcon path="ic_plus" :width="24" :height="24" />
+        New Chat
       </div>
     </div>
   </div>
@@ -64,6 +62,12 @@
       display: flex;
       align-items: center;
       gap: 10px;
+
+      .name {
+        font-size: 14px;
+        font-weight: 500;
+        color: $white;
+      }
     }
 
     .button-new-chat {
@@ -72,15 +76,11 @@
       border-radius: 1000px;
       border: 1px solid #323232;
       padding: 12px 16px;
-      background: linear-gradient(to right, #4e5899, #ce70ca);
+      background: $gradient-primary;
       gap: 8px;
-
-      .button-new-chat-link {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 8px;
-      }
+      color: $white;
+      font-size: 14px;
+      font-weight: 500;
     }
   }
 }

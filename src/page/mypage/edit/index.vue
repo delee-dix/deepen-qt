@@ -8,8 +8,14 @@ const titleList = ["My Page", "Edit Profile", "Notice", "Setting", "Terms", "Pri
 const message = ref("");
 const editableDiv = ref<HTMLDivElement | null>(null);
 
+const navigator = useNavigateWithTransition();
+
 const onInput = () => {
   message.value = editableDiv.value?.innerText.trim() || "";
+};
+
+const clickMypage = () => {
+  navigator.replaceRight("/mypage");
 };
 
 const clickProfile = () => {
@@ -34,7 +40,7 @@ const clickCancel = () => {
     <div class="empty-area"></div>
     <div class="content-area">
       <div class="header">
-        <img src="/icon/ic_chevron_left.svg" alt="prev" @click="$router.back()" />
+        <CommonIcon path="ic_chevron_left" @click="clickMypage" />
         <div>Edit Profile</div>
         <div>Save</div>
       </div>

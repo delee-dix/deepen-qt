@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { type Ref, ref } from "vue";
-
-const router = useRouter();
+const navigator = useNavigateWithTransition();
 
 const clickHome = () => {
-  router.push("/home");
+  navigator.pushRight("/home");
+};
+
+const clickPrayer = () => {
+  navigator.pushLeft("/together/prayer");
 };
 
 const prayerItems = [
@@ -34,10 +36,10 @@ const prayerItems = [
         </div>
         <div class="prayer-container">
           <div class="prayer-title">
-            <NuxtLink to="/together/prayer" class="prayer-title-link">
+            <div class="prayer-title-link" @click="clickPrayer">
               Journey of Prayers
               <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
-            </NuxtLink>
+            </div>
           </div>
           <TogetherPrayerList title="Recent Prayers" :prayerItems="prayerItems" />
         </div>
