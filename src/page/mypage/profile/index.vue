@@ -1,15 +1,15 @@
 <script setup lang="ts">
+import { useNavigateWithTransition } from "~/composable/useNavigateWithTransition";
 import { useModalStore } from "~/store/modal";
 
 const modalStore = useModalStore();
 const router = useRouter();
 
 const displayName = ref("");
-const newDisplayName = sessionStorage.getItem("displayName");
 const editableDiv = ref<HTMLDivElement | null>(null);
 
 const navigator = useNavigateWithTransition();
-const profileImage = ref("/img/img_profile_change.png");
+const profilePhoto = ref("/img/img_profile_change.png");
 const fileInput = ref<HTMLInputElement | null>(null);
 
 const onInput = () => {
@@ -40,7 +40,7 @@ const clickCancel = () => {
 
 const onSaveValue = () => {
   sessionStorage.setItem("displayName", displayName.value);
-  sessionStorage.setItem("profilePhoto", fileInput.value?.value || "");
+  sessionStorage.setItem("profilePhoto", profilePhoto.value || "");
   router.push("/mypage");
 };
 
@@ -51,8 +51,10 @@ const onFileChange = (event: Event) => {
     const reader = new FileReader();
     reader.onload = () => {
       const result = reader.result as string;
-      profileImage.value = result;
-      sessionStorage.setItem("profilePhoto", result);
+      profilePhoto.value = result;
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem("profilePhoto", result);
+      }
     };
     reader.readAsDataURL(file);
   }
@@ -60,12 +62,15 @@ const onFileChange = (event: Event) => {
 
 onMounted(() => {
   const savedName = sessionStorage.getItem("displayName");
-  const savedImage = sessionStorage.getItem("profileImage");
+  const savedPhoto = sessionStorage.getItem("profilePhoto");
   if (savedName) {
     displayName.value = savedName;
   }
-  if (savedImage) {
-    profileImage.value = savedImage;
+  if (savedPhoto) {
+    profilePhoto.value = savedPhoto;
+  }
+  if (editableDiv.value) {
+    editableDiv.value.innerText = displayName.value || "Deepen King";
   }
 });
 </script>
@@ -81,7 +86,7 @@ onMounted(() => {
       </div>
       <div class="profile-area" @click="clickProfile">
         <div class="profile-image">
-          <img :src="profileImage" alt="profile" :style="{ width: '120px', height: '120px' }" />
+          <img :src="profilePhoto" alt="profile" style="width: 120px; height: 120px" />
         </div>
       </div>
       <div class="mypage-list">
@@ -92,9 +97,7 @@ onMounted(() => {
           contenteditable="true"
           @input="onInput"
           placeholder="Name"
-        >
-          {{ newDisplayName ?? "Deepen King" }}
-        </div>
+        ></div>
         <br />
         <div>User Email</div>
         <div class="input">deepenking@deepen.com</div>
