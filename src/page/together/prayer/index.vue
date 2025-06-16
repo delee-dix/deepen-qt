@@ -3,6 +3,10 @@ const navigator = useNavigateWithTransition();
 
 const isModalOpen = ref<boolean>(false);
 
+const clickTogether = () => {
+  navigator.pushRight("/together");
+};
+
 const sortingModalOpen = () => {
   isModalOpen.value = !isModalOpen.value;
 };
@@ -12,7 +16,7 @@ const sortingModalOpen = () => {
   <div class="prayer-list-container">
     <div class="header">
       <div class="left">
-        <div class="header-link" @click="navigator.pushRight('/together')">
+        <div class="header-link" @click="clickTogether">
           <CommonIcon path="ic_chevron_left" :width="24" :height="24" />
           <div class="header-link-text">Journey of Prayers</div>
         </div>

@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { useModalStore } from "~/store/modal";
-
 const navigator = useNavigateWithTransition();
-
 const modalStore = useModalStore();
+
 const surveyChoice = ref("");
 const surveyContent = ref("");
 const chatContent = ref("");

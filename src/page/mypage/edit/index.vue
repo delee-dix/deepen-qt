@@ -14,6 +14,10 @@ const onInput = () => {
   message.value = editableDiv.value?.innerText.trim() || "";
 };
 
+const clickMypage = () => {
+  navigator.replaceRight("/mypage");
+};
+
 const clickProfile = () => {
   modalStore.showModal("photo");
 };
@@ -36,7 +40,7 @@ const clickCancel = () => {
     <div class="empty-area"></div>
     <div class="content-area">
       <div class="header">
-        <CommonIcon path="ic_chevron_left" @click="navigator.replaceRight('/mypage')" />
+        <CommonIcon path="ic_chevron_left" @click="clickMypage" />
         <div>Edit Profile</div>
         <div>Save</div>
       </div>

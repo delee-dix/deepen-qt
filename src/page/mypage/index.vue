@@ -10,6 +10,26 @@ const clickConfirm = () => {
   router.push("/");
   modalStore.hideModal("signout");
 };
+
+const clickEdit = () => {
+  navigator.pushLeft("/mypage/edit");
+};
+
+const clickNotice = () => {
+  navigator.pushLeft("/mypage/notice");
+};
+
+const clickSetting = () => {
+  navigator.pushLeft("/mypage/setting");
+};
+
+const clickTerms = () => {
+  navigator.pushLeft("/mypage/terms");
+};
+
+const clickPrivacy = () => {
+  navigator.pushLeft("/mypage/privacy");
+};
 </script>
 
 <template>
@@ -22,7 +42,7 @@ const clickConfirm = () => {
         <CommonIcon path="ic_close" @click="navigator.back()" />
       </div>
       <div class="profile-area">
-        <div class="profile-image" @click="navigator.pushLeft('/mypage/edit')">
+        <div class="profile-image" @click="clickEdit">
           <img
             src="/img/img_profile_change.png"
             alt="profile"
@@ -34,28 +54,28 @@ const clickConfirm = () => {
         <div class="email">deepenking@deepen.com</div>
       </div>
       <div class="mypage-list">
-        <div class="notice" @click="navigator.pushLeft('/mypage/notice')">
+        <div class="notice" @click="clickNotice">
           <div class="left">
             <img src="/icon/ic_notice.svg" alt="notice" />
             <div>Notice</div>
           </div>
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
         </div>
-        <div class="setting" @click="navigator.pushLeft('/mypage/setting')">
+        <div class="setting" @click="clickSetting">
           <div class="left">
             <img src="/icon/ic_sorting.svg" alt="setting" />
             <div>Setting</div>
           </div>
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
         </div>
-        <div class="terms" @click="navigator.pushLeft('/mypage/terms')">
+        <div class="terms" @click="clickTerms">
           <div class="left">
             <img src="/icon/ic_terms.svg" alt="terms" />
             <div>Terms</div>
           </div>
           <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
         </div>
-        <div class="privacy" @click="navigator.pushLeft('/mypage/privacy')">
+        <div class="privacy" @click="clickPrivacy">
           <div class="left">
             <img src="/icon/ic_privacy.svg" alt="privacy" />
             <div>Privacy Policy</div>

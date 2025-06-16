@@ -5,6 +5,10 @@ const clickHome = () => {
   navigator.pushRight("/home");
 };
 
+const clickPrayer = () => {
+  navigator.pushLeft("/together/prayer");
+};
+
 const prayerItems = [
   { date: "April 28, 2025", subject: "Silent Whispers of the Morning" },
   { date: "April 27, 2025", subject: "Grace in the Stillness" },
@@ -32,7 +36,7 @@ const prayerItems = [
         </div>
         <div class="prayer-container">
           <div class="prayer-title">
-            <div class="prayer-title-link" @click="navigator.pushLeft('/together/prayer')">
+            <div class="prayer-title-link" @click="clickPrayer">
               Journey of Prayers
               <img src="/icon/ic_chevron_right.svg" alt="chevron-right" />
             </div>

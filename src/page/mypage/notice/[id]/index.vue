@@ -1,5 +1,9 @@
 <script setup lang="ts">
 const navigator = useNavigateWithTransition();
+
+const clickNotice = () => {
+  navigator.replaceRight("/mypage/notice");
+};
 </script>
 
 <template>
@@ -7,7 +11,7 @@ const navigator = useNavigateWithTransition();
     <div class="empty-area"></div>
     <div class="content-area">
       <div class="header">
-        <img src="/icon/ic_chevron_left.svg" alt="prev" @click="navigator.pushRight('/mypage')" />
+        <img src="/icon/ic_chevron_left.svg" alt="prev" @click="clickNotice" />
         <div>Notice</div>
         <div></div>
       </div>

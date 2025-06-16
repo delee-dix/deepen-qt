@@ -22,6 +22,10 @@ const currentAlarmTime = reactive({
   minute: "00",
   ampm: "AM",
 });
+
+const clickMypage = () => {
+  navigator.replaceRight("/mypage");
+};
 </script>
 
 <template>
@@ -29,12 +33,7 @@ const currentAlarmTime = reactive({
     <div class="empty-area"></div>
     <div class="content-area">
       <div class="header">
-        <CommonIcon
-          path="ic_chevron_left"
-          :width="24"
-          :height="24"
-          @click="navigator.replaceRight('/mypage')"
-        />
+        <CommonIcon path="ic_chevron_left" :width="24" :height="24" @click="clickMypage" />
         <div class="header-title">Setting</div>
         <div class="header-save">Save</div>
       </div>

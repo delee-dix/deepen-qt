@@ -1,5 +1,9 @@
 <script setup lang="ts">
 const navigator = useNavigateWithTransition();
+
+const clickMypage = () => {
+  navigator.replaceRight("/mypage");
+};
 </script>
 
 <template>
@@ -8,7 +12,7 @@ const navigator = useNavigateWithTransition();
     <div class="content-area">
       <!-- <div class="bar"></div> -->
       <div class="header">
-        <CommonIcon path="ic_chevron_left" @click="navigator.replaceRight('/mypage')" />
+        <CommonIcon path="ic_chevron_left" @click="clickMypage" />
         <div>Privacy Policy</div>
         <div></div>
       </div>
