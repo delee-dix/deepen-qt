@@ -8,22 +8,29 @@ const emit = defineEmits<{
 const props = withDefaults(
   defineProps<{
     text: string;
-    position?: "fixed" | "absolute";
+    position?: "fixed" | "absolute" | "static";
     top?: string;
     bottom?: string;
     left?: string;
     right?: string;
     isSymbol?: boolean;
+    isTransition?: boolean;
   }>(),
   {
     position: "fixed",
     isSymbol: false,
+    isTransition: true,
   }
 );
 
 const isVisible = ref(false);
 
 onMounted(() => {
+  if (!props.isTransition) {
+    isVisible.value = true;
+    return;
+  }
+
   setTimeout(() => {
     isVisible.value = true;
   }, 300);
@@ -40,10 +47,11 @@ const clickClose = () => {
 </script>
 
 <template>
-  <transition name="tooltip">
+  <transition :name="props.isTransition ? 'tooltip' : ''">
     <div
       v-if="isVisible"
       class="tooltip-bubble"
+      :class="{ 'is-expand': !props.isTransition }"
       :style="`top: ${props.top}; bottom: ${props.bottom}; left: ${props.left}; right: ${props.right}; position: ${props.position};`"
     >
       <div class="tooltip-content" @click="clickTooltip">
@@ -63,7 +71,7 @@ const clickClose = () => {
   padding: 16px;
   gap: 20px;
   width: fit-content;
-  background-color: rgba(60, 60, 60, 0.32);
+  background-color: $background;
   border: 1px solid $border;
   border-radius: 4px;
   backdrop-filter: blur(32px);
@@ -117,6 +125,11 @@ const clickClose = () => {
       border-top: 11px solid #363636;
       z-index: -1;
     }
+  }
+
+  &.is-expand {
+    width: 100%;
+    justify-content: space-between;
   }
 }
 

@@ -6,6 +6,9 @@ const router = useRouter();
 const modalStore = useModalStore();
 const navigator = useNavigateWithTransition();
 
+const surveyChoice = ref("");
+const surveyContent = ref("");
+
 const clickSignout = () => {
   modalStore.showModal("signout");
 };
@@ -42,6 +45,17 @@ onMounted(() => {
   displayName.value = sessionStorage.getItem("displayName") || "";
   profilePhoto.value = sessionStorage.getItem("profilePhoto") || "";
 });
+const clickTooltip = () => {
+  modalStore.showModal("survey");
+};
+
+const clickSurveyChoice = (choice: string) => {
+  surveyChoice.value = choice;
+};
+
+const clickSurveyConfirm = () => {
+  console.log("clickSurveyConfirm");
+};
 </script>
 
 <template>
@@ -60,6 +74,15 @@ onMounted(() => {
 
         <div class="nickname">{{ displayName ?? "Deepen King" }}</div>
         <div class="email">deepenking@deepen.com</div>
+      </div>
+      <div class="tooltip-container">
+        <CommonTooltip
+          :position="'static'"
+          :text="`Please invest just 5 seconds\nI'm curious about you!`"
+          :isTransition="false"
+          isSymbol
+          @click-tooltip="clickTooltip"
+        />
       </div>
       <div class="mypage-list">
         <div class="notice" @click="clickNotice">
@@ -106,6 +129,41 @@ onMounted(() => {
     description="Are you sure you want to exit QT?"
     @click-confirm-button="clickConfirm"
   />
+  <CommonModalSurvey
+    modalId="survey"
+    title="How regularly do you attend worship services?"
+    @click-confirm="clickSurveyConfirm"
+  >
+    <template #body>
+      <div class="survey-container">
+        <CommonRadioRow
+          label="Yes, regularly"
+          :model-value="surveyChoice === 'option01'"
+          @update:model-value="clickSurveyChoice('option01')"
+        />
+        <CommonRadioRow
+          label="Occasionally"
+          :model-value="surveyChoice === 'option02'"
+          @update:model-value="clickSurveyChoice('option02')"
+        />
+        <CommonRadioRow
+          label="Rarely"
+          :model-value="surveyChoice === 'option03'"
+          @update:model-value="clickSurveyChoice('option03')"
+        />
+        <CommonRadioRow
+          label="Please specify"
+          :model-value="surveyChoice === 'option04'"
+          @update:model-value="clickSurveyChoice('option04')"
+        />
+        <CommonInputTextarea
+          v-model="surveyContent"
+          placeholder="Please tell me why you feel that way."
+          :disabled="surveyChoice !== 'option04'"
+        />
+      </div>
+    </template>
+  </CommonModalSurvey>
 </template>
 
 <style lang="scss" scoped>
@@ -155,6 +213,7 @@ onMounted(() => {
     flex-direction: column;
     align-items: center;
     margin-top: 40px;
+    margin-bottom: 24px;
 
     .nickname {
       font-size: 16px;
@@ -164,7 +223,6 @@ onMounted(() => {
 
     .email {
       font-size: 14px;
-      margin-bottom: 48px;
     }
   }
 
@@ -172,7 +230,7 @@ onMounted(() => {
     display: flex;
     flex-direction: column;
     gap: 32px;
-    margin-top: 40px;
+    margin-top: 24px;
     padding-bottom: 32px;
 
     .notice,
@@ -209,6 +267,13 @@ onMounted(() => {
       width: 100%;
       height: 1px;
     }
+  }
+
+  .tooltip-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>
