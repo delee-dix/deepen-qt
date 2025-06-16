@@ -7,7 +7,7 @@ const clickSignout = () => {
 };
 
 const clickConfirm = () => {
-  router.push("/");
+  navigator.push("/");
   modalStore.hideModal("signout");
 };
 
