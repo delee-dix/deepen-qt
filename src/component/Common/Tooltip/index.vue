@@ -8,11 +8,15 @@ const emit = defineEmits<{
 const props = withDefaults(
   defineProps<{
     text: string;
-    position?: "top" | "bottom" | "left" | "right";
+    position?: "fixed" | "absolute";
+    top?: string;
+    bottom?: string;
+    left?: string;
+    right?: string;
     isSymbol?: boolean;
   }>(),
   {
-    position: "top",
+    position: "fixed",
     isSymbol: false,
   }
 );
@@ -37,7 +41,11 @@ const clickClose = () => {
 
 <template>
   <transition name="tooltip">
-    <div v-if="isVisible" class="tooltip-bubble">
+    <div
+      v-if="isVisible"
+      class="tooltip-bubble"
+      :style="`top: ${props.top}; bottom: ${props.bottom}; left: ${props.left}; right: ${props.right}; position: ${props.position};`"
+    >
       <div class="tooltip-content" @click="clickTooltip">
         <CommonIcon v-if="props.isSymbol" path="ic_symbol" :width="32" :height="32" />
         <span class="tooltip-phrase">{{ text }}</span>
@@ -49,8 +57,6 @@ const clickClose = () => {
 
 <style lang="scss" scoped>
 .tooltip-bubble {
-  position: absolute;
-  top: -100px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -64,8 +70,7 @@ const clickClose = () => {
   box-shadow:
     4px 4px 24px 0px rgba(255, 255, 255, 0.08),
     inset 4px 4px 24px 0px rgba(255, 255, 255, 0.02);
-  z-index: 1000;
-
+  z-index: 99999999;
   cursor: pointer;
 
   .tooltip-content {
