@@ -1,9 +1,13 @@
 <script setup lang="ts">
 const navigator = useNavigateWithTransition();
+const modalStore = useModalStore();
 
 const clickHome = () => {
   navigator.pushLeft("/home");
 };
+
+const surveyChoice = ref("");
+const surveyContent = ref("");
 
 const historyItems = ref([
   {
@@ -21,10 +25,29 @@ const historyItems = ref([
     tags: ["Delight", "Judgement"],
   },
 ]);
+
+const clickTooltip = () => {
+  modalStore.showModal("survey");
+};
+
+const clickSurveyChoice = (choice: string) => {
+  surveyChoice.value = choice;
+};
+
+const clickSurveyConfirm = () => {
+  console.log("clickSurveyConfirm");
+};
 </script>
 
 <template>
   <div class="left-side-container">
+    <CommonTooltip
+      :text="`Please invest just 5 seconds\nI'm curious about you!`"
+      isSymbol
+      @click-tooltip="clickTooltip"
+      bottom="140px"
+      right="18px"
+    />
     <div class="search-bar-container">
       <CommonSearchBar />
       <CommonIcon path="ic_arrow_right" :width="24" :height="24" @click="clickHome" />
@@ -37,6 +60,26 @@ const historyItems = ref([
     </div>
     <HistoryProfile />
     <div class="background-radial-gradient"></div>
+    <CommonModalSurvey
+      modalId="survey"
+      title="Does QT do it by itself?"
+      @click-confirm="clickSurveyConfirm"
+    >
+      <template #body>
+        <div class="survey-container">
+          <CommonRadioRow
+            label="Yes! I do it every day."
+            :model-value="surveyChoice === 'option01'"
+            @update:model-value="clickSurveyChoice('option01')"
+          />
+          <CommonRadioRow
+            label="No, not at all."
+            :model-value="surveyChoice === 'option02'"
+            @update:model-value="clickSurveyChoice('option02')"
+          />
+        </div>
+      </template>
+    </CommonModalSurvey>
   </div>
 </template>
 
@@ -72,6 +115,12 @@ const historyItems = ref([
     padding-bottom: 264px;
     overflow-y: auto;
     text-align: left;
+  }
+
+  .survey-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 }
 </style>
