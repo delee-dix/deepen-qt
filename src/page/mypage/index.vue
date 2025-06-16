@@ -276,4 +276,9 @@ const clickSurveyConfirm = () => {
     align-items: center;
   }
 }
+.survey-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 </style>
