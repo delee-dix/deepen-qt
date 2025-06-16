@@ -4,7 +4,10 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
   srcDir: "src/",
-  ssr: true,
+  routeRules: {
+    "/": { prerender: true },
+  },
+  ssr: false,
   css: ["~/asset/scss/global.scss", "~/asset/css/tailwind.css"],
   components: [{ path: "~/component" }],
   dir: {

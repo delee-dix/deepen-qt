@@ -10,7 +10,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "format": "prettier --write .",
-    "deploy:firebase": "nuxt generate  && firebase deploy --only hosting"
+    "deploy:firebase": "nuxt build && firebase deploy --only hosting"
   },
   "dependencies": {
     "@nuxt/image": "^1.10.0",
