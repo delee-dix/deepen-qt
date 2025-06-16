@@ -82,7 +82,7 @@ onMounted(() => {
       <div class="header">
         <CommonIcon path="ic_chevron_left" @click="clickMypage" />
         <div>Edit Profile</div>
-        <div @click="onSaveValue">Save</div>
+        <div @click="onSaveValue" @drag="false">Save</div>
       </div>
       <div class="profile-area" @click="clickProfile">
         <div class="profile-image">
